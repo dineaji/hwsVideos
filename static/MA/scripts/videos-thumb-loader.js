@@ -2,23 +2,34 @@
 (function(window,$,hwLayout){
 	var isLoaded = false;
 	var isotopeBool = false;
+	var categoryLoaded = false;
+	var MAX_SLIDES        = 6;
 	var localeName = $("#hdnLocaleName").val();
+	HWMAT.thumbSlider = [];
 	var videoCollections = {
 		carouselConfig : function(configName){
+			var self = this;
 			var configObj;
 			switch(configName){
-				case 'thumbCarousel':
-				  configObj={
-				  	'itemVisible': 6,
-				  	'autoPlay':false,
-				  	'center':false,
-				  	'pagination':false,
-				  	'navigation':true,
-				  	'loop':true,
-				  	'singleItem':false,
-				  	'tabletVisible' : 4
-				 }
-				  break;
+				case 'bxsliderOptions' : 
+					configObj = {
+						auto: false,
+						startSlide: 0,
+			            minSlides: 1,
+			            maxSlides: MAX_SLIDES,
+			            slideWidth: 240,
+			            slideMargin: 2,
+					    infiniteLoop:false,
+					    pager : false,
+					    moveSlides: 1,
+					    hideControlOnEnd: true,
+					    slideSelector : 'li',
+					    onSlideAfter: function($slideElement, oldIndex, newIndex) {
+			                var $slider = $slideElement.closest('.cat-container').data('sliderData');
+			                var slideCount = $slider.getSlideCount();
+			                self.lazyLoad($slider);
+			            },
+					} 
 			}
 			return configObj;
 		},
@@ -33,86 +44,75 @@
 			var configObj;
 			switch(configName){
 				case 'videoThumbnail':
-					configObj={"targetId":"hwn-container","isotopEnabled": true,"templateId" : "video-thumbnail-container"}
+					configObj={
+						"targetId":"hwn-container",
+						"templateId" : "video-thumbnail-container"
+					}
 					break;
 			}
 			return configObj;
 		},
-		groupUniqueObj: function (resObj, keyName,obj2) {
+		groupUniqueObj: function (resObj, keyName) {
             var data = {};
             if (resObj == undefined || keyName == undefined) return false;
             for (var i = 0; i < resObj.length; ++i) {
                 var obj = resObj[i];
-                if (data[obj[keyName]] === undefined && obj2[i].CategorySEOName == keyName)
+                if (data[obj[keyName]] === undefined)
                     data[obj[keyName]] = []; //Assign a new array with the first element of DtmStamp.
-
+                
                 data[obj[keyName]].push(obj);
             }
             return data;
         },
-		applyCarousel : function(el,prop,destroy){		 
-            var self=this,
-               	$owl = $(el);
+        initCarousels: function(el,prop){
+        	var self=this,
+               	$bxsldr = $(el),
+               	$carousel,
+               	$target,
+               	elemIndex;
             
-            $owl.owlCarousel({
-                items           :  prop.itemVisible,    		 // Integer
-                singleItem      :  prop.singleItem || false,     // Boolean
-                dots		    :  prop.pagination || false,     // Boolean
-                callbacks       :  true,                		 // Boolean
-                autoplay        :  prop.autoPlay || false, 		 // Boolean / Integer 
-                loop            :  prop.loop || false,       	 // Boolean
-                mouseDrag       :  false,               		 // Boolean
-                nav   		   	:  prop.navigation || false,     // Boolean
-                navText  		:  false, 						 // Boolean
-                addClassActive  :  true,						 // Boolean
-				itemsDesktop	:  false,						 // Boolean
-				navRewind 		:  false,						 // Boolean
-				startPosition	:  $owl.data('currentIndex') || 0, // Integer
-				centerClass 	:  'active-element',
-				center 			:  prop.center, 				 // Boolean
-				transitionStyle	:  true,
-				responsiveClass  : true,
-				rewindNav		: true,
-				responsive 		:{
-					0:{
-						items : prop.mobileVisible || 1
-					},
-					768:{
-						items : prop.tabletVisible || 4
-					},
-					980:{
-						items : prop.itemVisible
-					}
-				},
-				onInitialize       :  self.sliderInitialize,
-                onChange      :  self.sliderTranslate,	 
-                //afterMove       :  self.sliderTranslate
+            _.each($bxsldr,function(item){
+            	elemIndex = $(item).attr('data-index') || 0;
+	            if(!$(item).hasClass('slider-active')){
+		            $carousel = $(item);
+		            $target = $carousel.closest(".cat-container");
+	            	self.initCarousel($carousel, $target);
+	            	$(item).addClass('slider-active')
+	            }
             })
-            $owlActiveSlider = $owl.data('owlCarousel');
         },
-        sliderInitialize : function(event){
-        	console.log(event)
-        },
-        sliderTranslate : function(e){
-        	var self = videoCollections
-        	 if (e.property.name != 'position') return
-			  this.next = e.relatedTarget.normalize(e.property.value, true) > e.item.index
-			  if (this.next) {
-			  	console.log("next");
-			  	var slideCount = e.currentTarget.dataset.slideCount;
-			  	var categoryTitle = e.currentTarget.dataset.title;
-			  	var curObj = HWMAT.groupVideoCategory[categoryTitle];
-			  	var curObjVideos = curObj && curObj[0].Videos.slice(8,10);
-			  	self.templateBind(e.currentTarget,curObjVideos,true);
-			   // this might be your 'next' before
-			  } else {
-			  	console.log("prev")
-			    // this might be your 'prev' before
-			  }
+        initCarousel: function($carousel, $target){
+	        $target.data('sliderData', $carousel.bxSlider(this.carouselConfig('bxsliderOptions')));
+	    },
+        lazyLoad : function($slider){
+		  	var totalSlides = $slider.find('.thumb-unit').length;
+	        var current = $slider.getCurrentSlide();
+	        var remaining = totalSlides - (MAX_SLIDES + (current - 1));
+	        var reloadConfig = this.carouselConfig('bxsliderOptions');
+	        var objName = $slider.data('title');
+	        var curObj = HWMAT.groupVideoCategory[objName];
+		  	var curObjVideos;
+		  	var elem;
+		  	var pagination;
+
+	        // Grab mattel's data- ids
+	        var total = $slider.data('total');
+	        var items = $slider.data('items');
+	        var allData = $slider.data();
+	        // if possible retrieve another batch of items through ajax
+	        if(remaining < items && totalSlides < total && total !== undefined){
+	        	curObjVideos = curObj && curObj[0].Videos.slice(totalSlides,(totalSlides+this.paged_count));
+	        	elem = this.templateBind('',curObjVideos,true);
+	        	$slider.append(elem);
+                reloadConfig.startSlide = current;
+                $slider.reloadSliderDynamic(reloadConfig); // don't delete only refresh
+                pagination = $slider.data('pagination');
+                $slider.data('pagination', Number(pagination) + 1);
+	        }
         },
         templateBind : function(elemSelector,res,isLoadOnlyThumb){
 			var self = this,
-				divElem = isLoadOnlyThumb ? elemSelector : document.getElementById("hwn-container"),
+				divElem = document.getElementById("hwn-container"),
 				templateId =   _.template(document.getElementById("video-thumbnail-container").innerHTML.trim()),
             	templateCollection = templateId({ 
             		'items' : res ,
@@ -120,25 +120,22 @@
             	});
 
             if(isLoadOnlyThumb){
-            	$(elemSelector).trigger('add.owl.carousel', [templateCollection]).trigger('refresh.owl.carousel');
+            	return templateCollection;
+            	/*var $slider = HWMAT.thumbSlider[$(elemSelector).data('index')];
+            	var current = $slider.getCurrentSlide();
+            	var sliderConfig = self.carouselConfig('bxsliderOptions');
+            	sliderConfig.startSlide = current;
+            	$(elemSelector).append($(templateCollection));
+            	$slider.reloadSliderDynamic(sliderConfig);*/
             } else{
             	$(templateCollection).appendTo(divElem);
-            	self.applyCarousel('.thumbs-grid.hwn-carousal' ,self.carouselConfig('thumbCarousel'));
+            	self.initCarousels('.hwn-carousal' ,self.carouselConfig('thumbCarousel'));
             }
-		},
-		appendCollItems : function(elem,items){
-			thumbGrid = $(elem);
-			thumbGrid.isotope(this.isotopeConfig());
-			thumbGrid.imagesLoaded().progress( function() {
-			loading_target = $(".thumb-small-image");
-			  $(loading_target).removeClass('loading');
-			  thumbGrid.isotope('layout');
-			});
 		},
 		getCategoryDatas : function(obj,bool){
 			var start, end, n, ret = [],self=this;
-			if(typeof obj=="undefined") return;
-			if(this.category_count === 'all') {
+			if(typeof obj=="undefined" || categoryLoaded) return;
+			if(this.initial_count === 'all') {
 			    _.each(obj, function(m) {
 			        ret.push(m);
 			    });
@@ -146,15 +143,15 @@
 			else {
 			    if(this.page === 0) {
                     start = 0;
-                    end = this.category_count - 1;
+                    end = this.initial_count - 1;
                 } else {
-                	if(bool){
-                		if(this.category_count<0) this.category_count = this.filPage || 0;
-                		this.filPage = start = (obj.length<this.category_count) ? this.filPage+obj.length : this.category_count+1;
+                	/*if(bool){
+                		if(this.initial_count<0) this.initial_count = this.filPage || 0;
+                		this.filPage = start = (obj.length<this.initial_count) ? this.filPage+obj.length : this.initial_count+1;
                 	}
-                	else{
-                    	start = (this.category_count) + ((this.page - 1) * this.paged_count);
-                	}
+                	else{*/
+                    	start = (this.initial_count) + ((this.page - 1) * this.paged_count);
+                	// }
                     end = start + this.paged_count - 1;
                 }
                 if(end >= this.count() - 1) {
@@ -162,11 +159,11 @@
                 }
 			    if(start>= this.count()) { // start has extended past the length... find not loaded
 			        n = this.paged_count;
-			       $(".thumbnail-coll-wrapper").addClass('success');
-			       dataLoaded = true;
+			       $("#hwn-container").addClass('success');
+			       categoryLoaded = true;
 			    } else {
 			    	// if(start==0 && end==0) return
-			    	if(bool){
+			    	/*if(bool){
 						if(this.page==0){
 							this.filPage = start =0
 						}
@@ -177,35 +174,36 @@
 			                        m.loaded=true;
 				                }
 				            }
-			    	} else{
+			    	} else{*/
 				        for(var i=start, m; i < end + 1; i++) {
 				            m = obj[i];
 				            if(!_.isUndefined(m)) {
 			                        ret.push(m);
 				                }
 				            }
-				        }
-				        dataLoaded = false;
+				        // }
+				        categoryLoaded = false;
 			        }
 			    }
-			    // alert("start:"+start+" End:"+end+" initialCount:" + this.category_count);
+			    // alert("start:"+start+" End:"+end+" initialCount:" + this.initial_count);
 			    if(!ret.length){
-			    	$(".thumbnail-coll-wrapper").addClass('success');
-			    	//this.category_count = ret.length-1;
-			       	this.filterLoaded = dataLoaded = true;
+			    	$("#hwn-container").addClass('success');
+			    	//this.initial_count = ret.length-1;
+			       	// this.filterLoaded = categoryLoaded = true;
+			       	categoryLoaded = true;
 			    	return;	
 			    } 
-			   if(bool){
-				    if(ret.length<=this.category_count && bool){
-				    	 this.category_count= end;
+			  /* if(bool){
+				    if(ret.length<=this.initial_count && bool){
+				    	 this.initial_count= end;
 				    	 if(this.page==0) this.page++;
 				    } else{
-				    	this.category_count =this.category_count + ((this.page ) * this.paged_count);
+				    	this.initial_count =this.initial_count + ((this.page ) * this.paged_count);
 				    	this.page++
 				    }
-			   }
+			   }*/
 			   else{
-			    	this.category_count = this.initial;
+			    	this.initial_count = this.category_count;
 			    	this.page++
 				    }
 			    // alert("start:"+start+" End:"+end+" initialCount:" + this.category_count);
@@ -216,8 +214,8 @@
         },
 		ajaxCollection : function(el,obj){
 			this.category_count = $("#"+el).data('categoryDisplayCount');
+			this.initial_count = this.category_count || this.initial || 0;
 			this.initial_thumb_count = $("#"+el).data('initialThumbCount');
-			this.initial_thumb_count = this.initial_thumb_count || this.initial || 0;
             this.paged_count = 0;
             this.curt_count_obj = {};
             this.page = this.page || 0;
@@ -228,15 +226,15 @@
 		},
 		loadMore : function(curVal){
         	var self =this,
-        		obj = filterActive ? this.filteredDatas : ((yearFilter) ? this.filterYear : this.carMapedDatas);
-			if(window.innerHeight > curVal.getBoundingClientRect().bottom){
-				var bool = (filterActive) ? true :0;
-				if(!this.filterLoaded) self.getCategoryDatas(obj,bool);
+        		obj = HWMAT.videoCategories;
+			if(window.innerHeight > curVal.getBoundingClientRect().bottom && HWMAT.videoCategories){
+				self.getCategoryDatas(obj);
 			}
 		},
 		videoAPICall : function(){
 			var self = this;
 			var arr = [];
+			var obj ;
 			HWMAT.videoCategories = [];
 			var apiConfigs = self.apiConfig();
 			$.getJSON( "/" + localeName + apiConfigs.name, function( data ) {
@@ -246,9 +244,12 @@
 				}
 				var parseDatas = JSON.parse(data);
 				var mergedTitleObj = arr.concat(parseDatas.VideoDisplayMainCategories , parseDatas.VideoDisplaySubCategories);
-				HWMAT.groupVideoCategory = HWMAT.layout.groupUniqueObj(parseDatas.VideoCategories,'CategorySEOName');
-				mergedTitleObj.filter(function (el) {
-					HWMAT.videoCategories.push(HWMAT.groupVideoCategory[el.CategorySEOName] && HWMAT.groupVideoCategory[el.CategorySEOName][0]);
+				HWMAT.groupVideoCategory = self.groupUniqueObj(parseDatas.VideoCategories,'CategorySEOName');
+				mergedTitleObj.filter(function (el,index) {
+					obj = HWMAT.groupVideoCategory[el.CategorySEOName] && HWMAT.groupVideoCategory[el.CategorySEOName][0];
+					// obj.index = index;
+					if(obj) obj.index= index;
+					obj && HWMAT.videoCategories.push(obj);
 				});
 				self.ajaxCollection(self.templateConfig('videoThumbnail').targetId,HWMAT.videoCategories)
 				self.getCategoryDatas(HWMAT.videoCategories);
@@ -264,4 +265,11 @@
 	
 	};
 	videoCollections.init();
+	HWMAT.videoCollections = videoCollections;
 })(this,jQuery, HWMAT && HWMAT.layout)
+
+
+$(window).scroll(function(){
+	var parentContainer= document.querySelector("#hwn-container");
+    HWMAT.videoCollections.loadMore(parentContainer);
+})

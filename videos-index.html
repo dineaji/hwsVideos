@@ -181,6 +181,7 @@
     </div>    
 
 
+
 <style type="text/css">
     .page-videos .cat-grid.videos #hwn-container .cat-container{
         position: relative;
@@ -188,24 +189,19 @@
 </style>
 <script type="text/template" id="video-thumbnail-container">
     <% 
-        var localeName = "en-us",
-            length = 8;
-            console.log(loadOnlyThumb)
+        var localeName = $("#hdnLocaleName").val(),
+            thumbLimit = $("#hwn-container").data('initialThumbCount');
      %>
      <% if(loadOnlyThumb){ %>
             <% _.each(items, function(subItem){ %>
-                <% var count = 0 %>
-                <% if(count <= length){ %>
-                <div class="thumb-unit video">
+                <li class="thumb-unit video">
                     <a compid="<%= subItem.CmsId %>" href="/<%= localeName + '/videos/detail/' + subItem.ContentUrl + '?keywordName=' + subItem.CategoryName + '&keywordId=' + subItem.CategoryId %>">
                         <img src="<%= subItem.ThumbNailPath %>" alt="<%= subItem.Title %>" class="thumb">
                         <div class="thumb-info">
                             <span class="title"><%= subItem.Title %></span>
                         </div>
                     </a>
-                </div>
-                <% count++ %>
-            <% } %>
+                </li>
         <% }) %>
      <% } else{ %>
             <% _.each(items,function(item){ %>
@@ -215,21 +211,21 @@
                     <h3>
                         <a href="/<%= localeName + "/videos/" + item.CategoryName %>"><%= item.CategoryName %></a>
                     </h3>
-                    <div class="thumbs-grid hwn-carousal clearfix" id="thumbs-grid" data-title="<%= item.CategoryName %>" data-slide-count="0">
+                    <ul class="thumbs-grid hwn-carousal clearfix" data-title="<%= item.CategoryName %>" data-index = "<%= item.index %>" data-items="<%= thumbLimit %>" data-total = "<%= item.Videos.length %>" data-pagination = 0 >
                             <% _.each(item.Videos, function(subItem){ %>
-                                <% if(count <= length){ %>
-                                <div class="thumb-unit video">
+                                <% if(count < thumbLimit){ %>
+                                <li class="thumb-unit video">
                                     <a compid="<%= subItem.CmsId %>" href="/<%= localeName + '/videos/detail/' + subItem.ContentUrl + '?keywordName=' + subItem.CategoryName + '&keywordId=' + subItem.CategoryId %>">
                                         <img src="<%= subItem.ThumbNailPath %>" alt="<%= subItem.Title %>" class="thumb">
                                         <div class="thumb-info">
                                             <span class="title"><%= subItem.Title %></span>
                                         </div>
                                     </a>
-                                </div>
+                                </li>
                                 <% count++ %>
                             <% } %>
                         <% }) %>
-                    </div>
+                    </ul>
                 </div>
             <% }) %>
      <% } %>
