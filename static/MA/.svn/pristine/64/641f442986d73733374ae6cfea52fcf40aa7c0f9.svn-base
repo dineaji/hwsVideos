@@ -1,0 +1,266 @@
+/* Template for CSS override sheet by Jason Kinnard at BLITZ */
+
+/* --------------------------------------- */
+/* ------------- BASE STYLES ------------- */
+/* --------------------------------------- */
+
+/* ELEMENTS USING AGENCY FONT 
+--------------------------------- */
+.main-nav > li > a,
+.btn-signin a,
+.mod .btn.btn-med-2,
+.cda-promo-right .games-banner .banner-title-container .mod-title,
+.mod-heading,
+.callout-heading,
+.intersitials-message-container h1,
+.page-videos-detail .wrapper .mod-heading,
+.page-car-detail .cda-no-promo .carousel .captions .caption .congrats .log-in-now,
+.page-car-category .category,
+.modal-content h3,
+.cda-no-promo .carousel .captions .caption,
+.page-car-detail .cda-no-promo .carousel .captions .caption .car-detail .name {
+	/* These are all the elements that are currently set to AgencyFB.  You can change them globally like so:
+	    font-family: arial, helvetica, sans-serif;
+	*/
+}
+
+
+/* MOBILE & TABLET NAV
+--------------------------------- */
+
+/* Nav text */
+html.touch .main-nav > li > a {
+
+}
+
+/* Nav icon */
+html.touch .main-nav > li .icon {
+	
+}
+
+/* Sign In */
+html.touch .main-nav > li.sign-in a {
+	
+}
+
+
+/* DESKTOP NAV
+--------------------------------- */
+
+/* Nav text */
+html.no-touch .main-nav > li > a {
+	
+}
+
+/* Nav icon */
+html.no-touch .main-nav > li .icon {
+	
+}
+
+/* Sign In */
+html.no-touch .main-nav > li.sign-in a {
+	
+}
+
+
+/* USER PROFILE BADGE
+--------------------------------- */
+
+/* username */
+.main-nav li.user-info .user-data-username {
+	
+}
+
+/* user since */
+.main-nav > li.user-info .user-since {
+	
+}
+
+/* total points label */
+.main-nav > li.user-info .user-data-points {
+	
+}
+
+/* total points score */
+.main-nav > li.user-info .user-data-points .score {
+	
+}
+
+/* sign out link */
+.main-nav > li.user-info .user-col-right .user-signout a {
+	
+}
+
+
+/* BUTTON TEXT
+--------------------------------- */
+
+/* large buttons */
+.btn.btn-lg {
+	
+}
+
+/* 'play now' button on games page */
+.cda-promo-right .btn-sml {
+	
+}
+
+/* fave/share buttons on game/video detail */
+.mod .panel-body .footer-btns .btn-desc {
+	
+}
+
+/* more games/back buttons */
+.back-container a {
+	
+}
+
+/* filters (newest/make/color/style on car page, newest/most popular/etc on videos page, all/have/want on My Cars page) */
+.mod .sort-nav li a.btn-sort {
+	
+}
+
+/* my cars button */
+.cat-grid .btn {
+	
+}
+
+/* category filters (city/race/workshop/off-road) - tablet and desktop */
+.cat-grid .sub-nav li a {
+	
+}
+
+/* want it/have it buttons on car detail */
+.btn-med {
+	
+}
+
+/* login now button on car detail */
+.page-car-detail .cda-no-promo .carousel .captions .caption .congrats .log-in-now {
+	
+}
+
+/* my wishlist button on main shop page */
+.page-shop aside.five .mywishlist a {
+	
+}
+
+/* add to cart button on product detail page */
+.page-product-detail .addCart {
+	
+}
+
+/* button on intersitials pages */
+.intersitials-message-container .btn-med {
+	
+}
+
+/* tabs on profile page */
+.profile-container .panel-body .profile-header-container .profile-nav li {
+	
+}
+
+
+/* SIDESWIPE HEADING
+--------------------------------- */
+
+.cda-no-promo .carousel .captions .caption p {
+	
+	/* For example, you would do this to change the CDA headings for the Greek site:
+	    font-family: arial, helvetica, sans-serif;
+	*/
+}
+
+
+/* --------------------------------------- */
+/* ------------ MEDIA QUERIES ------------ */
+/* --------------------------------------- */
+
+/* 30em (480px)
+------------------------------------------ */
+@media only screen and (min-width: 30em) {
+	
+	/* BUTTON TEXT
+	--------------------------------- */	
+
+	/* want it/have it buttons on car detail */
+	.page-car-detail .cda-no-promo .carousel .captions .caption .car-detail .btn-wrapper .btn {
+		
+	}
+
+	/* login now button on car detail */
+	.page-car-detail .cda-no-promo .carousel .captions .caption .car-detail .congrats .log-in-now {
+		
+	}
+}
+
+
+/* 48em (768px)
+------------------------------------------ */
+@media only screen and (min-width: 48em) {
+	
+}
+
+
+/* 61.25em (980px)
+------------------------------------------ */
+@media only screen and (min-width: 61.25em) {
+	
+	/* DESKTOP USER PROFILE BADGE
+	--------------------------------- */
+
+	/* username */
+	html.no-touch .main-nav li.user-info .user-data-username {
+
+	}
+
+	/* user since */
+	html.no-touch .main-nav > li.user-info .user-since {
+
+	}
+
+	/* total points score */
+	html.no-touch .main-nav > li.user-info .user-data-points .score {
+
+	}
+
+	/* sign out link */
+	html.no-touch .main-nav > li.user-info .user-col-right .user-signout a {
+
+	}
+
+
+	/* TABLET LANDSCAPE USER PROFILE BADGE
+	--------------------------------- */
+
+	/* username */
+	html.touch .main-nav li.user-info .user-data-username {
+		
+	}
+
+	/* user since */
+	html.touch .main-nav > li.user-info .user-since {
+		
+	}
+
+	/* total points score */
+	html.touch .main-nav > li.user-info .user-data-points .score {
+		
+	}
+
+	/* sign out link */
+	html.touch .main-nav > li.user-info .user-col-right .user-signout a {
+		
+	}
+
+	/* DESKTOP CATEGORY LINKS AT TOP OF SEARCH RESULTS PAGE
+	---------------------------------------------------- */
+
+	/* spacing between items */
+	.search-results-wrapper .search-results-header .filters ul li {
+		
+	}
+
+
+}
+

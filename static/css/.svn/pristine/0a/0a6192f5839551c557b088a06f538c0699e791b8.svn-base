@@ -1,0 +1,233 @@
+﻿.ps_HiddenStyle
+{
+    display: none;
+}
+
+.ps_WtbButtonStyle.ps_DummyStyle{
+    display: block;
+
+    height: 36px;
+    min-height: 36px;
+    line-height: 36px;
+
+    text-align: center;
+    font-size: 13px;
+    color: #FFFFFF !important;
+
+    background-color: #0078C9;
+
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+.ps_WtbButtonStyle.ps_DummyStyle:hover,
+.ps_WtbButtonStyle.ps_DummyStyle:active
+{
+    background-color: #ff7900;
+}
+
+
+.ps_WTBConfirmationDialogStyle {
+    z-index: 10000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_ModalShadowStyle
+{
+    background-color: #000;
+    opacity: 0.3;
+    filter: alpha(opacity = 30);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10500;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_LightboxStyle
+{
+    width: 900px;
+    height: 600px;
+
+    -webkit-box-shadow:  0px 0px 16px 8px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow:  0px 0px 16px 8px rgba(0, 0, 0, 0.2);
+    box-shadow:  0px 0px 16px 8px rgba(0, 0, 0, 0.2);
+
+    background-color: #f7a809;
+    background-image: url(//play.hotwheels.com/Static/img/interstitials/bg-interstitials-external-links-desktop.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin: auto;
+    position: relative;
+
+    cursor: default;
+    z-index: 11000;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_ContentStyle
+{
+    width: 375px;
+    height: 350px;
+    margin: 120px 0 0 375px;
+    position: absolute;
+
+    text-align: center;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_HotwheelsLogoStyle
+{
+    display: inline-block;
+    background-image: url(//play.hotwheels.com/en-us/Images/desktop-logo_tcm838-126377.png);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    width: 243px;
+    height: 71px;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_HeaderStyle
+{
+    font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 42px;
+    color: #523706;
+    margin-top: 40px;
+    text-shadow: 0 0 2px #ffffff;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_ParagraphStyle
+{
+    margin: 20px 60px 0;
+    font-weight: bold;
+    font-size: 13px;
+    text-shadow: 0 0 2px #ffffff;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_ButtonsStyle 
+{
+    margin-top: 40px;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_ButtonStyle 
+{
+    display: inline-block;
+    width: 170px;
+    height: 52px;
+    line-height: 48px;
+
+    border: solid 2px #FFFFFF;
+    background-color: #0077cb;
+
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 20px;
+    text-decoration: none;
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_ButtonStyle:hover,
+.ps_WTBConfirmationDialogStyle .ps_ButtonStyle:active {
+    background: #000000 !important;
+    border-color: #000000 !important;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_ButtonStyle + .ps_ButtonStyle
+{
+    margin-left: 25px;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_ButtonStyle.ps_DisabledStyle
+{
+    background-color: #7e7365;
+}
+
+.ps_WTBConfirmationDialogStyle .ps_LoadingStyle
+{
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 979px)
+{
+    .ps_WtbButtonStyle.ps_DummyStyle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 919px) {
+    .ps_WTBConfirmationDialogStyle .ps_LightboxStyle
+    {
+        width: 760px;
+    }
+
+    .ps_WTBConfirmationDialogStyle .ps_ContentStyle
+    {
+        margin-left: 300px;
+    }
+}
+
+@media screen and (max-width: 759px) {
+    .ps_WTBConfirmationDialogStyle .ps_ModalShadowStyle
+    {
+        display: none;
+    }
+
+    .ps_WTBConfirmationDialogStyle .ps_LightboxStyle
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .ps_WTBConfirmationDialogStyle .ps_ContentStyle
+    {
+        margin: 70px auto 0;
+        position: static;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .ps_WTBConfirmationDialogStyle .ps_ContentStyle
+    {
+        width: 300px;
+    }
+
+    .ps_WTBConfirmationDialogStyle .ps_ParagraphStyle
+    {
+        margin: 20px 30px 0;
+    }
+
+    .ps_WTBConfirmationDialogStyle .ps_ButtonStyle
+    {
+        width: 250px;
+    }
+
+    .ps_WTBConfirmationDialogStyle .ps_ButtonStyle + .ps_ButtonStyle
+    {
+        margin: 20px 0 0 0;
+    }
+}
+
+

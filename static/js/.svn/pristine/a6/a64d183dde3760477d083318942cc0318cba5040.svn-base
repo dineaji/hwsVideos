@@ -1,0 +1,488 @@
+
+  $(document).ready(function () {
+
+    // footer country dropdown for speedometry page
+    $("#country-dd").change(function() {
+        var win = window.open($(this).val(), '_blank');
+        if (win) {
+            //Browser has allowed it to be opened
+            win.focus();
+        } else {
+            //Browser has blocked it
+            console.log('Please allow popups for this website');
+        }
+    });
+
+		$('.tagging').click(function () {
+                var tealiumTags = $(this).data('tagging').split('-');
+                if(tealiumTags.length > 0)
+                {
+                                utag.link({  eve_cat:tealiumTags[0] , eve_act:tealiumTags[1], eve_lab:tealiumTags[2], eve_des:"",eve_pos:"" });
+                } 
+		});
+
+		$('.productsTagging li a').click(function () {
+                var tealiumTags = $(this).parents('ul').data('tagging').split('-');
+                var hrefHost = $(this).attr('href').match(/http[s]?\:\/\/(.*?)[\/$]/)[1].split('.')[1];
+                if(tealiumTags.length > 0)
+                {
+                                utag.link({  eve_cat:tealiumTags[0] , eve_act:tealiumTags[1], eve_lab:hrefHost + "(" + tealiumTags[2] +")", eve_des:"",eve_pos:"" });
+                } 
+		});
+	
+        // carousel bxslider function        
+        var carousel = function(width,margin,mxslide,mnslide) {
+            var desktop = {
+                infiniteLoop: false,
+                hideControlOnEnd: true,
+                maxSlides: mxslide[0],
+                minSlides:mnslide[0],                
+                moveSlides: 1,
+                pager: false,
+                slideWidth: width[0],
+                slideMargin: margin[0],
+                useCSS: false,
+                easing: 'linear',
+                speed:150
+                // onSliderLoad: function() {
+                 
+                // }
+                
+            };
+            var tablet = {
+              infiniteLoop: false,
+                hideControlOnEnd: true,
+                maxSlides: mxslide[1],
+                minSlides:mnslide[1],                
+                moveSlides: 1,
+                pager: false,
+                slideWidth: width[1],
+                slideMargin: margin[1],
+                useCSS: false,
+                easing: 'linear',
+                speed:150
+                
+            };
+             var mobile = {
+              hideControlOnEnd: true,
+                infiniteLoop: false,
+                maxSlides: mxslide[2],
+                minSlides:mnslide[2],                
+                moveSlides: 1,
+                pager: false,
+                slideWidth: width[2],
+                slideMargin: margin[2],
+                useCSS: false,
+                easing: 'linear',
+                speed:150,
+            };
+
+            if($(window).width()>1024){
+            return desktop;
+            }else{
+                return ($(window).width()<=640)? mobile : tablet;
+            }
+                       
+       }
+       //multimedia gallery function
+            var mgallery = function() {
+            var desktop = {
+                hideControlOnEnd: true,
+                infiniteLoop: false,
+                maxSlides:5,
+                minSlides:2,
+                pager:true,
+                moveSlides: 1,
+                touchEnabled:true,
+                easing: 'linear',
+                speed:150,
+                
+
+                useCSS: false, // see below: "Issue: (delay in carousel disappearing after sub nav is hidden)",
+          
+            onSlideAfter: function($slideElement, currentSlide, oldIndex,oldElement){
+               var prev = "",next="";
+              prev  =  $($slideElement).prev('li').find('.youtubeplayr').html();
+              next  =  $($slideElement).next('li').find('.youtubeplayr').html();
+              $($slideElement).prev('li').find('.youtubeplayr').html(prev);
+              $($slideElement).next('li').find('.youtubeplayr').html(next);
+            
+               }
+                
+            };
+         
+                return ($(window).width()>320) ? desktop : desktop;
+                       
+       }
+
+           //mobile mode function
+            var colcard = function() {
+            var mobile = {
+                hideControlOnEnd: true,
+                infiniteLoop: false,
+                maxSlides: 1.2,
+                minSlides: 1.2,
+                moveSlides: 1,
+                pager: false,
+                slideWidth: 260,
+                easing: 'linear',
+                slideMargin: 20,
+                useCSS: false
+                
+            };
+         
+           return ($(window).width()<=640) ? mobile : false;
+           // if($(window).width()<=640){
+           //  return desktop;
+           //  }
+                
+      
+               
+                       
+       }
+
+
+        var carousel1,carousel2,carousel3,marquee,txtmedia,twocolmedia,twocolcard;
+
+        function tourLandingScript() {
+            if($('div').hasClass('lp-carousel-3')){carousel3.reloadSlider(carousel([289,295,200],[25,25,15],[3,2.5,2.35],[3,2.5,2.35]));}
+            if($('div').hasClass('lp-carousel-1')){carousel1.reloadSlider(carousel([163,170,140],[25,20,20],[5,4.25,2.35],[5,4.25,2.35]));}
+            if($('div').hasClass('lp-carousel-2')){carousel2.reloadSlider(carousel([208,220,140],[25,25,15],[4,3.7,2.35],[4,3.7,2.35]));}
+       
+            }
+
+        carousel1 = $(".lp-carousel-1 .bxslider").bxSlider(carousel([163,170,180],[25,20,15],[5,4.25,2.35],[5,4.25,2.35]));
+        carousel2 = $(".lp-carousel-2 .bxslider").bxSlider(carousel([210,220,140],[25,25,15],[4,3.7,2.35],[4,3.7,2.35]));
+        carousel3 = $(".lp-carousel-3 .bxslider").bxSlider(carousel([289,295,200],[25,25,15],[3,2.5,2.35],[3,2.5,2.35]));
+        // if($(".lp-text-media .bxslider li").length>1){txtmedia=$(".lp-text-media .bxslider").bxSlider(mgallery());}
+        
+        $(".lp-marqueev .bxslider").each(function(){if($(this).children('li').length>1){marquee=$(this).bxSlider(mgallery());}})
+        $(".lp-text-media .bxslider").each(function(){if($(this).children('li').length>1){txtmedia=$(this).bxSlider(mgallery());}})
+        $(".lp-twocol-txtmed .bxslider").each(function(){if($(this).children('li').length>1){twocolmedia=$(this).bxSlider(mgallery());}})
+         if($(window).width()<=640)twocolcard=$('.lp-twocol-card .bxslider').bxSlider(colcard());
+        // if($(window).width()<=640)twocolcard=$('.modalWrapper').bxSlider(popupswipe());
+
+
+//window resize function
+
+        $(window).resize(function(){
+          characterCount();
+          tourLandingScript();
+        });
+////////////////////////////bxslider function ends//////////////////////////////////////
+
+       // modal overlay function 
+             $(".DetailOverlay").click(function (e) {
+                    e.preventDefault();
+                    var overlay = jQuery('<div id="overlay"> </div>');
+                    overlay.appendTo(document.body)
+                    $.ajax({
+                        url: '/LocalPromotion/GetModalOverlayContent',
+                        type: 'POST',
+                        data: JSON.stringify({modalOverlayCompId:$(this).attr('compId')}),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'text',
+                        success: function (response) {
+                            $(".lp-modal").html(response);
+                            $(".lp-modal").show();
+							$('html').addClass('popUpOpen');
+							$('.scroll-pane').scroll(function(e){e.stopPropagation()});
+                                var pane = $('.scroll-pane');
+                             
+                                var settings = { showArrows: true, autoReinitialise: false,mouseWheelSpeed: 50 }; 
+                                        
+                                  //  $(".modalWrapper").scroll(function (event) {
+                                  // if ($('.modalWrapper')[0].scrollHeight <= $('.modalWrapper').scrollTop() + $('.modalWrapper').innerHeight())
+                                  // {
+                                  //     $('body').on('wheel.modal mousewheel.modal', function (e) {
+                                  //         e.preventDefault()
+                                  //     });
+                                  // }
+                                  // });
+
+                                  // $(".modalWrapper").mousemove(function () {
+                                  //     $('body').off('wheel.modal mousewheel.modal');
+
+                                  // });
+
+                                  pane.jScrollPane(settings);
+                                  
+                            // alert("success")
+                        },
+                        error: function (xhr) {
+
+                        }
+                 });
+                $('body').bind("touchmove",function(event){
+                  event.preventDefault();
+                });
+
+            })
+
+
+//code metrics function
+    $(".lp-carousel-1 .bxslider li,.lp-carousel-2 .bxslider li,.lp-carousel-3 .bxslider li").each(function(){
+        var uniqueIdattr=$(this).attr('uniqueid');
+        $(this).find('a').attr('uniqueid',uniqueIdattr)
+    })
+
+// show and hide the arrows when hover the multimedia gallery
+    $(".lp-mainContainer .media-gallery").mouseenter(function() {
+        var length=$(this).find(".bxslider li").length
+        if(length>0)
+        {
+            // alert("match")
+        $(this).find('.bx-controls-direction a').addClass('hoverToggle')
+    }
+    }).mouseleave(function() {
+        // alert("mismatch")
+        $(this).find('.bx-controls-direction a').removeClass('hoverToggle')
+    });
+// youtube player mouse hover function
+    //  $(".lp-mainContainer .youtubeplayr,.lp-mainContainer .videoplayr").mouseenter(function() {
+    //    $(this).next('span').hide();
+    // }).mouseleave(function() {
+    //     $(this).next('span').show();
+    // });
+    
+// mirror image video player function
+     $(".videoplayr").each(function(){
+     var videoId=$(this).attr("data-id")
+     var divid=$(this).children('div').attr("id")
+		playVideo(videoId,divid);
+   })
+  
+
+// read more & less function done by arun--starts
+    $('.lp-mainContainer .read-more-content').addClass('hide');
+
+    $('.lp-mainContainer .read-more-show').on('click', function(e) {
+      $(this).closest('.lp-text').find('.read-more-content').removeClass('hide');
+      $(this).addClass('hide');
+      utag.link({  eve_cat:"promo" , eve_act:"module click", eve_lab:"[module title]:Read More", eve_des:"News: Speedometry Landing Page",eve_pos:"" });
+      e.preventDefault();
+    });
+    $('.lp-mainContainer .read-more-hide').on('click', function(e) {
+       $(this).closest('.lp-text').find('.read-more-content').addClass('hide').parent().find('.read-more-show').removeClass('hide');
+      // $(".btn.btn-med").addClass('hoverTxt');
+      // $(".btn.btn-med").removeClass('hoverTxt')
+      utag.link({  eve_cat:"promo" , eve_act:"module click", eve_lab:"[module title]:Read Less", eve_des:"News: Speedometry Landing Page",eve_pos:"" });
+      e.preventDefault();
+    });
+    $("body").on('click',".lp-carousel-3 .slide_content.thumbDet>a",function(){
+        if(utag && typeof utag.link=="function"){
+            var title = $(this).next('span').html();
+            utag.link({  eve_cat:"promo" , eve_act:"download", eve_lab:title, eve_des:"News: Speedometry Landing Page",eve_pos:"module" });
+
+        } 
+    })
+
+      //viewall dates
+  $(".ViewLocation").click(function(e){
+    e.preventDefault();
+    $(this).toggleClass('viewStyl');
+    $(this).children('span').toggle();
+     $(this).prev('ul').find('li.hiddendate').toggle();
+  })
+//ends  
+
+anchormodule();
+lightboxOverlay();
+characterCount();
+/*tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+onYouTubePlayerAPIReady();*/
+
+var hdnLocaleName = $("#hdnLocaleName").val();
+if(hdnLocaleName=="el-gr"){
+$(".lp-carousel-3 .slide_content span").css("font-family","arial, helvetica, sans-serif");
+};
+
+if(hdnLocaleName=="en-au"){
+$("body").addClass("en-au");
+};
+
+
+$(".es-video-carousal li").on("click",function(){
+	var currThumbTitle = $(this).find(".esv-video-thumb-title").text();
+	var	currThumbDescription =$(this).find(".thumb-description").html();
+	$(".esv-main-title").text(currThumbTitle);
+	$("#esv-main-description").html(currThumbDescription);	
+});
+        
+    }); //ready function close
+
+//lightbox module function)
+ function overlayCarousl(indx){
+   $("#ThumbDetails .bxslider").each(function(){
+    var viewportHeight = $(window).height();
+    var imageheight = viewportHeight - 20 / 100 * viewportHeight;
+    $('#ThumbDetails').css( 'height',imageheight);
+    if($(window).width() <=  1024 && $(window).width() >= 640){ 
+    $('#ThumbDetails').css( {'width':'80%' });
+    }
+
+    if($(this).children('li').length>1){
+        $(this).bxSlider({
+                hideControlOnEnd: true,
+                infiniteLoop: false,
+                startSlide:indx,
+                moveSlides: 1,
+                pager:false,
+                touchEnabled:true,
+                easing: 'linear',
+                speed:150,
+                useCSS: false,
+                onSlideAfter: function($slideElement, currentSlide, oldIndex,oldElement){
+               var prev = "",next="";
+              prev  =  $($slideElement).prev('li').find('.youtubeplayr').html();
+              next  =  $($slideElement).next('li').find('.youtubeplayr').html();
+              $($slideElement).prev('li').find('.youtubeplayr').html(prev);
+              $($slideElement).next('li').find('.youtubeplayr').html(next);
+            
+               } // see below: "Issue: (delay in carousel disappearing after sub nav is hidden)"
+              });
+      } 
+  })
+ }
+    //character count function
+    function characterCount(){
+    $(".media-gallery .bxslider li a span").each(function()
+    {
+      var myDiv = $(this);
+      if($(window).width()>640)
+      {
+        if($(this).text().length>25 && !$(this).hasClass('activeImage'))
+        {
+          myDiv.text(myDiv.text().substring(0,20)+"......")
+        }
+      }
+        else
+        {
+          myDiv.text(myDiv.text().substring(0,25)+"...")
+        }
+    })
+  }
+
+// lightbox module click function
+  function lightboxOverlay(){
+    $('.activeImage').on("click",function(e){
+        e.preventDefault()
+           if($(window).width()>640)
+            {
+               if ($("#ThumbDetails ul li").length == 0) {
+                $("#ThumbDetails .row").html("<ul class='bxslider'></ul>");
+                var overlayindex=0
+                var getActive="#"+$(this).parent().children('img').attr('id');
+                   var overlay = jQuery('<div id="overlay"> </div>');
+                   overlay.appendTo(document.body)
+                   $("#ThumbDetails").show()
+                 var indx = $(this).parent('a').parent("li").index();
+                 var ulpath=$(this).parent('a').parent('li').parent('ul');
+                 var $liTag = $(ulpath).find("li").clone();
+                var liCnt = $(ulpath).find(".span.activeImage").length;
+                $("#ThumbDetails section .row ul.bxslider").html($liTag);
+                   for (var i = 0; i < $('#ThumbDetails ul.bxslider li').length; i++) {
+                       var dataUrl = $("#ThumbDetails section .row ul.bxslider li:eq(" + i + ")").attr('data-url')
+                       $("#ThumbDetails section .row ul.bxslider li:eq(" + i + ") img").attr('src', dataUrl)
+
+                   }
+               } else {
+                   $('#ThumbDetails').show()
+               }
+             }
+               overlayCarousl($('#ThumbDetails').find(getActive).parent('a').parent('li').index());
+           })
+
+}
+
+// anchor module click function
+function anchormodule(){
+        // anchor module click function
+    $(".lp-anchor-nav li a,.lp-mainContainer a.btn,.lp-mainContainer .anchornav,li.slide_content a").click(function(e){
+        e.preventDefault();
+		if(!$(this).parent().hasClass("show-interstitial")){
+        var moduleid=$(this).attr('moduleid');
+        var hreflink=$(this).attr('href');
+        var targetLink=$(this).attr('target');
+      if($("#"+moduleid).css('display')) {
+         // window.location.href = "#"+moduleid;
+         $('html,body').animate({scrollTop: $("#"+moduleid).offset().top-100},'slow');
+   }
+        else{
+             
+             window.open(hreflink, targetLink);
+        }
+    }
+	}
+	)
+    }
+//youtube function starts
+ var player;
+ function onYouTubePlayerAPIReady() {
+ /*   var count=0
+     $(".youtubeplayr").each(function(){
+       count++;
+       var videoId=$(this).attr("data-id")
+       $(this).empty().html('<div></div>')
+       $(this).children('div').attr('id',String(videoId+count))
+       ytube(videoId,String(videoId+count));
+   })  */
+   }
+
+  function ytube(videoId,divid){
+   // try{
+     player = new YT.Player(divid, {
+      height: '100%',
+      width: '100%',
+      videoId: videoId,
+      wmode: 'transparent',
+    showinfo: '0',
+    controls: '1',
+    modestbranding: '1',
+    autohide: '1',
+    iv_load_policy: '3',
+    rel: '0'
+    });
+
+  }
+
+
+
+  // youtube function ends
+
+// // flash player video function
+  function playVideo(videoId,divid) {
+     var flashvars = {};
+     var params = {};
+     var attributes = {
+         "wmode": "transparent",
+         "allowfullscreen": "true",
+         "allowscriptaccess": "always",
+         "base": "http://mediaservice.mirror-image.com",
+        "movie": "http://mediaservice.mirror-image.com/plugins/player.swf",
+         "type": "movie",
+         "bgcolor": "#FFFFFF",
+         "autohide": '1',
+         "flashvars": "v=" + videoId+"&autoplay=false",
+     };    
+     swfobject.embedSWF("http://mediaservice.mirror-image.com/plugins/player.swf", divid, "100%", "100%", "9.0.0", flashvars, params, attributes);
+ }
+ // close button fn for popup
+    $(document).on('click', "a.close-btn", function(e) {
+          // $('a.close-btn,#overlay').on('click',function(){
+            e.preventDefault();
+            $('#ThumbDetails,.lp-modal').hide();// hide the overlay
+            $("#overlay").remove();
+            $("#ThumbDetails ul").html('');
+			if($('html').hasClass('popUpOpen')) $('html').removeClass('popUpOpen');
+            
+             // $("#ThumbDetails ul").html('');
+            
+        });
+
+
+
+

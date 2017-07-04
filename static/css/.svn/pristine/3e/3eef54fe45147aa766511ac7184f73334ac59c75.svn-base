@@ -1,0 +1,116 @@
+@font-face {
+  font-family: "Agency FB";
+  src: url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-2.eot");
+  src: url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-2.eot?") format("embedded-opentype"), url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-3.woff") format("woff"), url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-1.ttf") format("truetype");
+  font-style: italic;
+  font-weight: bold;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hide{display:none}
+.show{display:block !important}
+.starwars-header{background-color:#8ed7f8;margin-top:135px}
+.starwars-header h2{width:1024px;margin:0 auto;color:#0067ac;font-size:36px;font-family:'Agency FB',arial,helvetica,sans-serif !important;font-weight:bold;font-style:italic}
+.starwars-racing-header h2{width:1024px;margin:0 auto;color:#fff;font-size:50px;line-height:65px;font-family:'Agency FB',arial,helvetica,sans-serif !important;font-weight:bold;font-style:italic;text-align:center}
+.starwars-vote-header{background-color:#0070af;height:55px;margin-top:-6px}
+.starwars-vote-header h2{width:1024px;margin:0 auto;color:#fff;font-size:40px;font-family:'Agency FB',arial,helvetica,sans-serif !important;font-weight:bold;font-style:italic;text-align:center;line-height:55px}
+.starwars-container{background: url(../img/starwars/background-bg.jpg) no-repeat 0 -550px !important}
+/*.poster-container{width:1280px;margin:0 auto;background: url(../img/poster-bg.jpg) no-repeat;height:448px;border:5px solid #ff7900}*/
+.poster-container{text-align:center; min-height: 440px;margin: 0 auto;width:1024px;background-size:100%}
+.poster{padding:40px 0px}
+.poster-container .poster-left{float:left;width:69%;padding:2% 3%;}
+.poster-container .poster-right{float:left;width:22%;margin-left:2%}
+.poster-container .poster-right img{margin-top:-15%}
+.poster-container h3{font-size:94px;font-family:'Agency FB',arial,helvetica,sans-serif !important;font-weight:bold;font-style:italic;color:#fff;margin:0px}
+.poster-container h3 span{color:#ff7900}
+.vote-tab-header{padding-top:2% !important;display:block;text-align:center}
+.tab-container{width:700px;margin:0px auto;display:table}
+.vote-tab-btn{min-width: 165px;line-height: 35px;margin-right: 5px;font-size: 22px;font-family: 'Agency FB',arial,helvetica,sans-serif !important;font-weight: bold;
+    color: #fff;font-style: italic;padding: 5px;}
+.vote-btn-blue,.vote-left-btn{background-color:#0070af !important}
+.vote-btn-orange,.vote-right-btn{background-color:#ff7900}
+.vote-btn-gray{background-color:#494949}
+.tab-list li{list-style-type:none;float:left;text-align:center;letter-spacing:5px; -ms-transform: skewX(-5deg); /* IE 9 */
+    -webkit-transform: skewX(-5deg); /* Safari */
+    transform: skewX(-5deg); /* Standard syntax */}
+.car-slider{padding:0px;margin-top:35px}
+.car-slider li h4{font-size:16px !important;font-family:'Agency FB',arial,helvetica,sans-serif !important;font-weight:bold !important;color:#000 !important;margin-bottom:5px !important;font-style:italic}	
+.car-container .intro-text,.vote-vs{font-size:16px;font-family:'Agency FB',arial,helvetica,sans-serif !important;font-weight:bold;color:#fff;font-style:italic}
+.car-container .intro-text{line-height:20px;position:relative}
+.car-container{padding:77% 0 25% 0;background-size:100% 100% !important;position:relative}
+.car-container p{font-size:36px;font-family:'Agency FB',arial,helvetica,sans-serif !important;font-weight:bold;color:#fff;line-height:38px;position:relative;font-style:italic}
+.car-container video,.car-container iframe{position:absolute;top:0;left:0;width:230px;height:240px;cursor:pointer}
+.car-container img{display:block;margin:0 auto;position:relative}
+.vote-left-btn,.vote-right-btn{float:left;width:50%;color:#fff;text-align:center;font-size:16px;font-family:'Agency FB',arial,helvetica,sans-serif;font-weight:bold;color:#fff;height:60px;cursor:pointer;font-style:italic}
+.vote-vs{position: absolute;left: 44%;height: 28px;width: 28px;background-color: #000;border-radius: 25px;margin-top: 16px;text-align: center;color:#fff;line-height: 28px;}
+.car-slider li{text-align:center;width:295px;float:left}
+.vote-sub-container{position:relative}
+.vote-tab-header .apps-heading{font-family:'Agency FB',arial,helvetica,sans-serif !important;font-weight:bold;font-size:40px;color:#222;font-style:italic;line-height:45px}
+.vote-left-btn p,.vote-right-btn p{display:table-cell;line-height:18px;vertical-align:middle;height:60px;width:140px;cursor:pointer;}
+.vote-left-btn p{padding:0px 25px 0px 10px}
+.vote-right-btn p{padding:0px 18px}
+.vote-check{display:block;margin: 7px auto;background-color: #000;border-radius: 50px;width: 40%;}
+.vote-left-btn.hover,.vote-right-btn.hover{background-color:#fff !important}
+.section-header{max-width: 980px !important;width: 100% !important;background: none !important;padding: 0 !important;margin: 20px auto !important;box-shadow: none !important;display: block !important;}
+.section-header .section-header-text{font-family: "Agency FB", "arial narrow", arial, helvetica, sans-serif !important;font-size: 30px !important;color: #FFF !important;text-shadow: none !important;background: #ff7900 !important;box-shadow: none !important;margin: 0 !important;padding: 5px 25px !important;display: inline-block !important;text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 0;-webkit-box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);-moz-box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);font-weight: bold !important;font-style: italic !important;}
+.mobileSlider,.mod-heading.light:before,.mod-heading.light:after {display:none}
+#page-catalog .product-tile {background-color: #f1f3f5 !important;border: 1px solid #c4c4c4 !important;}
+#page-catalog .product-tile.product-tile--added {background-color: #0078d1 !important;}
+.poster-container img{width:100%}
+.vote-selection,.poster-mobile{display:none}
+.poster-desktop{display:block}
+@media all and (max-width:767px){	
+	.starwars-header h2,.starwars-racing-header h2,.starwars-vote-header h2,.tab-container,.poster-container{width:100% !important}
+	.tab-list{display:none}
+	.starwars-header{margin-top:15px}
+main{padding-top:0px !important}
+.starwars-vote-header h2{font-size: 22px;text-align: center;line-height: 35px;}
+.starwars-racing-header h2{font-size: 30px;line-height: 40px;}
+.starwars-header{height:45px}
+.starwars-header h2{font-size:30px}
+.starwars-vote-header{height:35px}
+.vote-tab-header .apps-heading{font-size:18px;text-align:center;line-height:12px}
+.section-header .section-header-text{font-size:28px !important}
+.vote-selection{display: block;background-color:#ff7900;padding: 5px;transform: skewX(-5deg);min-width: 165px;margin: 20px auto;font-size:22px;font-family:'Agency FB',arial,helvetica,sans-serif !important;font-weight:bold;color:#fff;letter-spacing:5px;font-style:italic}
+.poster-desktop{display:none}
+.poster-mobile{display:block}
+}
+@media all and (min-width:768px) and (max-width:1024px){
+.starwars-header h2,.starwars-racing-header h2,.starwars-vote-header h2{width:100% !important}
+}
+@media all and (min-width:768px) and (max-width:1024px) and (orientation:portrait){
+.tab-list{margin-left:15px}
+.vote-tab-header{text-align:center}
+.tab-list,.vote-tab-header{padding-left:0px !important}
+.poster-desktop{display:none}
+.poster-mobile{display:block}
+}
+
+@media all and (min-width:768px) and (max-width:899px){
+.starwars-header{margin-top:15px}
+main{padding-top:0px !important}
+.poster-desktop{display:none}
+.poster-mobile{display:block}
+}
+@media all and (max-width:1024px){
+.mobileSlider{display:block;margin-top:35px}
+#bracket1,#bracket2{display:none}
+.poster-right{display:none}
+.mobileSlider li{text-align:center;width:295px;float:left}
+.mobileSlider li h4{font-size:18px !important;font-family:'Agency FB',arial,helvetica,sans-serif !important;font-weight:bold !important;color:#000 !important;margin-bottom:15px !important;font-style:italic}	
+.poster-container{width:100%;margin:0 auto;background-size:100%}
+}
+main{padding-top:0px !important}
+.mod-heading{margin-bottom:0px}
+.bx-wrapper{margin:0 auto}
+.vote-percent.active{display:table-cell !important;font-size:35px}
+::-webkit-media-controls-fullscreen-button{display:none !important}
+.flexslider{margin:0px;border:none}
+.videos img{width:100%}
+
+.bx-wrapper .bx-viewport{min-height:360px !important}
+.vote-tab-btn a{color:#fff}
+.click-disabled:hover .product-tile__text{text-decoration:none !important}
+.click-disabled:hover .product-tile__image-wrap{outline:none !important}

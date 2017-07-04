@@ -1,0 +1,73 @@
+$(window).load(function() {
+  // The slider being synced must be initialized first
+  //Videos module
+  /*$('#carousel').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth:312,
+    itemMargin: 0
+  });*/
+	
+$(".segment-promos,.segment-videos #carousel,.play-benefits,.category-cda .flexslider,.segment-gv-slider").css("visibility","visible");
+
+$(".cat-video-slider,.segment-gv-slider .product-tiles").bxSlider({
+            auto: false,
+            minSlides: 1,
+            maxSlides: 20,
+            slideWidth: 230,
+            slideMargin: 5,
+			responsive:false,
+            infiniteLoop:false,
+			moveSlides:1,
+			hideControlOnEnd:true
+        });
+//play benefits module
+  $(".play-benefits-intro .read-more").on("click", function(){		
+	$(this).closest(".play-benefits-intro").css("width","100%");
+	$(this).closest("ul li").css("line-height","1.5em");
+	});
+//End 
+
+});
+
+
+$(document).ready(function(){
+	$(".wishlist-action").on("click",function(e){
+		var prodName = $(this).parent().find(".product-tile__text").text();prodName = $.trim(prodName);
+		utag.link({eve_cat:"wishlist" , eve_act:"add", eve_lab:prodName, eve_des:"key segment page: track builder",eve_pos:""});
+	});				
+	$(".product-tiles li .product-tile__image-link,.product-tiles li .product-tile__text").on("click", function(){		
+		var prodName = $(this).parent().find(".product-tile__text").text();prodName = $.trim(prodName);
+		utag.link({  eve_cat:"products" , eve_act:"view", eve_lab:prodName, eve_des:"key segment page: track builder",eve_pos:"" });		
+	});	
+	$(".wtb-in-products").on("click", function(e){
+		var prodName = $(this).parent().find(".product-tile__text").text();prodName = $.trim(prodName);
+		utag.link({  eve_cat:"products" , eve_act:"retailer search", eve_lab:"where to buy "+prodName, eve_des:"key segment page: track builder",eve_pos:"" });
+	});	
+  $('.flexslider').flexslider();	
+});
+
+jQuery.fn.isFullyVisible = function(){
+
+var win = $(window);
+
+var viewport = {
+    top : win.scrollTop(),
+    left : win.scrollLeft()
+};
+viewport.right = viewport.left + win.width();
+viewport.bottom = viewport.top + win.height();
+
+var elemtHeight = this.height();// Get the full height of current element
+elemtHeight = Math.round(elemtHeight);// Round it to whole humber
+
+var bounds = this.offset();// Coordinates of current element
+bounds.top = bounds.top + elemtHeight;
+bounds.right = bounds.left + this.outerWidth();
+bounds.bottom = bounds.top - elemtHeight + this.outerHeight();
+
+return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+
+}

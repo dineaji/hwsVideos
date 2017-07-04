@@ -1,0 +1,578 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Google Tag Manager -->
+        <noscript>
+            <iframe src="https://www.google-analytics.com/gtm/ns?id=GTM-KBTZBN"
+                    style="display:none;visibility:hidden" height="0" width="0"></iframe>
+        </noscript>
+        <script>
+            (function (p, a, l, i, n, d, r, o, m, e) {
+                r = { id: 'GTM-KBTZBN', l: 'dataLayer', m: 'sync' };
+                if (!r.gac) {
+                    o = /;((__utma=)|([^;=]+=GAX?\d+\.))[^;]*/g; m = l.cookie.replace(
+                    /^|(; +)/g, ';').match(o); if (m) r.gac = m.sort().join('').substring(1)
+                }; e =
+                'https://www.google-analytics.com/gtm/js?'; r.m == 'sync' || (p['event'] = 'gtm.js');
+                for (d in r) if (r.hasOwnProperty(d)) e += n(d) + '=' + n(r[d]) + '&'; a[r.l] = a[r.l] || [];
+                a[r.l].push(p); if (r.m == 'sync') { l.write('<' + i + ' src="' + e + '"><\/' + i + '>'); } else {
+                    j = l.createElement(i); j.async = !0; j.src = e; f = l.getElementsByTagName(i)[0];
+                    f.parentNode.insertBefore(j, f);
+                }
+            })({ 'gtm.start': 1 * new Date() }, window, document,
+                    'script', encodeURIComponent);</script>
+        <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon:":"bam.nr-data.net","licenseKey":"a63cc20b79","applicationID":"8367540","transactionName":"ZQMAMERQWBcDUxJfWFxJJgtCf1MQIV8IQkVdCg4BRB5mBQVVSWBeVgMNIFNFVw0O","queueTime":"1","applicationTime":"325","ttGuid":"A97975B423F2EFF2","agent":""}</script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1039.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>Videos for Kids - Racing, Car Stunts, Drifting & Car Chase Videos | Hot Wheels</title>
+        <meta name="keywords" content="hot wheels, videos, car videos, stunt, car racing videos, racing videos, kids, boys" />
+        <meta name="description" content="Watch car stunts and racing videos. Featuring Hot Wheels cars in high-speed races, epic drifting, fearless stunts and more, these Hot Wheels videos and clips will get your engines revved." />
+            <link rel="canonical" href="http://dev.play.hotwheels.com/en-us/videos" />
+
+    <!-- fav icon -->
+    <link rel="shortcut icon" href="/Static/img/favicon.ico" type="image/x-icon" />
+    <!-- Bootstrap -->
+    <link href="./bootstrap/css/bootstrap.css?24239032" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-theme.css?24239032" rel="stylesheet">
+    <link href="/Static/css/flexslider-min.css?24239032" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/Static/css/libs/owl-theme.css">
+
+
+        <!-- Include the below 2 files only on non-refresh pages and not globally-->
+        <link rel="stylesheet" href="/Static/css/legacy.css" />
+
+    <link rel="stylesheet" href="/Static/MA/styles/jquery.bxslider.css" />
+    <link rel="stylesheet" href="/Static/MA/styles/flexslider-min.css" />
+    <link href="/Static/css/global.css" rel="stylesheet">
+    <link href="/Static/css/seo-styles.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/Static/js/lib/swfobject-2.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="/Static/MA/scripts/jquery.simplemodal.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/lib/underscore-min.js"></script>
+    <script type="text/javascript" src="/static/js/lib/owl.carousel.min.js"></script>
+<!-- changes :) -->
+    <script type="text/javascript" src="/static/js/lib/isotope.pkgd.js"></script>
+    <script type="text/javascript" src="/static/js/lib/imagesloaded.min.js"></script>
+<!-- changes ): -->
+                                    </head>
+<body class="page-videos Page en-us">
+    <script language="javascript" type="text/javascript">
+        var HWMAT = HWMAT || {};
+    </script>
+    <div class="hiddenPlayerIds" id="oo-player-id" style="display: none;">
+        <input type="hidden" value="eb2a4912cd64bc282805e03574a056c">
+    </div>
+    <div class="pageLoader"><img src="../../Static/images/car_loader_alpha-3.gif"/>
+    </div>
+    <input type="hidden" id="oo-player-pcode" value="s5Z2MyOlF46r3PXZUl9hPiwU2cYK"/>
+    <input type="hidden" id="hdnCollectionServiceUrl" value="https://stage-myhwappsys1.herokuapp.com/"/>
+    <input type="hidden" id="hdnProductCatalogUrl" value="https://beta.product.mattel.com"/>
+    <input type="hidden" id="hdnRewardServiceUrl" value="https://stage-hotwheelsendlessracer.herokuapp.com" />
+    <input type="hidden" id="hdnRewardObjectUrl" value="/Static/" />
+    
+
+
+
+<input type="hidden" id="hdnpageId" value="/en-us/videos/index.html" />
+<input type="hidden" id="hdnplatform" value="Desktop" />
+<input type="hidden" id="hdncountry" value="United States" />
+<input type="hidden" id="hdnlanguage" value="English" />
+<input type="hidden" id="hdnsiteSection" value="videos" />
+<input type="hidden" id="hdnsubType" value="index" />
+<input type="hidden" id="hdnuserIPAddres" value="199.89.199.96" />
+<input type="hidden" id="hdnPageType" value="videos" />
+
+
+<script  type="text/javascript" language="javascript" >
+
+    var utag_data = {
+        page_id: "/en-us/videos/index.html",                                           
+        category_id: "",                                    
+        search_term: "",                                  
+        search_results: "",                                     
+        site_country_attr3: "United States",                     
+        site_region_attr4: "",   
+        platform_attr5: "Desktop",                       
+        language_attr7: "English",                             
+        site_section_attr8: "videos",                        
+        page_name_attr9: "Videos for Kids - Racing, Car Stunts, Drifting &amp; Car Chase Videos | Hot Wheels",                         
+        page_type_attr10: "videos",                         
+        page_subtype_attr11: "index",                   
+        referring_url_attr12: "http://dev.play.hotwheels.com/en-us/games/index.html",                   
+        requested_url_attr13: "http://dev.play.hotwheels.com/en-us/videos/index.html",                    
+        ip_address_attr14: "199.89.199.96",                               
+        number_reviews_attr27: "",                 
+        average_review_rating_attr28: "",     
+        search_type_attr29: "",                         
+        search_refinement_attr30: "",             
+        registration_id: "",
+        login_most_recent_date_attr38: "",
+        login_site_section_attr40: "",
+        registration_date_attr37: "",
+        link_url: "",
+        link_name: "",
+        event_id: "",
+        event_action_type: "",
+        event_category_id: "",
+        event_points: "",
+        event_action_attr46: "",
+        event_detail_attr47: "",
+        event_detail_sub_attr48: "",
+        event_length_attr49: "",
+        event_length_full_attr50: "",
+        tm_page_type: "videos"
+
+    };
+</script>
+    <div class="container" style="visibility:hidden">
+        
+<input type="hidden" id="Pubid" value="985" />
+<input type="hidden" id="hdnLocaleName" value="en-us" />
+<input type="hidden" id="hdnProfileURL" value="/Static/images/collections/blue_helmet_large.png" />
+<input type="hidden" id="hdnProfileThumbURL" value="/Static/images/collections/blue_helmet_large.png" />
+<input type="hidden" id="hdnbackgroundURL" value="/static/images/collections/blue_banner_bgnd.jpg" />
+
+<div class="row">
+      <script>
+        if ($(window).width() < 1024) {
+            $(".top-nav-games").find("a").attr('href', '/en-us/mobile-games.html')
+            {
+            }
+        }
+        else
+        {
+            /* Display Pop up only for mobile devices*/
+            $(".navbar-nav  li[class*='mobile-only']").each(function () {               
+                var navClass = $(this).attr('class').split(' ')[0];                
+                    $(this).removeAttr('class');
+                    $(this).attr('class',navClass);              
+            });          
+
+        }
+    </script>  
+</div>
+
+            <main role="main" class="wrapper">
+        
+		
+        <div class="container">
+            <div class="row">
+                <section class="mod cat-grid grid-col-4 videos enclosed" id="infinite-grid">
+                        <div class="panel-body">
+        <div class="row clearfix">
+			<div id="hwn-container" data-pubid="985" data-category-display-count = "2" data-initial-thumb-count="8" data-next-thumb-count = "3">
+			</div>            
+        </div>
+    </div>    
+
+
+<style type="text/css">
+    .page-videos .cat-grid.videos #hwn-container .cat-container{
+        position: relative;
+    }
+</style>
+<script type="text/template" id="video-thumbnail-container">
+    <% 
+        var localeName = "en-us",
+            length = 8;
+            console.log(loadOnlyThumb)
+     %>
+     <% if(loadOnlyThumb){ %>
+            <% _.each(items, function(subItem){ %>
+                <% var count = 0 %>
+                <% if(count <= length){ %>
+                <div class="thumb-unit video">
+                    <a compid="<%= subItem.CmsId %>" href="/<%= localeName + '/videos/detail/' + subItem.ContentUrl + '?keywordName=' + subItem.CategoryName + '&keywordId=' + subItem.CategoryId %>">
+                        <img src="<%= subItem.ThumbNailPath %>" alt="<%= subItem.Title %>" class="thumb">
+                        <div class="thumb-info">
+                            <span class="title"><%= subItem.Title %></span>
+                        </div>
+                    </a>
+                </div>
+                <% count++ %>
+            <% } %>
+        <% }) %>
+     <% } else{ %>
+            <% _.each(items,function(item){ %>
+                 <% var count = 0 %>
+                <% if(item == undefined) return %>
+                <div class="cat-container">
+                    <h3>
+                        <a href="/<%= localeName + "/videos/" + item.CategoryName %>"><%= item.CategoryName %></a>
+                    </h3>
+                    <div class="thumbs-grid hwn-carousal clearfix" id="thumbs-grid" data-title="<%= item.CategoryName %>" data-slide-count="0">
+                            <% _.each(item.Videos, function(subItem){ %>
+                                <% if(count <= length){ %>
+                                <div class="thumb-unit video">
+                                    <a compid="<%= subItem.CmsId %>" href="/<%= localeName + '/videos/detail/' + subItem.ContentUrl + '?keywordName=' + subItem.CategoryName + '&keywordId=' + subItem.CategoryId %>">
+                                        <img src="<%= subItem.ThumbNailPath %>" alt="<%= subItem.Title %>" class="thumb">
+                                        <div class="thumb-info">
+                                            <span class="title"><%= subItem.Title %></span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% count++ %>
+                            <% } %>
+                        <% }) %>
+                    </div>
+                </div>
+            <% }) %>
+     <% } %>
+
+</script>
+
+                </section>
+            </div>
+        </div>
+    </main>
+
+        
+<footer role="contentinfo" class="footer-page">
+<div class="row fat-footer">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="hidden-lg hiden-md col-sm-3 col-xs-3"></div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                    <img src="/en-us/Images/hw-logo_tcm985-125491.png" class="img-responsive" alt="" />
+            </div>
+            <div class="hidden-lg hiden-md col-sm-3 col-xs-3"></div>
+        </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="footer-nav-left">
+                        <li>                            <img class="footer-nav-icon" src="/en-us/Images/footer-nav-activities_tcm985-150876.png" alt="ACTIVITIES" />
+<a class="icon-nav-1 " href="/en-us/news/index.html" title="ACTIVITIES" target="">ACTIVITIES</a></li>
+                        <li>                            <img class="footer-nav-icon" src="/en-us/Images/footer-nav-downloads_tcm985-150875.png" alt="DOWNLOADABLES" />
+<a class="icon-nav-2 " href="/en-us/downloads.html" title="DOWNLOADABLES" target="">DOWNLOADABLES</a></li>
+                        <li>                            <img class="footer-nav-icon" src="/en-us/Images/footer-nav-hw-collector_tcm985-150877.png" alt="HOT WHEELS COLLECTOR" />
+<a class="icon-nav-3 leaving-hws" href="http://www.hotwheelscollectors.com/" title="HOT WHEELS COLLECTOR" target="_blank">HOT WHEELS COLLECTOR</a></li>
+                        <li>                            <img class="footer-nav-icon" src="/en-us/Images/footer-nav-speedometry_tcm985-150879.png" alt="SPEEDOMETRY" />
+<a class="icon-nav-4 leaving-hws" href="http://hotwheels.mattel.com/en-us/explore/Speedometry/index.html" title="SPEEDOMETRY" target="_blank">SPEEDOMETRY</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+                <div class="hidden-lg hiden-md col-sm-3 col-xs-3"></div>
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                    <ul class="footer-nav-mid">
+                        <li><a class="" href="http://corporate.mattel.com/" title="About Mattel" target="_blank">About Mattel</a></li>
+                        <li><a class="" href="http://service.mattel.com/us/" title="Customer Service" target="_blank">Customer Service</a></li>
+                        <li><a class="" href="http://corporate.mattel.com/contact-us/" title="Contact Us" target="_blank">Contact Us</a></li>
+
+                    </ul>
+                </div>
+                <div class="hidden-lg hiden-md col-sm-3 col-xs-3"></div>
+            </div>
+            <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+                <div class="hidden-lg hiden-md col-sm-3 col-xs-3"></div>
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                    <ul class="footer-nav-right">
+                        <li><a class="" href="http://corporate.mattel.com/global/terms-conditions.aspx" title="Terms and Conditions" target="_blank">Terms and Conditions</a></li>
+                        <li><a class="" href="http://corporate.mattel.com/privacy-policy.aspx" title="Privacy Statement" target="_blank">Privacy Statement</a></li>
+                        <li><a class="" href="http://corporate.mattel.com/EEA/Privacy" title="Privacy Statement" target="_blank">EU/EEA Privacy Statement</a></li>
+                        <li><a class="" href="http://corporate.mattel.com/EEA/Privacy/#cookies" title="Cookies" target="_blank">Cookies</a></li>
+
+                    </ul>
+                </div>
+                <div class="hidden-lg hiden-md col-sm-3 col-xs-3"></div>
+            </div>
+                <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="footer-nav-mid mobile">
+                                <li><a class="" href="http://corporate.mattel.com/" title="About Mattel" target="_blank">About Mattel</a></li>
+                                <li><a class="" href="http://service.mattel.com/us/" title="Customer Service" target="_blank">Customer Service</a></li>
+                                <li><a class="" href="http://corporate.mattel.com/contact-us/" title="Contact Us" target="_blank">Contact Us</a></li>
+
+                    </ul>
+                    <ul class="footer-nav-mid mobile">
+                                <li><a class="" href="http://corporate.mattel.com/global/terms-conditions.aspx" title="Terms and Conditions" target="_blank">Terms and Conditions</a></li>
+                                <li><a class="" href="http://corporate.mattel.com/privacy-policy.aspx" title="Privacy Statement" target="_blank">Privacy Statement</a></li>
+                                <li><a class="" href="http://corporate.mattel.com/EEA/Privacy" title="Privacy Statement" target="_blank">EU/EEA Privacy Statement</a></li>
+                                <li><a class="" href="http://corporate.mattel.com/EEA/Privacy/#cookies" title="Cookies" target="_blank">Cookies</a></li>
+
+                    </ul>
+            </div>
+        </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 country">
+                <select id="country-dd" name="country-selection" title="country selection">
+                                        <option label="United States" value="/en-us/index.html" selected=''>United States</option>
+                                        <option label="América Latina - Español" value="/es-lam/index.html" >América Latina - Español</option>
+                                        <option label="Australia" value="/en-au/index.html" >Australia</option>
+                                        <option label="Brasil" value="/pt-br/index.html" >Brasil</option>
+                                        <option label="Canada" value="/en-ca/index.html" >Canada</option>
+                                        <option label="Česká Republika - Čeština" value="/cs-cz/index.html" >Česká Republika - Čeština</option>
+                                        <option label="Deutschland - Deutsch" value="/de-de/index.html" >Deutschland - Deutsch</option>
+                                        <option label="Ελλάδα - ελληνικά" value="/el-gr/index.html" >Ελλάδα - ελληνικά</option>
+                                        <option label="España - Español" value="/es-es/index.html" >España - Español</option>
+                                        <option label="France" value="/fr-fr/index.html" >France</option>
+                                        <option label="M&#233;xico - Espa&#241;ol" value="/es-mx/index.html" >M&#233;xico - Espa&#241;ol</option>
+                                        <option label="India - English" value="/en-in/index.html" >India - English</option>
+                                        <option label="Indonesia - Bahasa Indonesia" value="/id-id/index.html" >Indonesia - Bahasa Indonesia</option>
+                                        <option label="Italia - Italiano" value="/it-it/index.html" >Italia - Italiano</option>
+                                        <option label="Magyarország - Magyar" value="/hu-hu/index.html" >Magyarország - Magyar</option>
+                                        <option label="Netherlands" value="/nl-nl/index.html" >Netherlands</option>
+                                        <option label="Poland" value="/pl-pl/index.html" >Poland</option>
+                                        <option label="Portugal - Português" value="/pt-br/index.html" >Portugal - Português</option>
+                                        <option label="Россия - Русский" value="/ru-ru/index.html" >Россия - Русский</option>
+                                        <option label="South Africa - English" value="/en-za/index.html" >South Africa - English</option>
+                                        <option label="Türkiye - Türkçe" value="/tr-tr/index.html" >Türkiye - Türkçe</option>
+                                        <option label="United Kingdom" value="/en-gb/index.html" >United Kingdom</option>
+                                        <option label="Україна - Українська" value="/uk-ua/index.html" >Україна - Українська</option>
+                </select>
+
+    </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 copyright">
+                <p xmlns="http://www.w3.org/1999/xhtml">Trademarks used with permission of their respective owners.</p><p xmlns="http://www.w3.org/1999/xhtml">©2017 Mattel. All Rights Reserved.</p>
+            </div>
+</div>
+</footer><script>
+    // Define Hot Wheels namespace
+    var HOTWHEELS = HOTWHEELS || {};
+    HOTWHEELS.language = { see_more: 'See More Links', close: 'Close' };
+</script>
+        
+<div id="profile-user-settings" class="modal-open" style="display:none">
+    <div class="user-modal-wrapper">
+        <div class="user-modal-content">
+            <a href="#" class="close-modal" data-dismiss="modal" aria-hidden="true"></a>
+            <div class="configure-topic-section">
+                <h2 class="profile-heading">CUSTOMIZE PROFILE</h2>
+                <div class="user-settings__buttons">
+                    <div class="user-configure-item" data-target="change-picture" data-keywordid="tcm:985-121035-1024" data-yearid="" style="background-color:#007cbf">
+                        <span>CHANGE
+<br xmlns="http://www.w3.org/1999/xhtml" />
+HELMET</span>
+                        <img alt="" src="/static/images/collections/temp/helmet-model-image.jpg">
+                        <a href="#" class="relative-cta-btn mini-go-icon linkTracking" data-tag="profile|customize|change helmet|profile|">
+                            <div class="btn-bg white">GO</div><div class="btn-bg-small white"></div>
+                        </a>
+                    </div>
+                    <div class="user-configure-item" data-target="change-background" data-keywordid="tcm:985-121001-1024" data-yearid="" style="background-color:#fe440a">
+                        <span>CHANGE
+<br xmlns="http://www.w3.org/1999/xhtml" />
+BACKGROUND</span>
+                        <img alt="" src="/static/images/collections/temp/background-modal-image.jpg">
+                        <a href="#" class="relative-cta-btn mini-go-icon linkTracking" data-tag="profile|customize|change background|profile|">
+                            <div class="btn-bg white">GO</div><div class="btn-bg-small white"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="customize-modal-container"></div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <a href="#" class="modal-close-icon close" data-dismiss="modal" aria-hidden="true"></a>
+            <div class="modal-body" id="modal-global-container">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade  intrestitial-modal-container" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <a href="#" class="modal-close-icon close" data-dismiss="modal" aria-hidden="true"></a>
+            <div class="modal-body" id="modal-global-container"></div>
+
+        </div>
+    </div>
+</div>
+
+
+<script type="text/template" id="customize-template-container">
+    <div class="customize-banner-section profile-heading">  
+        <h2> <%= items.header %> </h2>
+        <div class="user-profile-btn">
+            <a data-type="<%= items.profileType %>" class="apply-item"><span>APPLY</span></a>
+            <a class="cancel-item"><span>CANCEL</span></a>
+        </div>
+    </div>
+    <ul class="configure-item-list user-<%= items.profileType%>-list" >
+        <% _.each(items.profileContentItem,function(item,index){ %>
+            <li class="customize-item-list" data-title="<%= item.title %>" data-src="<%= item.desktopImageURL %>">
+                <img alt="<%= item.title %>" src="<%= item.mobileImageURL %>" />
+            </li>
+        <% }) %>
+    </ul>
+</script>    
+        
+<div class="hw-intresteritial-container">
+    <div class="inter-content-wrapper">
+        <h2 class="inter-heading">HEADS UP!</h2>
+        <p class="inter-desc">You are leaving HotWheels.com to visit another website operating under a separate privacy statement and terms of use.</p>
+    </div>
+    <div class="inter-btn-wrapper">
+        <a data-dismiss="modal" aria-hidden="true">
+            <span>BACK</span>
+        </a>
+        <a class="inter-submit" target="_blank">
+            <span>KEEP GOING</span>
+        </a>
+    </div>
+    <div class="inter-overlay-image">
+        <img src="/static/images/collections/logo_with_circle_intrestitials.png" alt="">
+    </div>
+</div>
+        
+<script>
+
+var rewardRange = [1,5,10,15,20,25,40,50,75,100,150,200,250,300,350,400,450,600,750,1000],
+    rewardPoints = {
+        'wishlist' : {'points' :  50,'badges' : 'yes'},
+        'unverified' : {'points' : 10,'badges' : 'yes'},
+        'verified' : {'points' : 100,'badges' : 'no'},
+        'email' : {'points' : '1000','badges' : 'yes'}
+    }
+</script>
+
+    </div>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src='https://beta.static.mattel.com/videoplayer/src/js/v4/MattelVideoPlayer.js'></script>
+    <script src="/Static/js/video-slider.js"></script>
+    <script src="/Static/js/jquery.flexslider.js"></script>
+    <script>
+        HOTWHEELS.notransitions = $('html').hasClass('no-csstransitions');
+    </script>
+        <script type="text/javascript" src="/Static/js/hotwheels.min.js"></script>
+        <script type="text/javascript" src="/Static/js/Script.js"></script>
+            <script type="text/javascript" src="/Static/js/rating-stars.js"></script>
+        <script type="text/javascript" src="/Static/MA/scripts/HW-GA-main.js"></script>
+        <!-- changes :) -->
+        <script type="text/javascript" src="/Static/MA/scripts/videos-thumb-loader.js"></script>
+        <!-- changes ): -->
+    
+        <script type="text/javascript" src="/Static/MA/scripts/video-slider.js"></script>
+
+    <script type="text/javascript" src="/Static/MA/scripts/jquery.bxslider.js"></script>
+    <!-- NOTE: Required for serving Flash ad -->
+    <script type="text/javascript" src="/Static/MA/scripts/ads.js"></script>
+    <script type="text/javascript" src="/Static/MA/scripts/hotwheels.js"></script>
+    <script type="text/javascript" src="/Static/MA/scripts/jquery.tinycarousel.js"></script>
+    <script type="text/javascript" src="/Static/js/hw-apiConfig.js"></script>
+    <script type="text/javascript" src="/Static/js/hw-cookie.js"></script>
+    <script type="text/javascript" src="/Static/js/hw-common.js"></script>
+                    <script type="text/javascript">
+
+        var device = "Desktop"
+        var instagramJSON;
+        var imgCount = 6;
+        var girdSlideTemplate;
+
+            $(document).ready(function (ev) {
+            $('.top-marquee-container .flexslider').loadVideoSlider({
+                slider: { animation: 'slide', controlNav: true, directionNav: false },
+             video: {}
+            });
+        });
+        function instagramInit() {
+            var instImages = "";
+            $.ajax({
+                type: "GET",
+                dataType: "jsonp",
+                cache: false,
+                url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=331873142.67af37b.eb7741b1b5e7448daa6b4410e8cf664e",
+
+                success: function (data) {
+                    //console.log(data)
+                    data
+                    instagramJSON = data;
+                    instagramGrid();
+                    $.each(data.data, function (data, index) {
+
+                        //instImages+="<img "+"src="+index.images.low_resolution.url+" />";
+                        instImages += "<img " + "src=" + index.images.thumbnail.url + " />";
+                    });
+                    $("#instaContainer").html(instImages);
+                }
+            });
+        }
+
+        function instagramGrid() {
+            $('#grid ul.grid-wrapper').html('');
+
+            var count = 1//Math.round(instagramJSON.data.length()/6);
+            for (var index = 0; index < count; index++) {
+                $('#grid ul.grid-wrapper').append('<li class="grid">' + girdSlideTemplate + '</li>');
+                startIndex = index * 6;
+                imgUpdate(startIndex);
+            }
+
+
+        }
+        function imgUpdate(startIndex) {
+            $('#grid ul.grid-wrapper img').each(function () {
+                $(this).attr('src', instagramJSON.data[startIndex].images.standard_resolution.url);
+                $(this).parent().attr('href', instagramJSON.data[startIndex].link + '?modal=true');
+                startIndex++;
+            })
+
+        }
+        $(window).load(function () {		
+			$('.subnav-bg .bxslider').bxSlider({
+                auto: false,                
+                moveSlides: 6,
+				minSlides: 3,
+				maxSlides:6,			
+                slideWidth: 220,
+                slideMargin: 20,
+                hideControlOnEnd: true,
+                infiniteLoop: false
+			});
+
+            $(".collections-hover").on('mouseover', function () {
+                var bgColor = $(this).find(".collection-title-bg").data("titlebg");
+                $(this).find(".collection-title-bg").css({ "background-color": bgColor });
+            });
+            $(".collections-hover").on('mouseout', function () {
+                $(this).find(".collection-title-bg").css("background-color", "transparent");
+            });
+        });
+    </script>
+
+    <!-- sign in script  -->
+    <script>
+        var sso_params = sso_params || [];
+
+        sso_params.push({ _clientName: 'Hotwheels' });
+        sso_params.push({ _clientId: 'LNqvU8T_Ux8mD8B6YST9-b1N2T7XXHzz' });
+        sso_params.push({ _clientSecret: 'mGcQhxzSYJTLuSFpK8CN3RQYRsNuNkz9' });
+        sso_params.push({ _gigyaApiKey: "3_j5KGKsm0RzIZ-O25JdByatK0uMmToj_SjMnDTQU4NMgtitM3GUJ9EK7QvY66jAIP" });
+        sso_params.push({ _SourceId: '10001' });
+    </script>
+    <script src="https://user.mattel.com/staticresource/getresource?files=script"></script>
+    <script type="text/javascript" src='https://beta.product.mattel.com/scripts/crossbrands.js'></script>
+    <script type="text/javascript" src="/static/js/mattel-mediator.js"></script>
+    <script type="text/javascript" src="/static/js/mattel-shim.js"></script>
+    <script type="text/javascript" src="/static/js/vendor/require.js" data-main="/static/js/main.js"></script>
+
+    
+
+<script type="text/javascript">
+    (function (a, b, c, d) {
+        a = '//tags.tiqcdn.com/utag/mattel/hotwheels2014/dev/utag.js';
+        b = document; c = 'script'; d = b.createElement(c); d.src = a; d.type = 'text/java' + c; d.async = true;
+        a = b.getElementsByTagName(c)[0]; a.parentNode.insertBefore(d, a);
+    })();
+</script>
+</body>
+</html>

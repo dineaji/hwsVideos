@@ -1,0 +1,488 @@
+/* Visit http://www.menucool.com/ninja-slider2.aspx for instructions */
+@font-face {
+  font-family: "AgencyFB";
+  src: url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-2.eot");
+  src: url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-2.eot?") format("embedded-opentype"), url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-3.woff") format("woff"), url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-1.ttf") format("truetype");
+  font-style: italic;
+  font-weight: bold;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#ninja-slider2,#featured-products-slider
+{
+    width:100%;
+    margin:0 auto; /*center aligned*/
+    
+}
+#ninja-slider2 > ul,#featured-products-slider > ul
+{
+    padding:0;
+}
+
+/* slide */
+#ninja-slider2 li > div, #ninja-slider2 li > a,#featured-products-slider li > div
+{
+    max-width:100%;
+    margin:0 auto; /* center each slide */
+    /*background:#999;*/
+    position: relative;
+    display:block;
+    transition:none!important;
+}
+
+/* loading image indicator */    
+#ninja-slider2 div.preload ,#featured-products-slider div.preload
+{
+    background: black url(img/loading.gif) no-repeat center center;
+}
+
+/*----- video -----*/
+#ninja-slider2 a.video ,#featured-products-slider a.video
+{
+	position:absolute;
+    border:0;top:0;left:0;
+	width:100%;height:100%;
+	background:transparent url(img/video.png) no-repeat 50% 50%;
+    transition:none!important;
+}
+  
+/*------ pager ------*/      
+/* The pager id should be: slider id + "-pager" */    
+#ninja-slider2-pager,#featured-products-slider-pager
+{
+    padding-top:12px; /* set the distance away from the slider */
+    margin:0 auto; /* center align */
+    text-align:center;
+    display:table;
+    font-size:0;
+    width:100%;
+}
+         
+/*#ninja-slider2-pager a 
+{
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background-color: #0078c9;
+    border: 3px solid #97c5e5;
+    border-radius: 10px;
+    font-size: 0;
+    margin: 5px 20px 20px 20px;
+    cursor: pointer;
+    border: 5px solid #0078c9;
+    box-shadow: #97c5e5 0px 0px 0px 4px;
+    width: 19px;
+    height: 19px;
+
+}
+#ninja-slider2-pager a:hover 
+{
+    background-color: #97c5e5;
+    border: 5px solid #0078c9;
+    box-shadow: #97c5e5 0px 0px 0px 4px;
+    width: 19px;
+    height: 19px;
+}
+#ninja-slider2-pager a.active 
+{
+    background-color: #97c5e5;
+    border: 5px solid #0078c9;
+    box-shadow: #97c5e5 0px 0px 0px 4px;
+    width: 19px;
+    height: 19px;
+    margin: 1px 0.1em 2px 0.1em;
+}*/
+#ninja-slider2-pager a,#featured-products-slider-pager a 
+{
+    display: inline-block;
+    background-color: #0078c9;
+    border-radius: 10px;
+    font-size: 0;
+    margin: 15px 2%;
+    cursor: pointer;
+    border: 4px solid #a6cae3;
+    -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0);
+    width: 13px;
+    height: 13px;
+
+}
+#ninja-slider2-pager a:hover,#featured-products-slider-pager a:hover 
+{
+    background-color: #97c5e5;
+    border: 4px solid #0078c9;
+    box-shadow: #97c5e5 0px 0px 0px 4px;
+    width: 13px;
+    height: 13px;
+}
+#ninja-slider2-pager a.active,#featured-products-slider-pager a.active 
+{
+    background-color: #97c5e5;
+    border: 4px solid #0078c9;
+    box-shadow: #97c5e5 0px 0px 0px 4px;
+    width: 13px;
+    height: 13px;
+}
+
+
+
+
+/* --------- navigation controls ------- */   
+/* The nav id should be: slider id + ("-prev", "-next", and "-pause-play") */    
+#ninja-slider2-prev,#featured-products-slider-prev
+{
+    position: absolute;
+    width:35px;
+    height:80px;
+    display:inline-block;
+    margin:0;
+    background-image: url(../img/videoPrev.png);
+    left: 11px;
+    top: 43%;
+    pointer-events:auto;
+    cursor: pointer;
+}
+ #ninja-slider2-next,#featured-products-slider-next{
+    position: absolute;
+    width:35px;
+    height:80px;
+    display:inline-block;
+    margin:0;
+    background-image: url(../img/videoNext.png);
+    right: 11px;
+    top: 43%;
+    pointer-events:auto;
+    cursor: pointer;
+ }
+#ninja-slider2-pause-play,#featured-products-slider-pause-play { display:none;}
+
+
+
+/*------- Settings that usually don't need to change ------- */
+#ninja-slider2 > ul,#featured-products-slider > ul
+{
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#ninja-slider2-pager, #ninja-slider2-prev, #ninja-slider2-next, #ninja-slider2-pause-play,#featured-products-slider-pager,#featured-products-slider-prev,#featured-products-slider-next,#featured-products-slider-pause-play{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#ninja-slider2,#featured-products-slider
+{
+    position: relative;
+    overflow: hidden;
+    /*visibility: hidden;*/
+    padding:0px;
+}
+#ninja-slider2 > ul,#featured-products-slider > ul
+{
+    overflow: hidden;
+    position: relative;
+    list-style:none;
+    margin:0;
+}
+
+#ninja-slider2 > ul > li,#featured-products-slider > ul > li
+{
+    float: left;
+    width: 100%;
+    position: relative;
+    list-style:none;
+    padding:0;margin:0;padding-bottom:65px
+}
+
+.controls-container,.controls-container2
+{
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events:none;
+}
+
+.more-videos{
+    width: auto;
+    background: #0078c9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    -webkit-transform: skewX(-9deg);
+    -moz-transform: skewX(-9deg);
+    -ms-transform: skewX(-9deg);
+    -o-transform: skewX(-9deg);
+    transform: skewX(-9deg);
+    -webkit-transform: skewX(-9deg) scale(1) translateZ(0);
+    transform-origin: left bottom;
+    /* clear: both; */
+    position: relative;
+    margin: 0 auto 20px auto;
+    height: 36px;
+    width: 158px;
+}
+.more-videos p{
+    font-size: 1.2em;
+    padding: 8px 5px 9px 11px;
+    font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;  
+    font-style: italic; 
+    text-transform: uppercase;
+    color: #fff;  
+    letter-spacing: 0.28em;  
+    -webkit-transform: skewX(9deg);
+    -moz-transform: skewX(9deg);
+    -ms-transform: skewX(9deg);
+    -o-transform: skewX(9deg);
+    transform: skewX(9deg);
+    -webkit-transform: skewX(9deg) scale(1) translateZ(0);    
+    float: left;
+}
+.link-arrow{
+    background: url("../img/morevideolink.png");
+    display: block;
+    height: 10px;
+    width: 6px;
+    float: left;
+    margin-top: 13px;
+    -webkit-transform: skewX(7deg); 
+    -moz-transform: skewX(7deg);
+    -ms-transform: skewX(7deg);
+    -o-transform: skewX(7deg);
+     transform: skewX(7deg); 
+    -webkit-transform: skewX(7deg) scale(1) translateZ(0);
+
+
+}
+
+.heading-seperator{
+    display: block;
+    margin-bottom: 31px;
+    width: 16px;
+    height: 3px;
+    background: #737373;
+    margin: 20px auto 0px auto; 
+}
+
+@media screen and (min-width:1024px){
+   .controls-container,.controls-container2{
+        width: 1024px;
+   }
+  .home-ma .inside-video{
+      padding: 0;
+      font-size: 4em;
+      line-height: 1em;
+      text-align: center;
+      text-shadow: 0px 0px 9px rgba(73, 73, 73, 1);
+      text-transform: uppercase;
+      font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;   
+      font-style: italic; 
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      margin-top: 1.7em;
+      width: 100%;
+  }
+   .outside-video{
+        display: none;
+   }
+   .outside-video-caption{
+        display: none;
+    }
+    .heading-seperator{
+     display: block;   
+    }
+}
+
+@media screen and (min-width:768px) and (max-width: 1024px) {
+  #slider1 {margin: 0!important;}
+  .instagram_div{margin:0 auto;width:97%}
+.instagram_innerdiv1 {float: left;width: 50%;}
+
+   .controls-container,.controls-container2{
+        width: 968px;
+   }
+  .home-ma .inside-video{
+      padding: 0;
+      font-size: 4em;
+      line-height: 1em;
+      text-align: center;
+      text-shadow: 0px 0px 9px rgba(73, 73, 73, 1);
+      text-transform: uppercase;
+      font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;   
+      font-style: italic; 
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      margin-top: 1.7em;
+      width: 100%;
+  }
+   .outside-video{
+        display: none;
+   }
+   .outside-video-caption{
+        display: none;
+    }
+    .heading-seperator{
+        display: block;
+    }
+}
+
+@media screen and (max-width: 767px) {
+  .home-ma .inside-video{
+    display: none;
+  }
+    .outside-video-caption{
+        padding: 0;
+        font-size: 1em;
+        line-height: 1em;
+        margin-bottom: 14px;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;
+        font-style: italic;
+        color: #737373;
+        /* position: absolute; */
+        /* top: 50%; */
+        /* margin-top: 1.7em; */
+        width: 100%;
+        letter-spacing: 0.3em;  
+
+    }
+    .outside-video{
+        padding: 0;
+        font-size: 3em;
+        line-height: 1em;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;
+        font-style: italic;
+        color: #0078c9;
+        /* position: absolute; */
+        /* top: 50%; */
+        /* margin-top: 1.7em; */
+        width: 100%;
+      }
+    .controls-container,.controls-container2{
+        width: 100%;        
+   }
+   .heading-seperator{
+    display: none;
+   }
+   #ninja-slider2-prev,#featured-products-slider-prev{left:0px}
+   #ninja-slider2-next,#featured-products-slider-next{right:0px}
+}
+
+  h1.top-banner-title{
+    margin-top: 19px 0 0 0;
+    padding: 0;
+    font-size: 5em;
+    line-height: 1em;
+    text-align: center;
+    text-shadow: 0px 0px 9px rgba(73, 73, 73, 1);
+    top: 77%;
+  }
+  .top-banner-title-go-link{
+    background: url("../img/topbanner-next-arrow.png");
+    width:24px;
+    height: 67px;
+    margin: 11px 0 0 20px;
+    display: inline-block;s
+  }
+
+  @media screen and (min-width:1024px){
+    h1.top-banner-title{
+    margin-top: 19px 0 0 0;
+    padding: 0;
+    font-size: 6em;
+    line-height: 1em;
+    text-align: center;
+    text-shadow: 0px 0px 9px rgba(73, 73, 73, 1);
+    top: 77%;
+  }
+  .top-banner-title-go-link{
+    background: url("../img/topbanner-next-arrow.png");
+    width:24px;
+    height: 67px;
+    margin: 11px 0 0 20px;
+    display: inline-block;s
+  }
+  }
+  @media screen and (max-width: 767px) {
+    #ninja-slider2-pager {
+      padding-top: 0;
+      margin: -10px auto;
+      text-align: center;
+      display: table;
+      font-size: 0;
+      width: 100%;
+      margin-top: -20px!important;  
+      }
+      h1.top-banner-title{
+      margin: 0;
+      padding: 0;
+      font-size: 2em;
+      line-height: 2em;
+      text-align: center;
+      text-shadow: 0px 0px 9px rgba(73, 73, 73, 1);
+      top: 72%;
+      position: absolute;
+      width:100%;
+      color:#fff;
+      font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;
+      font-style: italic;
+      text-transform: uppercase;
+      font-weight: bold;
+
+    }
+  .top-banner-title-go-link{
+    background: url("../image/carouselarrow_mob.png");
+    width:10px;
+    height: 17px;
+    margin: 11px 0 0 20px;
+    display: inline-block;
+  }
+
+
+  }
+  @media screen and (min-width:768px) and (max-width: 1024px) {
+      h1.top-banner-title{
+    margin: 0;
+padding: 0;
+font-size: 6em;
+line-height: 1em;
+text-align: center;
+text-shadow: 0px 0px 9px rgba(73, 73, 73, 1);
+top: 70%;
+position: absolute;
+color: #fff;
+width: 100%;
+font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;
+font-style: italic;
+text-transform: uppercase;
+font-weight: bold;
+   
+  }
+  .top-banner-title-go-link{
+    background: url("../img/topbanner-next-arrow.png");
+    width:24px;
+    height: 67px;
+    margin: 11px 0 0 20px;
+    display: inline-block;
+  }
+  }
+  
+  @media (min-width: 768px) and (max-width: 979px) {
+  .controls-container,.controls-container2{
+        width: 100%;
+   }
+  }
+  
+  #featured-products-slider-pager{display:none}

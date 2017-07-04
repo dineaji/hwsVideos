@@ -1,0 +1,65 @@
+/* BreadCrumb start Here */
+#breadCrumbHolder{
+	width:100%;
+	display:inline-table;
+}
+.breadcrumb-list{
+	list-style:none;
+	
+}
+.breadcrumb-list li{
+	display:inline-block;
+}
+.breadcrumb-list li a{
+	text-decoration:none;
+	color:#000;
+}
+.breadcrumb-list li:after{
+    display: inline-block;
+    padding: 0px 0 0 10px;
+    vertical-align: middle;
+    font-size: 1em;
+}
+.breadcrumb-list li:after{
+	content: "\203A";
+}
+.breadcrumb-list.bc-fraction li:after{
+	content: "\/ ";
+	font-weight:bold;
+}
+.breadcrumb-list.bc-aqmark li:after{
+	content: "\00bb";
+}
+.breadcrumb-list li:last-child:after,.breadcrumb-list.bc-aqmark li:last-child:after,.breadcrumb-list.bc-fraction li:last-child:after{
+	content:'';
+}
+
+
+/* BreadCrumb End Here */
+/* Site Map Start Here */
+ul li{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+	color: #000;
+}
+.sitemap-cloumn{
+	display: inline-block;
+    margin: 1em;
+}
+
+/* Site Map End Here */
+
+/* Social Icon Start Here */
+.social-links.center-align{
+	text-align:center;
+}
+#social-links a{
+	display:inline-block;
+}
+#social-links a img{
+	display:inline-block;
+}
+
+/* Social Icon End Here */

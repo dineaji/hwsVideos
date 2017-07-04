@@ -1,0 +1,309 @@
+$(document).ready(function () {
+    // Set starting slide to 1
+    var startSlide = 1;
+    // Get slide number if it exists
+    if (window.location.hash) {
+        startSlide = window.location.hash.replace('#', '');
+    }
+	pagination1 = $('#pagination1 .bxslider').bxSlider({
+                            infiniteLoop: false,
+                            hideControlOnEnd: true,
+                            slideWidth: 130,
+                            minSlides: 5,
+                            maxSlides: 5,
+                            slideMargin: 4,
+                            pager: false,
+                            onSlideNext: function () { pagination2.goToNextSlide(); },
+                            onSlidePrev: function () { pagination2.goToPrevSlide(); }
+                        });
+
+                        pagination2 = $('#pagination2 .bxslider').bxSlider({
+                            infiniteLoop: false,
+                            hideControlOnEnd: true,
+                            slideWidth: 130,
+                            minSlides: 5,
+                            maxSlides: 5,
+                            slideMargin: 4,
+                            pager: false,
+                            onSlideNext: function () { pagination1.goToNextSlide(); },
+                            onSlidePrev: function () { pagination1.goToPrevSlide(); }
+                        });
+    // Initialize Slides
+        //Home page slider
+    $('#HomePage .bxslider').bxSlider({
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            slideWidth: 130,
+            minSlides: 5,
+            maxSlides: 5,
+            slideMargin: 4,
+            pager: false            
+        });
+        var pageNavCount = $("ul.bxslider li").length;
+        if (pageNavCount < 5) $('#thumbBg').css('width', 'auto');
+        // home page :: click event
+        $('#HomePage .bxslider a').bind('click', function () {
+            $(this).parents('.bxslider').find('.thumbs').removeClass('actv');
+            $(this).addClass('actv');
+
+
+        });
+
+        //Inner page slider
+        $('#InnerPage .bxslider').bxSlider({
+            mode: 'vertical',
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            slideWidth: 82,
+            slideHeight: 82,
+            minSlides: 3,
+            maxSlides: 3,
+            slideMargin: 18,
+            pager: false
+        });
+        
+        // Inner page  :: click event
+        $('#InnerPage .bxslider a').bind('click', function () {
+            var itemImg = $(this).find('.CarouselImage').attr('value');
+            var showswfContainer = $(this).attr('class') + '_details';
+            var swfContainerDivs = $('#swfContainer div[class^="thumbs"]');
+            swfContainerDivs.css('display', 'none');
+            $('.' + showswfContainer).css('display', 'block');
+            var curr_img = $('.' + showswfContainer).children(".gameBanner").children("img").attr('src');
+            $('.' + showswfContainer).children(".gameBanner").children("img").attr('src', itemImg)
+        });
+
+        $('.submit_btn').click(function (event) {
+            var Pid = $(this).attr("pid");
+            var SKUid = $(this).attr("skuid");
+            var windowWidth = 540;
+            var windowHeight = 620;
+            var windowLeft = 0;
+            var windowTop = 0;
+            var resizable = 'no';
+            var scrollbars = 'yes';
+
+            var url = 'http://shop.mattel.com/product/when_available_popup.jsp?productId=' + Pid + '&sku=' + SKUid;
+            //window.open('http://shop.mattel.com/product/when_available_popup.jsp?productId=' + Pid + '&sku=' + SKUid);
+            var windowName = ""; //$(this).attr("name");
+            var windowSize = "width=" + windowWidth + ",height=" + windowHeight + "left=" + windowLeft + ",top=" + windowTop + "screenX=" + windowLeft + ",screenY=" + windowTop + ",resizable=" + resizable + ",scrollbars=" + scrollbars;
+            window.open(url, windowName, windowSize);
+            event.preventDefault();
+
+
+    });
+
+
+        // Inner page  :: click event
+        $('#InnerPage .bxslider a').bind('click', function () {
+            var showswfContainer = $(this).attr('class') + '_details';
+            var swfContainerDivs = $('#swfContainer div[class^="thumbs"]');
+            //alert (showswfContainer + " , " +swfContainerDivs);
+
+            swfContainerDivs.css('display', 'none');
+            $('.' + showswfContainer).css('display', 'block');
+            var bigImgHei = $('.' + showswfContainer).height();
+            findHeight(bigImgHei);
+        });
+
+        // init funcation 
+        //var bigImgHei = $(".gameBanner").children("ul").children("li").children("img").height();
+        var bigImgHei = $(".gameBanner").find("#MainImageDisplay").height();
+
+        findHeight(bigImgHei);
+        function findHeight(bigImgHei) {
+
+            if (bigImgHei < 525) {
+	    $('.gameBanner').css({ "overflow": 'hidden', "line-height": '525px',"background-color":'#fff' })
+            }
+        }
+
+        // Video Popup & resize
+        $('#showVideo-popup').click(function (event) {
+            var videoId = $(this).attr('videoId');
+            videoId = $(this).find('.CarouselImageVideo').attr('value');
+            var width = $(window).width() * .8;
+            var height = width / 16 * 9;
+
+            if (height > $(window).height()) {
+                height = $(window).height() * .8;
+                width = (height / 9) * 16;
+            }
+            $('.cdaVideoOverlay').css({
+                height: height + 'px',
+                width: width + 'px'
+            })
+            $.fn.colorbox({ inline: true, href: "#cdaVideoOverlay" });
+
+            var flashvars = {
+            };
+            var params = {
+            };
+            var attributes = {
+                "wmode": "transparent",
+                "allowfullscreen": "true",
+                "allowscriptaccess": "always",
+                "base": "http://mediaservice.mirror-image.com/plugins/player.swf",
+                "type": "movie",
+                "bgcolor": "#FFFFFF",
+                "flashvars": "v=" + videoId + "&autoplay=true"
+            };
+            swfobject.embedSWF("http://mediaservice.mirror-image.com/plugins/player.swf", "cdaVideoOverlayInner", "100%", "98.5%", "9.0.0", flashvars, params, attributes);
+        })
+        $(window).resize(function () {
+
+            var t = $(window).width() * .8;
+            var n = t / 16 * 9;
+            if (n > $(window).height()) {
+                n = $(window).height() * .8;
+                t = n / 9 * 16
+            }
+
+            $(".cdaVideoOverlay").css({
+                height: "100%",
+                width: "100%"
+            });
+
+            $.colorbox.resize({
+                width: t,
+                height: n
+            })
+            
+
+        })
+        //Tooltip
+        $('.wishImg').mouseover(function () {
+            $('.tooltip').show();
+            //l = $(this).offset().left		
+            //t = $(this).offset().top
+
+        });
+        $('.wishImg').mouseout(function () {
+            $('.tooltip').hide();
+        });
+			// Tooltip for wishlist print
+			$('.print_img').mouseover(function() {				
+				$('.print_tt').show();
+				l = $(this).offset().left		
+				t = $(this).offset().top
+				$('.print_tt').show();
+			});
+			$('.print_img').mouseout(function() {				
+				$('.print_tt').hide();
+			});
+			
+			// Tooltip for wishlist email
+			$('.email_img').mouseover(function() {				
+				$('.email_tt').show();
+				l = $(this).offset().left		
+				t = $(this).offset().top
+				$('.email_tt').show();
+			});
+			$('.email_img').mouseout(function() {				
+				$('.email_tt').hide();
+			});
+
+        // Shop Now 
+        $('<div class="shop_now_tooltip">'+$('#shop_now_text').data('string')+'</div>').insertAfter($('.shopNavigation li a'));
+
+        $('.shopNavigation li').hover(function (e) {
+            $(this).find('a').addClass('active');
+            $(this).find('.shop_now_tooltip').show();
+        }, function (e) {
+            $(this).find('a').removeClass('active');
+            $(this).find('.shop_now_tooltip').hide();
+        });
+
+        // pop up
+        // show popup when you click on the link 
+        $('.show-popup').click(function (event) {
+            event.preventDefault(); // disable normal link function so that it doesn't refresh the page
+            $('.overlay-bg').show(); //display your popup
+            $('.general_overlay').show();
+            $('.mattel_overlay').hide();
+	    $('.read_reviews').hide();
+        });
+
+        // show showMattel-popup when you click on the link 
+        $('.showMattel-popup').click(function (event) {
+            event.preventDefault(); // disable normal link function so that it doesn't refresh the page
+            $('.overlay-bg').show(); //display your popup
+            $('.general_overlay').hide();
+	    $('.read_reviews').hide();
+            $('.mattel_overlay').show();
+        });
+// show Read Reviews-popup when you click on the link 
+			$('.showRead-popup').click(function(event){
+				event.preventDefault(); // disable normal link function so that it doesn't refresh the page
+				$('.overlay-bg').show(); //display your popup
+				$('.general_overlay').hide();
+				$('.mattel_overlay').hide();
+				$('.read_reviews').show();
+				
+			});
+
+        // hide popup when user clicks on close button
+        $('.back_btn').click(function () {
+            $('.overlay-bg').hide(); // hide the overlay
+        });
+
+			$('#WishList .overlay_close').click(function(){
+				$('.overlayWishlist-bg').hide(); // hide the overlay
+			});
+			
+			$('.overlayEmail-bg .email_close-btn').click(function(){
+				$('.overlayEmail-bg').hide(); // hide the overlay
+			});
+			
+        // view40  disabled
+        //        $('#view40 a').click(function (e) {
+        //            e.preventDefault();
+        //            //some back end processing;
+        //            $(this).addClass('disabled');
+        //        })
+
+        $('a.disabled').on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        });
+        var LHei = $('.product-name h1').height();
+        /*if (/chrom(e|ium)/.test(navigator.userAgent.toLowerCase())) {
+                $('.product-name h1').css({ overflow: 'hidden', height: '27px' })
+        }
+        else {
+			$('.product-name h1').css({ overflow: 'hidden', height: '28px' })
+        }*/
+        // More detail height
+        var Hei = $('.txt3').height();
+
+        if (/chrom(e|ium)/.test(navigator.userAgent.toLowerCase())) {
+            $('#homePage .rateit-range').css({ height: '78px' });
+
+        }
+        // More detail height
+//        var Hei = $('.txt3').height();
+
+//        if (Hei > 74) {
+//            $('.txt3').css({ overflow: 'hidden', height: '74px' })
+//        }
+//        var flag = true;
+//        $('.moreDetails').click(function (e) {
+//            if (flag) {
+//                $('.txt3').css({ overflow: 'visible', height: 'auto' })
+//                $('.moreDetails').text('Less Details');
+//                flag = false;
+//            } else {
+//                $('.txt3').css({ overflow: 'hidden', height: '74px' })
+//                $('.moreDetails').text('More Details');
+//                flag = true;
+//            }
+//        })
+
+
+        });
+
+
+
+
+

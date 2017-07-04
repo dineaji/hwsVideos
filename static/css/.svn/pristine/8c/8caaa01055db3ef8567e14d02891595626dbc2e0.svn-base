@@ -1,0 +1,30 @@
+ul li{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+	color: #000;
+}
+.sitemap-cloumn{
+	display: inline-block;
+	margin: 1em;
+	vertical-align: top;
+	padding-top: 4%;
+}
+.sitmap-page h2{
+	border-bottom:1px solid rgba(0,0,0,0.4);
+}
+.sitmap-page.sitemap-cloumn{
+	margin-top:0em;
+}
+.sitmap-page .sitemap-cloumn h3{
+	margin:0px;
+}
+.sitemap-cloumn ul{
+	margin-top:0px;
+	padding: 2px;
+	
+}
+ol{
+	padding:2px;
+}

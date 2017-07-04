@@ -1,0 +1,515 @@
+/* 
+* Mattel Hotwheels WBD Javascript API
+*/
+
+var wbdApi = (function()
+{
+	// Make sure IE has a console
+	if (!window.console) console = {log: function() {}};
+
+	var context = this;
+
+	var isDocumentReady=false;
+	var initOnReady=false;
+	var isMac = navigator.platform.toUpperCase().indexOf('MAC')>=0;
+	//var isIOS = navigator.userAgent.match(/(iPhone|iPod|iPad)/i)?true:false;
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Public methods
+
+	function log(s)
+	{
+		console.log(s);
+	}
+
+	function logJSON(s)
+	{
+		console.log(JSON.parse(s));
+	}
+
+	function reloadOnSessionExpired()
+	{
+		window.location.reload();
+	}
+
+	function track(name)
+	{
+		try {
+			switch(name)
+			{
+				case "team":
+					utag.track("view",{  event_id:"WBD Team Tryouts Team Picked", event_category_id:"Links"  });
+					break;
+
+				case "play":
+					utag.track("view",{  event_id:"WBD Team Tryouts Play", event_category_id:"Games"  });
+					break;
+			}
+		} catch(e)  {
+   			console.log("Cannot track "+name+", utag not present");
+		}
+	}
+
+	function init(gameConfig, unityObject)
+	{
+		u = unityObject;
+		config = gameConfig;
+
+		if(config.baseUrl)
+		{
+			config.assetsPath = config.baseUrl+"assets/";
+		}
+
+		if(isDocumentReady)
+		{
+			doInit();
+		} else {
+			initOnReady=true;
+		}
+	}
+
+	function doInit()
+	{
+		initVideoPlayer();
+	}
+
+	function logNewUser(userInfo)
+	{
+		var jsonConfig = JSON.stringify(userInfo);
+		console.log(jsonConfig)
+		callUnity("LogNewUser", jsonConfig );
+	}
+
+	var preloadDotsMax = 3;
+	var preloadDotsCount = 0;
+	var preloadText;
+	var preloadInterval;
+
+	var slideshowTimeout;
+
+	var logoPosition;
+
+	function showPreloading(animate)
+	{
+		jQuery("#unityPreloading").css({
+			display:"block"
+		});
+
+		if(animate)
+		{
+			resizeUnity(310, 34);
+			jQuery("#unityPlayer").addClass("preloading");
+			jQuery("#unityPreloadingAnim").show();
+
+			// Animate dots after loading text
+			preloadText = jQuery("#unityPreloadingAnim .preloadingText").text();
+			preloadInterval = setInterval(function(){
+				var dots = "";
+				if(preloadDotsCount>preloadDotsMax) preloadDotsCount=0;
+				for(var i=0; i<preloadDotsCount; i++)
+				{
+					dots+=".";
+				}
+				preloadDotsCount++;
+				jQuery("#unityPreloading .preloadingText").text(preloadText+dots);
+			}, 1000);
+
+			// Start slideshow after a while
+			slideshowTimeout = setTimeout(function()
+			{
+				jQuery("#unityPreloadingScreenshots").show();
+
+				if(!logoPosition) logoPosition = jQuery("#unityPreloadingLogo").position();
+
+				// Take logo left
+				jQuery("#unityPreloadingLogo").animate({
+					left:"0"
+				}, {
+					duration: 100
+				});
+
+				// Start screenshot slideshow
+				jQuery("#unityPreloadingScreenshots").show();
+				startSlide("#unityPreloadingScreenshots");
+
+			}, config.slideshowDelay*1000);
+
+		} else {
+			jQuery("#unityPreloadingAnim").hide();
+		}
+
+	}
+
+	function hidePreloading()
+	{
+		resetUnitySize();
+		
+		jQuery("#unityPreloading").css({
+			display:"none"
+		});
+
+		jQuery("#unityPlayer").removeClass("preloading");
+
+		clearTimeout(slideshowTimeout);
+		clearInterval(preloadInterval);
+		stopSlide("#unityPreloadingScreenshots");
+
+		// Reset logo position and screenshots
+		if(logoPosition)
+		{
+			jQuery("#unityPreloadingLogo").animate({
+				left:logoPosition.left+"px"
+			}, {
+				duration: 0
+			});
+
+			// Stop screenshot slideshow
+			jQuery("#unityPreloadingScreenshots").hide();
+			stopSlide("#unityPreloadingScreenshots");
+			logoPosition=null;
+		}
+	}
+
+
+	/*
+	* Slider
+	*/
+
+	var slides = {};
+	function startSlide(element, delay, zIndex)
+	{
+		if(!zIndex) baseZ = 1000;
+		if(!delay || delay<=0) delay = 3000;
+
+		stopSlide(element);
+
+		doSlide(element, zIndex)
+
+		slides[$(element)[0]] = setInterval(function() {
+			doSlide(element, zIndex);
+		}, delay);
+	}
+
+	function doSlide(element, zIndex)
+	{
+		$(element).each(function(){
+			var active = $(this).find('.active');
+			var next = ($(this).find('.active').next().length > 0) ? $(this).find('.active').next() : $(this).find('img:first');
+
+			next.css({'z-index':zIndex+1, 'display':'block'});
+			active.css({'z-index':zIndex, 'display':'block'});
+
+			next.fadeOut(0);
+			next.fadeIn(200,function(){
+				active.removeClass('active').css({'display':'none'}).fadeOut(0);
+				next.addClass('active');
+				//active.css({'z-index':zIndex+1}).show().removeClass('active'); //reset the z-index and unhide the image
+				//next.css({'z-index':zIndex+3, 'display':'block'}).addClass('active'); //make the next image the top one
+			});
+		});
+	}
+
+	function stopSlide(element)
+	{
+		clearInterval(slides[$(element)[0]]);
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// JQuery Events
+
+	$(document).ready(function(){
+		isDocumentReady = true;
+		if(initOnReady)
+		{
+			doInit();
+		}
+	});
+
+	$(window).focus(function()
+	{
+        //callUnity('OnWebFocus');
+
+        if(videoIsStarted) resumeVideo();
+    });
+
+    $(window).blur(function()
+    {
+        //callUnity('OnWebBlur');
+
+        if(videoIsStarted) pauseVideo();
+    });
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Unity Player
+	var u;
+	var defaultUnityObject="_GameManagers";
+	var isUnityStarted = false; // If unity is started
+
+	function resizeUnity(width, height)
+	{
+		console.log("Resizing unity to "+width+" x "+height);
+		
+		jQuery("#unityPlayer").css({width:width+"px", height:height+"px"});
+
+		var embed = jQuery("#unityPlayer").find("embed")[0];
+		if(embed!=null) {
+			embed.width = width;
+			embed.height = height;
+			jQuery(embed).css({width:width+"px", height:height+"px"});
+		}
+
+		var object = jQuery("#unityPlayer").find("object")[0];
+		if(object!=null) {
+			object.width = width;
+			object.height = height;
+			jQuery(object).css({width:width+"px", height:height+"px"});
+		}
+	}
+
+	function resetUnitySize()
+	{
+		resizeUnity(config.unity.width, config.unity.height);
+	}
+
+	var originalPosition;
+
+	function hideUnity()
+	{
+		if (navigator.appName == 'Microsoft Internet Explorer')
+		{
+			if(!originalPosition) originalPosition = {
+				position: jQuery("#unityPlayer").css("position"),
+				top: jQuery("#unityPlayer").css("top")
+			};
+			jQuery("#unityPlayer").css({position:"absolute", top:"-4000px"});
+		} else {
+			jQuery("#unityPlayer").css({visibility:"hidden"});
+		}
+	}
+
+	function showUnity()
+	{
+		if (navigator.appName == 'Microsoft Internet Explorer')
+		{
+			if(originalPosition) jQuery("#unityPlayer").css(originalPosition);
+		} else {
+			jQuery("#unityPlayer").css({visibility:"visible"});
+		}
+	}
+
+	// Unity call when starting
+	// the callback parameter comes from Unity
+	function onUnityStart(callback)
+	{	
+		if(isUnityStarted) return;
+		isUnityStarted = true;
+		
+		//log("Unity started, calling "+callback+" with configuration:");
+		if(callback) {
+			var jsonConfig = JSON.stringify(config);
+			callUnity(callback, jsonConfig );
+		}
+
+		if(jQuery.isFunction(context.onGameReady)) context.onGameReady();
+
+		// JS keys to unity player for mac problems with arrows
+		if(isMac) enableInputRelay();
+	}
+
+	// Unity call when services are loaded 
+	function onUnityServicesLoaded(success, data)
+	{
+		if(jQuery.isFunction(context.onGameServicesLoaded)) context.onGameServicesLoaded(success, data);
+	}
+
+	// http://docs.unity3d.com/Documentation/Manual/UnityWebPlayerandbrowsercommunication.html
+	function callUnity(functionName,parameterString,unityObjectName)
+	{
+		if(!u || !u.getUnity()) {
+			console.log("Unity not ready, cannot call "+functionName);
+			return;
+		}
+
+		if(!unityObjectName) unityObjectName = defaultUnityObject;
+		if(!parameterString) parameterString = "";
+		u.getUnity().SendMessage(unityObjectName, functionName, parameterString);
+	}
+
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// INPUT Relay
+
+	var inputRelayEnabled = false;
+
+	function enableInputRelay()
+	{
+		if(inputRelayEnabled) return;
+		inputRelayEnabled = true;
+
+		callUnity("EnableExternalControls");
+
+		$(window).on('keydown', onRelayedKeyDown);
+		$(window).on('keyup', onRelayedKeyUp);
+	}
+
+	function onRelayedKeyDown(e)
+	{
+		callUnity("OnWebKeyDown", e.which);
+	}
+
+	function onRelayedKeyUp(e)
+	{
+		callUnity("OnWebKeyUp", e.which);
+	}
+
+	function disableInputRelay()
+	{
+		if(!inputRelayEnabled) return;
+		inputRelayEnabled = false;
+
+		callUnity("DisableExternalControls");
+
+		$(window).off('keydown', onRelayedKeyDown);
+		$(window).off('keyup', onRelayedKeyUp);
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Video player
+	// http://jplayer.org/latest/developer-guide/
+
+	var videoStatusInterval;
+	var videoIsStarted=false;
+	var player;
+
+	function initVideoPlayer()
+	{
+		player = $("#jquery_jplayer").jPlayer(
+		{
+			ready: function () {
+				
+			},
+			canplay: function() { 
+				
+			},
+			ended: function() {
+				skipVideo();
+			},
+			swfPath: "js",
+			supplied: "m4v",
+			size: {
+				width: config.unity.width+"px",
+				height: config.unity.height+"px",
+				cssClass: "jp-video-845"
+			},
+			smoothPlayBar: true,
+			keyEnabled: true
+		});
+
+		jQuery("#btnSkipVideo").on("click", function(e) {
+			e.preventDefault();
+			skipVideo();
+		});
+	}
+
+	function playVideo(name, volume, skipCaption)
+	{
+		if(!volume || volume<0) volume = 1;
+		if(!skipCaption) skipCaption = "SKIP VIDEO";
+
+		jQuery("#hotwheelsWBD #btnSkipVideo").text(skipCaption);
+
+		if(videoIsStarted) skipVideo;
+		videoIsStarted = false;
+
+		jQuery("#jp_container").show();
+		hideUnity();
+
+		var url = config.assetsPath+"videos/"+name+".mp4";
+
+		log("Playing video: "+url);
+
+		$(player).jPlayer("volume", volume);
+
+		$(player).jPlayer("setMedia", {
+			m4v: url
+		});
+
+		$(player).jPlayer("play", 0);
+
+		videoStatusInterval = setInterval(function () {
+		    var isPlaying = (! $(player).data().jPlayer.status.paused );
+		    //$("#message").text("Is playing: " + isPlaying);
+
+
+		    if(isPlaying && !videoIsStarted)
+		    {
+		    	jQuery("#jp_container").on("click", skipVideo);
+		    	videoIsStarted = true;
+		    }
+
+		    if(!isPlaying && jQuery("#jp-no-solution").css("display") != "none")
+		    {
+		    	jQuery("#jp_container").on("click", skipVideo);
+		    }
+		}, 200);
+	}
+
+	function skipVideo()
+	{
+		jQuery("#jp_container").hide();
+		showUnity();
+		
+		if(videoIsStarted)
+		{
+			$(player).jPlayer("clearMedia");
+			videoIsStarted=false;
+			jQuery("#jp_container").off("click", skipVideo);
+			callUnity("OnVideoComplete");
+		}
+	}
+
+	function pauseVideo()
+	{
+		$(player).jPlayer("pause");
+	}
+
+	function resumeVideo()
+	{
+		$(player).jPlayer("play");
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Public api
+
+	// Public methods
+	this.init = init;
+	this.log = log;
+	this.logJSON = logJSON;
+	this.reloadOnSessionExpired = reloadOnSessionExpired;
+	this.logNewUser = logNewUser;
+	this.track = track;
+
+	this.showPreloading = showPreloading;
+	this.hidePreloading = hidePreloading;
+	this.playVideo = playVideo;
+	this.skipVideo = skipVideo;
+	
+	this.callUnity = callUnity;
+	this.hideUnity = hideUnity;
+	this.showUnity = showUnity;
+	this.resizeUnity = resizeUnity;
+	this.resetUnitySize = resetUnitySize;
+	this.enableInputRelay = enableInputRelay;
+	this.disableInputRelay = disableInputRelay;
+
+	// Unity callbacks
+	this.onUnityStart = onUnityStart;
+	this.onUnityServicesLoaded = onUnityServicesLoaded;
+
+	// JS Callbacks
+	this.onGameReady = null;
+	this.onGameServicesLoaded = null;
+
+
+	return this;
+})();

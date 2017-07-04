@@ -1,0 +1,375 @@
+/* Visit http://www.menucool.com/ninja-slider.aspx for instructions */
+@font-face {
+  font-family: "AgencyFB";
+  src: url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-2.eot");
+  src: url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-2.eot?") format("embedded-opentype"), url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-3.woff") format("woff"), url("../fonts/8068749e-ba6d-4009-9f73-8181884218a8-1.ttf") format("truetype");
+  font-style: italic;
+  font-weight: bold;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#ninja-slider
+{
+    width:1024px;
+    margin:0 auto; /*center aligned*/
+   
+}
+#ninja-slider > ul
+{
+    padding:20px 0 0 0;
+}
+
+/* slide */
+#ninja-slider li > div, #ninja-slider li > a
+{
+    max-width:310px;
+    margin:0 auto; /* center each slide */
+    /*background:#999;*/
+    position: relative;
+    display:block;
+    transition:none!important;
+	height:310px;
+}
+
+/* loading image indicator */    
+#ninja-slider div.preload 
+{
+    background: black url(img/loading.gif) no-repeat center center;
+}
+
+/*----- video -----*/
+#ninja-slider a.video 
+{
+	position:absolute;
+    border:0;top:0;left:0;
+	width:100%;height:100%;
+	background:transparent url(../img/video-ga.png) no-repeat 50% 50%;
+    transition:none!important;
+}
+  
+/*------ pager ------*/      
+/* The pager id should be: slider id + "-pager" */    
+#ninja-slider-pager
+{
+    margin:0 auto; /* center align */
+    text-align:center;
+    display:none;
+    font-size:0;
+    width:100%;
+}
+         
+/*#ninja-slider-pager a 
+{
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    background-color: #0078c9;
+    border: 3px solid #97c5e5;
+    border-radius: 10px;
+    font-size: 0;
+    margin: 5px 20px 20px 20px;
+    cursor: pointer;
+    border: 5px solid #0078c9;
+    box-shadow: #97c5e5 0px 0px 0px 4px;
+    width: 19px;
+    height: 19px;
+
+}
+#ninja-slider-pager a:hover 
+{
+    background-color: #97c5e5;
+    border: 5px solid #0078c9;
+    box-shadow: #97c5e5 0px 0px 0px 4px;
+    width: 19px;
+    height: 19px;
+}
+#ninja-slider-pager a.active 
+{
+    background-color: #97c5e5;
+    border: 5px solid #0078c9;
+    box-shadow: #97c5e5 0px 0px 0px 4px;
+    width: 19px;
+    height: 19px;
+    margin: 1px 0.1em 2px 0.1em;
+}*/
+#ninja-slider-pager a 
+{
+    display: inline-block;
+    background-color: #0078c9;
+    border-radius: 10px;
+    font-size: 0;
+    margin: 15px 3% 30px;
+    cursor: pointer;
+    border: 4px solid #a6cae3;
+    -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0);
+    width: 13px;
+    height: 13px;
+
+}
+#ninja-slider-pager a:hover 
+{
+    background-color: #97c5e5;
+    border: 4px solid #0078c9;
+    box-shadow: #97c5e5 0px 0px 0px 4px;
+    width: 13px;
+    height: 13px;
+}
+#ninja-slider-pager a.active 
+{
+    background-color: #97c5e5;
+    border: 4px solid #0078c9;
+    box-shadow: #97c5e5 0px 0px 0px 4px;
+    width: 13px;
+    height: 13px;
+}
+
+
+
+
+/* --------- navigation controls ------- */   
+/* The nav id should be: slider id + ("-prev", "-next", and "-pause-play") */    
+#ninja-slider-prev
+{
+    position: absolute;
+    width:24px;
+    height:67px;
+    display:inline-block;
+    margin:0;
+    background-image: url(../img/videoPrev.png);
+    left: 11px;
+    top: 43%;
+    pointer-events:auto;
+    cursor: pointer;
+}
+ #ninja-slider-next{
+    position: absolute;
+    width:24px;
+    height:67px;
+    display:inline-block;
+    margin:0;
+    background-image: url(../img/videoNext.png);
+    right: 11px;
+    top: 43%;
+    pointer-events:auto;
+    cursor: pointer;
+ }
+#ninja-slider-pause-play { display:none;}
+
+
+
+/*------- Settings that usually don't need to change ------- */
+#ninja-slider > ul
+{
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#ninja-slider-pager, #ninja-slider-prev, #ninja-slider-next, #ninja-slider-pause-play
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#ninja-slider
+{
+    position: relative;
+    overflow: hidden;
+    /*visibility: hidden;*/
+    padding:0;
+}
+#ninja-slider > ul
+{
+    overflow: hidden;
+    position: relative;
+    list-style:none;
+    margin:0;
+}
+
+#ninja-slider > ul > li
+{
+    float: left;
+    width: 330px !important;
+    position: relative;
+    list-style:none;
+    padding:0;margin:20px;
+	height:310px;
+}
+
+.controls-container
+{
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events:none;
+}
+
+.more-videos{
+    width: auto;
+    background: #0078c9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    -webkit-transform: skewX(-9deg);
+    -moz-transform: skewX(-9deg);
+    -ms-transform: skewX(-9deg);
+    -o-transform: skewX(-9deg);
+    transform: skewX(-9deg);
+    -webkit-transform: skewX(-9deg) scale(1) translateZ(0);
+    transform-origin: left bottom;
+    /* clear: both; */
+    position: relative;
+    margin: 0 auto 20px auto;
+    height: 41px !important;
+    width: 175px !important;
+}
+.more-videos p{
+    font-size: 1.25em !important;
+    padding: 11px 8px 9px 11px !important;
+    font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;  
+    font-style: italic; 
+    text-transform: uppercase;
+    color: #fff;  
+    letter-spacing: 0.28em;  
+    -webkit-transform: skewX(9deg);
+    -moz-transform: skewX(9deg);
+    -ms-transform: skewX(9deg);
+    -o-transform: skewX(9deg);
+    transform: skewX(9deg);
+    -webkit-transform: skewX(9deg) scale(1) translateZ(0);    
+    float: left;
+}
+.link-arrow{
+    background: url("img/morevideolink.png");
+    display: block;
+    height: 10px;
+    width: 6px;
+    float: left;
+    margin-top: 17px !important;
+    -webkit-transform: skewX(7deg); 
+    -moz-transform: skewX(7deg);
+    -ms-transform: skewX(7deg);
+    -o-transform: skewX(7deg);
+     transform: skewX(7deg); 
+    -webkit-transform: skewX(7deg) scale(1) translateZ(0);
+}
+
+.heading-seperator{
+    display: block;
+    margin-bottom: 31px;
+    width: 16px;
+    height: 3px;
+    background: #737373;
+    margin: 20px auto 0px auto; 
+}
+
+@media screen and (min-width:1024px){
+   .controls-container{
+        width: 968px;
+   }
+  .home-ma .inside-video{
+      padding: 0;
+      font-size: 2.3em !important;
+      line-height: 1em;
+      text-align: center;
+      text-shadow: 0px 0px 9px rgba(73, 73, 73, 1);
+      text-transform: uppercase;
+      font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;   
+      font-style: italic; 
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      margin-top: 1.7em;
+      width: 100%;
+  }
+   .outside-video{
+        display: none;
+   }
+   .outside-video-caption{
+        display: none;
+    }
+    .heading-seperator{
+     display: block;   
+    }
+}
+
+@media screen and (min-width:768px) and (max-width: 1024px) {
+   .controls-container{
+        width: 968px;
+   }
+  .home-ma .inside-video{
+      padding: 0;
+      font-size: 4em;
+      line-height: 1em;
+      text-align: center;
+      text-shadow: 0px 0px 9px rgba(73, 73, 73, 1);
+      text-transform: uppercase;
+      font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;   
+      font-style: italic; 
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      margin-top: 1.7em;
+      width: 100%;
+  }
+   .outside-video{
+        display: none;
+   }
+   .outside-video-caption{
+        display: none;
+    }
+    .heading-seperator{
+        display: block;
+    }
+}
+
+@media screen and (max-width: 767px) {
+  .home-ma .inside-video{
+    display: none;
+  }
+    .outside-video-caption{
+        padding: 0;
+        font-size: 1em;
+        line-height: 1em;
+        margin-bottom: 14px;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;
+        font-style: italic;
+        color: #737373;
+        /* position: absolute; */
+        /* top: 50%; */
+        /* margin-top: 1.7em; */
+        width: 100%;
+        letter-spacing: 0.3em;  
+
+    }
+    .outside-video{
+        padding: 0;
+        font-size: 4em;
+        line-height: 1em;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "AgencyFB", "arial narrow", arial, helvetica, sans-serif;
+        font-style: italic;
+        color: #0078c9;
+        /* position: absolute; */
+        /* top: 50%; */
+        /* margin-top: 1.7em; */
+        width: 100%;
+      }
+    .controls-container{
+        width: 100%;
+   }
+   .heading-seperator{
+    display: none;
+   }
+}

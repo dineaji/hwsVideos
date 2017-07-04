@@ -1,0 +1,1091 @@
+﻿var clonedHTML= pagination1 = pagination2 = "";
+$(document).ready(function () {
+
+    
+$(window).load(function() {  
+$(".content_3").mCustomScrollbar({
+                advanced:{
+				updateOnContentResize:true,   
+				updateOnBrowserResize:true,   
+			},
+				scrollInertia: 600,
+                autoDraggerLength: false,
+                scrollButtons: {
+                    enable: true
+                }
+            });
+  });  
+  setWishlistBtn();
+   
+   var wishlistProductList = getParameterByName('productxxx_wishlistEmail');
+    //var wishlistProductList = getParameterByName('productxxx_wishlistEmail')
+    LoadWishlist(wishlistProductList);
+    function LoadWishlist(wishlistProductList) {
+        if (isNullAndUndef(wishlistProductList)) {
+            var pidArray = wishlistProductList // => "the_value"
+            var param = "ViewType=" + $('#hiddenViewType').val() + "&id=" + $('#hiddenCatID').val() + "&SubCatID=" + $('#hiddenSubcatID').val() + "&FilterType=" + $('#hiddenFilterType').val() + "&sortOptions=" + $('#hiddenSortOptions').val() + "&productIds=" + pidArray;
+			
+            getProductList(param);
+			
+            $('.overlayWishlist-bg').show();
+        }
+    }
+    function isNullAndUndef(variable) {
+
+        if (variable !== null && variable !== undefined) {
+            return true;
+        }
+
+        return false;
+    }
+    function getParameterByName(name) {
+
+        var match = RegExp('[?&]' + name + '=([^&]*)')
+                    .exec(window.location.search);
+
+        return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+
+    }
+    
+    
+
+    
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.scrollup').css('display','inline-block');
+        } else {
+            $('.scrollup').hide();
+        }
+    });
+    
+    function validateEmail(emailAddress) {
+        var atpos = emailAddress.indexOf("@");
+        var dotpos = emailAddress.lastIndexOf(".");
+        var valid = '';
+        if (emailAddress.length <= 0) {
+            valid = 'empty';
+            return valid;
+        }
+        else if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailAddress.length) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    function createCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        } else var expires = "";
+        document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+    }
+
+    function readCookie(name) {
+        var nameEQ = escape(name) + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return unescape(c.substring(nameEQ.length, c.length));
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name, "", -1);
+    }
+
+    $('.scrollup').click(function () {
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+    $(document).on("click", ".view40", function (evt) {
+        evt.preventDefault();
+        $('#hiddenViewType').val("40");
+        getProductList("viewType=40&sortOptions=" + getsortValue() + "&id=" + getcatValue() + "&SubCatID=" + getsubcatValue() + "&FilterType=" + getFilterType(), "NOLN");
+    });
+    $(document).on("click", ".viewAll", function (evt) {
+        evt.preventDefault();       
+        $('#hiddenViewType').val("All");
+        getProductList("viewType=All&sortOptions=" + getsortValue() + "&id=" + getcatValue() + "&SubCatID=" + getsubcatValue() + "&FilterType=" + getFilterType(), "NOLN");
+    });
+    $(document).on("click", ".skittle", function (evt) {
+        // evt.preventDefault();
+        //debugger;
+        $("#hidden_wishlistpid").attr('valuePID', $(this).attr('valuePID'));
+        $('.overlay-bg').show();
+        $('.overlayWishlist-bg').hide();
+        $('.overlayWishListDelete').show();
+        $('.overlayWishListFull').hide();
+        $('.mattel_overlay').hide();
+        $('.general_overlay').hide();
+        $('.mattelEmailMe_overlay').hide();
+        $('.read_reviews').hide();
+
+
+    });
+
+    $(document).on("click", ".CancelBtn", function (evt) {
+        // evt.preventDefault();
+        //debugger;
+        $('.overlay-bg').hide();
+        $('.overlayWishlist-bg').hide();
+        $('.overlayWishListDelete').hide();
+        $('.mattel_overlay').hide();
+    });
+
+    $(document).on("click", ".viewLess", function (evt) {
+        //evt.preventDefault();
+        //debugger;
+        $('#hiddenViewType').val("9");
+        getProductList("viewType=&sortOptions=" + getsortValue() + "&id=" + getcatValue() + "&SubCatID=" + getsubcatValue() + "&FilterType=" + getFilterType(), "NOLN");
+    });
+
+    // show Wish list - popup when you click on the link 
+    var flag1 = false;
+    $('.showWishlist-popup').click(function (event) {
+        //event.preventDefault(); // disable normal link function so that it doesn't refresh the page
+        //var pidArray = $.cookie('Hotwheel_ProductValue'); // => "the_value"
+        var pidArray = readCookie('Hotwheel_ProductValue'); // => "the_value"
+        var param = "ViewType=" + $('#hiddenViewType').val() + "&id=" + $('#hiddenCatID').val() + "&SubCatID=" + $('#hiddenSubcatID').val() + "&FilterType=" + $('#hiddenFilterType').val() + "&sortOptions=" + $('#hiddenSortOptions').val() + "&productIds=" + pidArray;
+        getProductList(param);
+
+        if (!flag1) {
+            flag1 = true;
+            $(".content_3").mCustomScrollbar({
+                advanced:{
+				updateOnContentResize:true,   
+				updateOnBrowserResize:true,   
+			},
+				scrollInertia: 600,
+                autoDraggerLength: false,
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        }
+        // 2 wish list line height in home page
+        var wishLHei = $('#WishList .product-name h1').height();
+//        if (wishLHei > 29) {
+            $('#WishList .product-name h1').css({ overflow: 'hidden', height: '23px' })
+       // }
+        $('.overlayWishlist-bg').show(); //display your popup
+    });
+
+    var flag2 = false;
+    $('.showDetailWishlist-popup').click(function (event) {
+        event.preventDefault();
+        var pid = $('#hidden_pid').attr("valuePID");
+        var skuID = $('#hidden_pid').attr("valuesku");
+        var productTitle = $('#hidden_pid').attr("valuetitle");
+        //var Cookiepid = $.cookie('Hotwheel_ProductValue');
+        var Cookiepid = readCookie('Hotwheel_ProductValue');
+        if (Cookiepid != null) {
+            if (Cookiepid.split("_").length != 100 || Cookiepid.indexOf(pid) > 0) {
+                var addpid = pid + '_' + Cookiepid;
+                if (Cookiepid.indexOf(pid) < 0) {
+                    createCookie('Hotwheel_ProductValue', addpid, 365);
+                    utag.track("view", { event_id: "TOYS Add to Wish List", event_category_id: "UCC", event_detail_sub_attr47: skuID + " " + productTitle });
+                }
+                setWishlistBtn();
+                var pidArray = readCookie('Hotwheel_ProductValue'); // => "the_value"
+                var param = "productIds=" + pidArray;
+                getProductDetailList(param);
+                $('.overlayWishlist-bg').show();
+            }
+            else {
+                $('.overlay-bg').show();
+                $('.overlayWishlist-bg').hide();
+                $('.overlayWishListDelete').hide();
+                $('.overlayWishListFull').hide();
+                $('.mattel_overlay').hide();
+                $('.general_overlay').hide();
+                $('.mattelEmailMe_overlay').hide();
+                $('.read_reviews').hide();
+                $('.overlayWishListFull').show();
+                $('#header_wrapper').css('z-index', '0');
+            }
+        }
+        else {
+            createCookie('Hotwheel_ProductValue', pid, 365);
+            var pidArray = readCookie('Hotwheel_ProductValue'); // => "the_value"
+            var param = "productIds=" + pidArray;
+            getProductDetailList(param);
+            $('.overlayWishlist-bg').show();
+            setWishlistBtn();
+            utag.track("view", { event_id: "TOYS Add to Wish List", event_category_id: "UCC", event_detail_sub_attr47: skuID + " " + productTitle });
+
+            //            $.cookie('Hotwheel_ProductValue', pid, { expires: 365 });
+        }
+		 if (!flag2) {
+            flag2 = true;
+            $(".content_wish").mCustomScrollbar({
+			advanced:{
+				updateOnContentResize:true,   
+				updateOnBrowserResize:true,   
+			},
+                scrollInertia: 600,
+                autoDraggerLength: false,
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        }
+        //display your popup
+        // 2 wish list line height in home page
+        var wishLHei = $('#WishList .product-name h1').height();
+        if (wishLHei > 25) {
+            $('#WishList .product-name h1').css({ overflow: 'hidden', height: '25px' })
+        }
+
+
+    });
+    var flag3 = false;
+    $('.ViewWishlistProductBtn').click(function (event) {
+        //event.preventDefault(); // disable normal link function so that it doesn't refresh the page
+        //var pidArray = $.cookie('Hotwheel_ProductValue'); // => "the_value"
+        var pidArray = readCookie('Hotwheel_ProductValue'); // => "the_value"
+        var param = "productIds=" + pidArray;
+        getProductDetailList(param);
+
+        if (!flag3) {
+            flag3 = true;
+            $(".content_3").mCustomScrollbar({
+			advanced:{
+				updateOnContentResize:true,   
+				updateOnBrowserResize:true,   
+			},
+	           scrollInertia: 600,
+                autoDraggerLength: false,
+                scrollButtons: {
+                    enable: true
+                }
+            });
+        }
+        // 2 wish list line height in home page
+        var wishLHei = $('#WishList .product-name h1').height();
+        if (wishLHei > 25) {
+            $('#WishList .product-name h1').css({ overflow: 'hidden', height: '25px' })
+        }
+        $('.overlay-bg').hide(); //display your popup
+        $('.overlayWishListFull').hide();
+        $('.overlayWishlist-bg').show(); //display your popup
+    });
+
+
+    function getsortValue() {
+        var sort = $('.sortblock-title').text();
+        return sort;
+    }
+    function getcatValue() {
+        return encodeURIComponent($('#hiddenCatID').val());
+    }
+    function getsubcatValue() {
+        return encodeURIComponent($('#hiddenSubcatID').val());
+    }
+    function getFilterType() {
+        return $('#hiddenFilterType').val();
+    }
+    function getViewType() {
+        return $('#hiddenViewType').val();
+    }
+    function getViewNumber() {
+        return $('#hiddenViewNumber').val();
+    }
+    $(document).on("click", ".thumbs", function (evt) {
+        evt.preventDefault();
+        var viewType = getViewType();
+        //debugger;
+        $(".thumbs").removeClass("actv");
+        $('#hiddenViewNumber').val($(this).attr("pgnum"));
+        var url = "viewNumber=" + getViewNumber() + "&id=" + getcatValue() + "&SubCatID=" + getsubcatValue() + "&FilterType=" + getFilterType() + "&sortOptions=" + getsortValue() + "&viewType=" + viewType;
+        getProductList(url, "NOLNP");
+        $(this).addClass("actv");
+        var elem = $(this).parents('.pagination').attr('cloneElement');
+        var thisElem = $(this).parents('.pagination').attr('id');
+        var elemIndex = $('#' + thisElem + ' ul.bxslider li').index($(this).parent('li'));
+        $('#' + elem + ' ul.bxslider li').eq(elemIndex).find('a').addClass('actv');
+
+    });
+    $(document).on("click", ".thumbs.actv", function (evt) {
+        evt.preventDefault();
+        var viewType = getViewType();
+        //debugger;
+        $('#hiddenViewNumber').val($(this).attr("pgnum"));
+        var url = "viewNumber=" + getViewNumber() + "&id=" + getcatValue() + "&SubCatID=" + getsubcatValue() + "&FilterType=" + getFilterType() + "&sortOptions=" + getsortValue() + "&viewType=" + viewType;
+        getProductList(url, "NOLNP");
+        $(this).addClass("actv");
+    });
+    // More detail height
+    var Hei = $('.txt3').height();
+    if (Hei < 74) {
+        $('.moreDetails').css({ display: 'none' })
+    }
+    else {
+        if (Hei > 74) {
+            $('.txt3').css({ overflow: 'hidden', height: '70px' })
+        }
+        else {
+            $('.moreDetails').css({ display: 'block' })
+        }
+    }
+    function setWishlistBtn() {
+        var AddWishlistBtn = $('#hiddenViewMyWishlist').attr("AddMyWishList");
+        var MyWishlistBtn = $('#hiddenViewMyWishlist').attr("ViewMyWishlist");
+        var id = $('#hidden_pid').attr("value");
+        var pidArray = readCookie('Hotwheel_ProductValue');
+        if (pidArray != null) {
+            if (pidArray.indexOf(id) >= 0) {
+                $("#detailWishlist").attr('src', MyWishlistBtn);
+            }
+            else {
+                $("#detailWishlist").attr('src', AddWishlistBtn);
+            }
+        }
+        else {
+            $("#detailWishlist").attr('src', AddWishlistBtn);
+        }
+        
+    }
+    var flag = true;
+    $('.moreDetails').click(function (e) {
+        if (flag) {
+            $('.txt3').css({ overflow: 'visible', height: 'auto' })
+            $('.moreDetails').text('Less Detail');
+            flag = false;
+        } else {
+            $('.txt3').css({ overflow: 'hidden', height: '70px' })
+            $('.moreDetails').text('More Details');
+            flag = true;
+        }
+    })
+    $(document).on("click", ".SortByData", function (evt) {
+        evt.preventDefault();
+        //debugger;
+        var sortOptions = $(this).text();
+        var CatID = getcatValue();
+        var SubCatID = getsubcatValue();
+        var FilterType = getFilterType();
+        var viewType = getViewType();
+        $('.sortblock-title').text(sortOptions);
+        $('#hiddenSortOptions').val(sortOptions);
+        var param = "id=" + CatID + "&SubCatID=" + SubCatID + "&FilterType=" + FilterType + "&sortOptions=" + sortOptions + "&viewType=" + viewType
+        getProductList(param, "");
+        $('.sortblock-inner h3').removeClass("active");
+        $('.sorByContent').hide();
+    });
+
+    // Added by Venmathi
+    $(document).on("click", ".FilterOpen", function (evt) {
+        evt.preventDefault();
+        //debugger;
+        var CatID = encodeURIComponent($(this).attr("CatID"));
+        var SubCatID = encodeURIComponent($(this).attr("SubCatID"));
+        var FilterType = $(this).attr("FilterType");
+        var ViewType = $(this).attr("ViewType");
+
+
+        $('#hiddenCatID').val(CatID);
+        $('#hiddenSubcatID').val(SubCatID);
+        $('#hiddenFilterType').val(FilterType);
+        //All category text highlight removed here
+        $('.AllCategory').css("font-weight", 'normal');
+        $('.AllCategory').css("color", "#FFFFFF");
+
+        var param = "ViewType=" + getViewType() + "&id=" + CatID + "&SubCatID=" + SubCatID + "&FilterType=" + FilterType + "&sortOptions=" + getsortValue();
+        var PageURL = $(this).attr("href");
+       // alert(PageURL);
+        utag.track("view", { page_id: PageURL });
+
+        getProductList(param, "");
+    });
+
+    $(document).on("click", ".breadCrumbCategory", function (evt) {
+        //evt.preventDefault();
+        //debugger;
+        var CatID = "";
+        var SubCatID = "";
+        var FilterType = "";
+        var ViewType = "";
+        if ($(this).text() != "Shop") {
+            CatID = getcatValue();
+            FilterType = "Cat";
+            ViewType = getViewType();
+            $('#hiddenSubcatID').val("");
+            $('#hiddenFilterType').val("Cat");
+            $('.AllCategory').css("font-weight", 'normal');
+            $('.AllCategory').css("color", "#FFFFFF");
+        }
+        else {
+            $('#hiddenCatID').val("");
+            $('#hiddenFilterType').val("");
+            $('#hiddenSubcatID').val("");
+            ViewType = getViewType();
+			$('.AllCategory').css("font-weight", 'Bold');
+            $('.AllCategory').css("color", "#FF6D22");
+
+        }
+        var param = "ViewType=" + ViewType + "&id=" + CatID + "&SubCatID=" + SubCatID + "&FilterType=" + FilterType + "&sortOptions=" + getsortValue();
+        getProductList(param, "");
+    });
+    $(document).on("click", ".AllCategory", function (evt) {
+        //evt.preventDefault();
+        //debugger;
+        var CatID = "";
+        var SubCatID = "";
+        var FilterType = "";
+        var ViewType = "";
+        if ($(this).text() != "All Categories") {
+            CatID = getcatValue();
+            FilterType = "Cat";
+            ViewType = getViewType();
+            $('#hiddenSubcatID').val("");
+            $('#hiddenFilterType').val("Cat");
+            $('.AllCategory').css("font-weight", 'normal');
+            $('.AllCategory').css("color", "#FFFFFF");
+        }
+        else {
+            $('#hiddenCatID').val("");
+            $('#hiddenFilterType').val("");
+            $('#hiddenSubcatID').val("");
+            ViewType = getViewType();
+            $('.AllCategory').css("font-weight", 'Bold');
+            $('.AllCategory').css("color", "#FF6D22");
+        }
+        var param = "ViewType=" + ViewType + "&id=" + CatID + "&SubCatID=" + SubCatID + "&FilterType=" + FilterType + "&sortOptions=" + getsortValue();
+        getProductList(param, "");
+    });
+
+    function getProductList(param, check) {
+        var html1;
+        var pubID = $('#hiddenshopPubId').val();
+        var compID = $('#hiddenshopcompId').val();
+        var tridionID = "&pubID=" + pubID + "&compID=" + compID;
+        $.ajax({
+            url: "/ProductCatalog/LoadMoreProducts?" + param + tridionID,
+            type: "GET",
+            //data: '{"searchTerm":"' + searchText + '*"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (data) {
+                html1 = data;
+                var html = $.parseHTML(html1);
+                var filterAge = $(".filter-Age");
+                var breadcrumbs = $("#breadcrumbs");
+                var pagination1 = $("#pagination1");
+                var pagination2 = $("#pagination2");
+                var ProductContent = $("#ProductContent");
+                var WishList = $(".product_container");
+
+                if (html != null && html.length > 0) {
+                    if (check != "NOLN") {
+                        var copybreadcrumbs = $(html).filter('#breadcrumbs');
+                        breadcrumbs.replaceWith(copybreadcrumbs);
+                        var copyfilterAge = $(html).filter('.filter-Age');
+                        filterAge.replaceWith(copyfilterAge);
+                    }
+                    if (check != "NOLNP") {
+                        var copypagination1 = $(html).filter('#pagination1');
+                        pagination1.replaceWith(copypagination1);
+                        var copypagination2 = $(html).filter('#pagination2');
+                        pagination2.replaceWith(copypagination2);
+
+                        pagination1 = $('#pagination1 .bxslider').bxSlider({
+                            infiniteLoop: false,
+                            hideControlOnEnd: true,
+                            slideWidth: 130,
+                            minSlides: 5,
+                            maxSlides: 5,
+                            slideMargin: 4,
+                            pager: false,
+                            onSlideNext: function () { pagination2.goToNextSlide(); },
+                            onSlidePrev: function () { pagination2.goToPrevSlide(); }
+                        });
+
+                        pagination2 = $('#pagination2 .bxslider').bxSlider({
+                            infiniteLoop: false,
+                            hideControlOnEnd: true,
+                            slideWidth: 130,
+                            minSlides: 5,
+                            maxSlides: 5,
+                            slideMargin: 3,
+                            pager: false,
+                            onSlideNext: function () { pagination1.goToNextSlide(); },
+                            onSlidePrev: function () { pagination1.goToPrevSlide(); }
+                        });
+                        
+                    }
+                    var copyWishList = $(html).filter('.product_container');
+                    WishList.replaceWith(copyWishList);
+
+                    var copyProductContent = $(html).filter('#ProductContent');
+                    ProductContent.replaceWith(copyProductContent);
+                    
+                    var table = $('.ratings');
+                    table.find('.rateit').rateit();
+                    var pageNavCount = $("ul.bxslider li").length;
+                    if (pageNavCount < 5) $('#thumbBg').css('width', 'auto');
+                    $('#homePage .rateit').css({ background: 'url(../img/star_detail.png)' });
+                    $('#InnerPage .rateit').css({ background: 'url(../img/star_detail.png)' });
+                    // 2 line height in home page
+                    var LHei = $('.product-name h1').height();
+                    /*if (/chrom(e|ium)/.test(navigator.userAgent.toLowerCase())) {
+                            $('.product-name h1').css({ overflow: 'hidden', height: '27px' })
+                        
+                    }
+                    else {
+                        
+                       
+                            $('.product-name h1').css({ overflow: 'hidden', height: '28px' })
+                    }*/
+                        
+                    $('#WishList .product-name h1').css({ overflow: 'hidden', height: '23px' })
+                        
+                }
+
+            },
+            fail: ajaxFailure
+        });
+    }
+
+    function getProductDetailList(param) {
+        var html1;
+        var pubID = $('#hiddenshopPubId').val();
+        var compID = $('#hiddenshopcompId').val();
+        var tridionID = "&pubID=" + pubID + "&compID=" + compID;
+        $.ajax({
+            url: "/ProductCatalog/LoadMoreProducts?" + param + tridionID,
+            type: "GET",
+            //data: '{"searchTerm":"' + searchText + '*"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (data) {
+                var html = data;
+                var WishList = $(".product_container");
+                if (html != null && html.length > 0) {
+                    var copyWishList = $(html).filter('.product_container');
+                    WishList.replaceWith(copyWishList);
+                    $('#WishList .product-name h1').css({ overflow: 'hidden', height: '23px' })
+                }
+            },
+            fail: ajaxFailure
+        });
+    }
+
+
+    $('#print_wl').click(function () {
+     clonedHTML = $("#wishlist_top").clone();
+     if ($('#WishPrdContainer').find('#printIntro').length < 1)
+            $('#WishPrdContainer').prepend('<p id="printIntro">' + $('#hiddenPrintHeader').val() + '</p>');
+
+		$("#WishPrdContainer").printElement({
+            printBodyOptions: { classNameToAdd: 'printElement', addHtml: clonedHTML },
+            printMode: 'popup',
+            pageTitle: 'My WishList',
+            leaveOpen: true, //For debugging then you can make it false
+            overrideElementCSS: ['styles/wishlist-print.css']
+        });
+        utag.track("view", { event_id: "TOYS Print Wish List", event_category_id: "Links" });
+        return false;
+    });
+    function ajaxFailure(jqXHR, textStatus, error) {
+        alert(error + textStatus);
+        //$("#divScrollText").show();
+    }
+
+    //dropdown menu
+    $('.sortblock-inner h3').mouseenter(function () {
+        $('.sortblock-inner h3').addClass("active");
+        $('.sorByContent').show();
+    });
+    $('.sorByContent').mouseover(function () {
+        $('.sortblock-inner h3').addClass("active");
+        $('.sorByContent').show();
+    });
+    $('.sortblock-inner h3').mouseout(function () {
+        $('.sortblock-inner h3').removeClass("active");
+        $('.sorByContent').hide();
+    });
+    $('.sorByContent').mouseout(function () {
+        $('.sortblock-inner h3').removeClass("active");
+        $('.sorByContent').hide();
+    });
+
+    // pop up
+    // show popup when you click on the link 
+    $(document).on("click", ".show-popup", function (evt) {
+        evt.preventDefault(); // disable normal link function so that it doesn't refresh the page
+        $('.overlay-bg').show(); //display your popup
+        $('.general_overlay').show();
+        $('.mattel_overlay').hide();
+        $('.mattelEmailMe_overlay').hide();
+        $('.read_reviews').hide();
+        $('.overlayWishListDelete').hide();
+        $('.overlayWishListFull').hide();
+        var RetailerOption = $(this).attr("class").toString().replace(' show-popup', '')
+        $("#hidden_Retailer").attr('value', RetailerOption);
+    });
+
+    // show showMattel-popup when you click on the link 
+    $(document).on("click", ".showMattel-popup", function (evt) {
+        evt.preventDefault(); // disable normal link function so that it doesn't refresh the page
+        $('.overlay-bg').show(); //display your popup
+        $('.general_overlay').hide();
+        $('.mattelEmailMe_overlay').hide();
+        $('.mattel_overlay').show();
+        $('.read_reviews').hide();
+        $('.overlayWishListDelete').hide();
+        $('.overlayWishListFull').hide();
+        $("#hidden_pid").attr('valuePID', $(this).find('.addTocartTxt').attr('valuePID'));
+        $("#hidden_pid").attr('valueSKU', $(this).find('.addTocartTxt').attr('valueSKU'));
+    });
+    $(document).on("click", "#email_wl", function (evt) {
+        showDialog('sendMail','body',99999);
+		if ($(this).val().length < 1)
+                 $(this).css('border-color', '#f00').addClass('validationError');
+             else
+                 $(this).css('border-color', '#007BC9').removeClass('validationError'); 
+    });
+    
+    
+    // show showMattel-popup when you click on the link 
+    $(document).on("click", ".showEmailMeMattel-popup", function (evt) {
+        evt.preventDefault(); // disable normal link function so that it doesn't refresh the page
+        $('.overlay-bg').show(); //display your popup
+        $('.general_overlay').hide();
+        $('.mattelEmailMe_overlay').show();
+        $('.mattel_overlay').hide();
+        $('.read_reviews').hide();
+        $('.overlayWishListDelete').hide();
+        $('.overlayWishListFull').hide();
+        $("#hidden_pid").attr('valuePID', $(this).find('.EmailMe').attr('pid'));
+        $("#hidden_pid").attr('valueSKU', $(this).find('.EmailMe').attr('skuid'));
+    });
+    // show showRead-popup when you click on the link 
+    $(document).on("click", ".showRead-popup", function (evt) {
+        evt.preventDefault(); // disable normal link function so that it doesn't refresh the page
+        $('.overlay-bg').show(); //display your popup
+        $('.general_overlay').hide();
+        $('.mattelEmailMe_overlay').hide();
+        $('.mattel_overlay').hide();
+        $('.read_reviews').show();
+        $('.overlayWishListDelete').hide();
+        $('.overlayWishListFull').hide();
+        $("#hidden_pid").attr('valuePID', $(this).find('.addTocartTxt').attr('valuePID'));
+        $("#hidden_pid").attr('valueSKU', $(this).find('.addTocartTxt').attr('valueSKU'));
+    });
+    $('.keepEmailMeBtn').click(function (event) {
+        var PID = $('#hidden_pid').attr("valuePID");
+        var SKU = $('#hidden_pid').attr("valueSKU");
+        var windowWidth = 540;
+        var windowHeight = 620;
+        var windowLeft = 0;
+        var windowTop = 0;
+        var resizable = 'no';
+        var scrollbars = 'yes';
+        var url = 'http://shop.mattel.com/product/when_available_popup.jsp?productId=' + PID + '&sku=' + SKU + '&qty_0=1&async=true&showProductInCart=true' + '&showProductInCart=true&utm_source=hotwheels.com&utm_medium=referral&utm_campaign=productcatalog';
+        var windowName = "";
+        var windowSize = "width=" + windowWidth + ",height=" + windowHeight + "left=" + windowLeft + ",top=" + windowTop + "screenX=" + windowLeft + ",screenY=" + windowTop + ",resizable=" + resizable + ",scrollbars=" + scrollbars;
+        $('.overlay-bg').hide();
+        window.open(url, windowName, windowSize);
+    });
+    $('.deleteWishlistProductBtn').click(function (event) {
+        var PID = $('#hidden_wishlistpid').attr("valuePID");
+
+        var pidArray = readCookie('Hotwheel_ProductValue'); // => "the_value"
+        if (pidArray.indexOf('_' + PID) >= 0) {
+            pidArray = pidArray.replace('_' + PID, '');
+        }
+        else if (pidArray.indexOf(PID + '_') >= 0) {
+            pidArray = pidArray.replace(PID + '_', '');
+
+        }
+        else if (pidArray.indexOf(PID) >= 0) {
+            pidArray = pidArray.replace(PID, '');
+        }
+        if (pidArray.length == 0) {
+            pidArray = ''
+            eraseCookie('Hotwheel_ProductValue');
+        }
+        else {
+            createCookie('Hotwheel_ProductValue', pidArray, 365);
+
+        }
+        var param = "ViewType=" + $('#hiddenViewType').val() + "&id=" + $('#hiddenCatID').val() + "&SubCatID=" + $('#hiddenSubcatID').val() + "&FilterType=" + $('#hiddenFilterType').val() + "&sortOptions=" + $('#hiddenSortOptions').val() + "&productIds=" + pidArray;
+        getProductList(param);
+        $('.overlayWishlist-bg').show(); //display your popup
+        $('.overlay-bg').hide();
+        $('.overlayWishListDelete').hide();
+        
+
+    });
+    $('.deleteDetailWishlistProductBtn').click(function (event) {
+        var PID = $('#hidden_wishlistpid').attr("valuePID");
+
+        var pidArray = readCookie('Hotwheel_ProductValue'); // => "the_value"
+
+
+        if (pidArray.indexOf('_' + PID) >= 0) {
+            pidArray = pidArray.replace('_' + PID, '');
+        }
+        else if (pidArray.indexOf(PID + '_') >= 0) {
+            pidArray = pidArray.replace(PID + '_', '');
+        }
+        else if (pidArray.indexOf(PID) >= 0) {
+            pidArray = pidArray.replace(PID, '');
+        }
+        if (pidArray.length == 0) {
+            pidArray = ''
+            eraseCookie('Hotwheel_ProductValue');
+            var param = "productIds=" + pidArray;
+            getProductDetailList(param);
+        }
+        else {
+            createCookie('Hotwheel_ProductValue', pidArray, 365);
+
+        
+        var param = "productIds=" + pidArray;
+        getProductDetailList(param);
+        }
+        $('.overlayWishlist-bg').show(); //display your popup
+        $('.overlay-bg').hide();
+        $('.overlayWishListDelete').hide();
+        setWishlistBtn();
+        
+
+    });
+
+    // hide popup when user clicks on close button
+    $('.back_btn').click(function () {
+        $('.overlay-bg').hide(); // hide the overlay
+    });
+    $('.keepBtn').click(function (event) {
+        var PID = $('#hidden_pid').attr("valuePID");
+        var SKU = $('#hidden_pid').attr("valueSKU");
+
+        $('.overlay-bg').hide();
+        window.open('http://shop.mattel.com/cartHandler/index.jsp?action=skuAddToCart&prod_0=' + PID + '|' + SKU + '&qty_0=1&async=true&showProductInCart=true' + '&showProductInCart=true&utm_source=http://hotwheels.com&utm_medium=referral&utm_campaign=productcatalog');
+
+    });
+    $('.keepRetailerBtn').click(function (event) {
+        var PID = $('#hidden_pid').attr("valuePID");
+        var SKU = $('#hidden_pid').attr("valueSKU");
+        var Cat = $('#hidden_pid').attr("valueCat");
+        var Title = $('#hidden_pid').attr("valueTitle");
+        var ToyInfo = SKU + ' ' + Title;
+        var Brand = "HotWheels US";
+        var AmazonAsin = $('#hidden_pid').attr("valueAsin");
+        var Retailer = $('#hidden_Retailer').attr("value");
+        var ProductName = $('#hidden_pid').attr("valueProductName");
+        var TagInfo = '&cm_sp=' + Cat + '-_-' + Brand + '-_-' + Retailer + '-_-' + ToyInfo
+        ProductName = encodeURIComponent(ProductName);
+        $('.overlay-bg').hide();
+        var url = ""
+        if (Retailer == "walmart") {
+            url = "http://www.walmart.com/search/search-ng.do?search_query=" + ProductName + "&ic=16_0&Find=Find&search_constraint=0";
+        }
+        else if (Retailer == "amazon") {
+            if (AmazonAsin != "") {
+                var url = "http://www.amazon.com/dp/" + AmazonAsin + "?tag=hotwheelsprodcat-20";
+            }
+            else {
+                url = "http://www.amazon.com/s/ref=nb_sb_noss?url=srs%3D2593700011%26search-alias%3Dspecialty-aps&field-keywords=" + Title+ "&tag=hotwheelsprodcat-20";
+            }
+        }
+        else if (Retailer == "toys") {
+            url = "http://www.toysrus.com/family/index.jsp?categoryId=3858164";
+        }
+        else if (Retailer == "target") {
+            url = "http://www.target.com/s?searchTerm=" + ProductName + "&category=0|All|matchallpartial|all+categories";
+        }
+        url = url;
+        window.open(url);
+    });
+    $('.show-popup li').click(function (e) {
+        alert($(this).find("span.t").text());
+    });
+    $.fn.placeholder = function () {
+         if (typeof document.createElement("input").placeholder == 'undefined') {
+             $('[placeholder]').addClass('placeholder').each(function () {
+                 var input = $(this);
+                 if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                     input.addClass('placeholder');
+                     input.val(input.attr('placeholder'));
+                 }
+             }).focus(function () {
+                 var input = $(this);
+                 if (input.val() == input.attr('placeholder')) {
+                     input.val('');
+                     input.removeClass('placeholder');
+                 }
+             }).blur(function () {
+                 var input = $(this);
+                 if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                     input.addClass('placeholder');
+                     input.val(input.attr('placeholder'));
+                 }
+             })
+         }
+     }
+
+     function availWidth() {
+         if (window.innerWidth) { return window.innerWidth; }
+         else if (document.documentElement.clientWidth) { return document.documentElement.clientWidth; }
+         else { return document.body.clientWidth; }
+     }
+
+     function availHeight() {
+         if (window.innerHeight) { return window.innerHeight; }
+         else if (document.documentElement.clientHeight) { return document.documentElement.clientHeight; }
+         else { return document.body.clientHeight; }
+     }
+
+     function availTopSpace() {
+         if (document.documentElement.scrollTop != undefined) { return document.documentElement.scrollTop; }
+         else if (document.body.scrollTop) { return document.body.scrollTop; }
+         else { return window.pageYOffset; }
+     }
+
+     function showDialog(id, container, zIndex) {
+         var dlgDiv = document.getElementById(id);
+         if (id && document.getElementById(id)) {
+             overlay = document.createElement("div");
+             overlay.setAttribute("id", "overlayProfile_" + id);
+             $(overlay).addClass("overlayContainer");
+
+             $(overlay).css({ 'top': '0px', 'left': '0px', 'height': '100%', 'width': '100%', 'position': 'fixed', 'z-index': '9995', 'background-color': '#000', 'display': 'none', 'opacity': '.6' });
+             overlay.style.display = "none";
+             overlay.style.zIndex = (zIndex - 1);
+             if (container.indexOf('body') != -1) {
+                 document.body.appendChild(overlay);
+                 $("#" + id).appendTo("body");
+             } else {
+                 document.getElementById(container).appendChild(overlay);
+                 $("#" + id).appendTo("#" + container);
+             }
+             $(dlgDiv).addClass("overlayContentContainer");
+             $("#overlayProfile_" + id).unbind('click');
+             $("#overlayProfile_" + id).click(function () { document.getElementById(id).close(); $(this).fadeOut(function () { $(this).remove() }); })
+             $(dlgDiv).fadeIn();
+             $(overlay).fadeIn();
+             dlgDiv.style.zIndex = zIndex;
+
+             if (((availWidth() / 2) - (dlgDiv.offsetWidth / 2)) < 5)
+                 dlgDiv.style.left = "20px";
+             else
+                 dlgDiv.style.left = ((availWidth() / 2) - (dlgDiv.offsetWidth / 2)) + "px";
+
+             var topSpace = availTopSpace();
+             if (topSpace < 1) {
+                 topSpace = $("body").scrollTop();
+             }
+             if (((availHeight() / 2) - (dlgDiv.offsetHeight / 2)) < 5)
+                 dlgDiv.style.top = (topSpace + ((availHeight() / 2) - (dlgDiv.offsetHeight / 2))) + 5 + "px";
+             else {
+                 dlgDiv.style.top = (topSpace + ((availHeight() / 2) - (dlgDiv.offsetHeight / 2))) + "px";
+             }
+             dlgDiv.close = function () {
+                 $(dlgDiv).fadeOut();
+                 $("#overlayProfile_" + id).fadeOut(function () { $("#overlayProfile_" + id).remove() });
+             }
+             if (id.indexOf('wishListPopup') != -1) { $(".wishListItemsContainer").mCustomScrollbar('update'); }
+             return dlgDiv;
+         }
+         return false;
+     }
+     $(document).ready(function () {
+         $.fn.placeholder();
+
+         /* MAil Validation Starts*/
+
+
+         $('.emailFieldsContainer input').blur(function () {
+             if ($(this).val().length < 1)
+                 $(this).css('border-color', '#f00').addClass('validationError');
+             else
+                 $(this).css('border-color', '#007BC9').removeClass('validationError'); 
+         });
+
+         $('.emailFieldsContainer input').keypress(function () {
+             resetEmailFields();
+         })
+         $(document).on("click", "#mailSendBtn", function (evt) {
+         //$('#mailSendBtn').click(function () {
+             checkFields();
+              if ($('.wishlistFrom').val().length == 0 && $('.wishlistTo').val().length == 0 && $('.wishlistEmailAddress').val().length == 0) {
+                $('#emailSentHeading').hide();
+                $('#emailErrorHeading').show();
+                $('#emailSentTxt').hide();
+                $('#emailErrorTxt').show();
+                $('#emailNameErrorTxt').hide();
+                $('#emailValidationError').hide();
+                 errorEnabledFlag = true;
+             } else if ($('.wishlistFrom').val().length == 0 || $('.wishlistTo').val().length == 0) {
+               if ($('.wishlistEmailAddress').val().length == 0 || (!validateForm($('.fieldElement tr:eq(2) td:eq(1) input')))) {
+                    $('#emailSentHeading').hide();
+                    $('#emailErrorHeading').show();
+                    $('#emailSentTxt').hide();
+                    $('#emailErrorTxt').show();
+                    $('#emailNameErrorTxt').hide();
+                    $('#emailValidationError').hide();
+                    errorEnabledFlag = true;
+                }
+                else {
+                    $('#emailSentHeading').hide();
+                    $('#emailErrorHeading').show();
+                    $('#emailSentTxt').hide();
+                    $('#emailErrorTxt').hide();
+                    $('#emailNameErrorTxt').show();
+                    $('#emailValidationError').hide();
+                    errorNameEnabledFlag = true;
+                }
+
+            } 
+            else if (!validateForm($('.fieldElement tr:eq(2) td:eq(1) input'))) {
+
+                $('#emailSentHeading').hide();
+                $('#emailErrorHeading').show();
+                $('#emailSentTxt').hide();
+                $('#emailErrorTxt').hide();
+                $('#emailNameErrorTxt').hide();
+                $('#emailValidationError').show();
+                $('.emailFieldsContainer input:eq(2)').css('border-color', '#f00').addClass('validationError');
+                emailErrorEnabledFlag = true;
+            }
+            else {
+                var pidArray = readCookie('Hotwheel_ProductValue'); // => "the_value"
+                var param = "ViewType=" + $('#hiddenViewType').val() + "&id=" + $('#hiddenCatID').val() + "&SubCatID=" + $('#hiddenSubcatID').val() + "&FilterType=" + $('#hiddenFilterType').val() + "&sortOptions=" + $('#hiddenSortOptions').val() + "&productIds=" + pidArray + "&EmailAddress=Thangadurai.Arumugam@mattel.com";
+                var shareUrl = "http://www.hotwheels.com";
+                var shareContentTitle = "Wishlist Hot Wheels";
+                var wishlistFrom = $('.wishlistFrom').val();
+                var wishlistTo = $('.wishlistTo').val();
+                var wishEmailAddress = $('.wishlistEmailAddress').val();
+                var validatedValue = validateEmail(wishEmailAddress);
+                var EmailParam = "?emailAddress=" + wishEmailAddress + "&from=" + wishlistFrom + "&To=" + wishlistTo + "&wishlistEmailProductList=" + pidArray;;
+
+                if (validatedValue != 'empty' && validatedValue == true) {
+                    $.ajax({
+                        url: '/ProductCatalog/SendEmail' + EmailParam,
+                        type: 'POST',
+                        //data: {'emailTo': shareRecId, 'title': shareContentTitle, 'userLink': shareUrl },
+                        contentType: 'application/json; charset=utf-8', dataType: 'json',
+                        success: function (response) {
+                            $('.successfulMail').css('display', 'block');
+                            $.colorbox.resize();
+                        },
+                        error: function (xhr) { }
+                    });
+
+                } else {
+                    if (validatedValue == 'empty')
+                        $('.emptyMail').css('display', 'block');
+                    else
+                        $('.failureMail').css('display', 'block');
+                    $.colorbox.resize();
+                }
+                document.getElementById('sendMail').close();
+                resetmailValues();
+                showDialog('congratsMailSent', 'body', 999999);
+                utag.track("view", { page_id: "Email Wish List Sent", category_id: "TOYS" });
+
+            }
+        })
+     });
+     var textValidationFlag = true, errorEnabledFlag = errorNameEnabledFlag=emailErrorEnabledFlag = false;
+     function checkFields() {
+         $('.emailFieldsContainer input').each(function () {
+             if ($(this).val().length < 1)
+                 $(this).css('border-color', '#f00').addClass('validationError');
+             else
+                 $(this).css('border-color', '#007BC9').removeClass('validationError'); ;
+         });
+     }
+
+     function resetmailValues() {
+         $('.emailFieldsContainer input').val('');
+     }
+
+     function resetEmailFields() {
+         if (errorEnabledFlag) {
+            $(this).css('border-color', '#FF0000').removeClass('validationError');
+            $('#emailSentHeading').show();
+            $('#emailErrorHeading').hide();
+            $('#emailErrorTxt').hide();
+            $('#emailSentTxt').show();
+            errorEnabledFlag = false;
+
+        } else if (emailErrorEnabledFlag) {
+            $(this).css('border-color', '#FF0000').removeClass('validationError');
+            $('#emailSentHeading').show();
+            $('#emailSentTxt').show();
+            $('#emailErrorHeading').hide();
+            $('#emailValidationError').hide();
+            emailErrorEnabledFlag = false;
+        }
+        else if (errorNameEnabledFlag) {
+            $(this).css('border-color', '#FF0000').removeClass('validationError');
+            $('#emailSentHeading').show();
+            $('#emailErrorHeading').hide();
+            $('#emailSentTxt').show();
+            $('#emailNameErrorTxt').hide();
+            emailErrorEnabledFlag = false;
+        }
+     }
+
+     function validateForm(obj) {
+         var x = $(obj).val();
+         var atpos = x.indexOf("@");
+         var dotpos = x.lastIndexOf(".");
+         if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+             return false;
+         }
+         return true;
+     }
+
+
+    $(".KeepReadReviewbutton").click(function (event) {
+        var id = $('#hidden_pid').attr("value");
+        $('.overlay-bg').hide();
+        window.open('http://shop.mattel.com/product/index.jsp?productId=' + id + '#showDetails');
+    });
+    
+    $("#sendAnother").click(function (event) {
+        document.getElementById('congratsMailSent').close();
+        showDialog('sendMail','body',999999);
+        resetmailValues();
+    });
+    $("#returnToShop").click(function (event) {
+        document.getElementById('congratsMailSent').close();
+        resetmailValues();
+    });
+    
+    $("#sendEmailClose").click(function (event) {
+		document.getElementById('sendMail').close();
+		resetEmailFields();
+        resetmailValues();
+		$('#sendMail').hide();
+    });    
+
+    
+    $('.wishImg').hover(function () {
+        var id = $('#hidden_pid').attr("value");
+        var AddWishlistTooltip = $('#hiddenTooltip').attr("AddWishListTooltip");
+        var MyWishlistTooltip = $('#hiddenTooltip').attr("MyWishlistTooltip");
+        var pidArray = readCookie('Hotwheel_ProductValue');
+        if (pidArray != null) {
+            if (pidArray.indexOf(id) >= 0) {
+                $(".tooltip").attr("src", MyWishlistTooltip);
+            }
+            else {
+                $(".tooltip").attr("src", AddWishlistTooltip);
+            }
+        }
+        else {
+            $(".tooltip").attr("src", AddWishlistTooltip);
+        }
+    });
+});                                                                                // Main jQuery Closing

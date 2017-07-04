@@ -1,0 +1,231 @@
+.shop-landing-container *{
+	box-sizing: content-box;
+	-webkit-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+}
+@font-face {
+  font-family: "AkzidenzGroteskBE-Bold";
+  src: url("../fonts/AkzidenzGroteskBE-Bold.otf");
+  src: url("../fonts/AkzidenzGroteskBE-Bold.otf?") format("opentype");
+    font-weight: bold;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: "AkzidenzGroteskBE-Regular";
+  src: url("../fonts/AkzidenzGroteskBE-Regular.otf");
+  src: url("../fonts/AkzidenzGroteskBE-Regular.otf?") format("opentype");
+    font-weight: bold;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global */
+.shop-landing-container{max-width:1440px;margin:100px auto 0px;/*border-bottom:100px solid #e56a23*/}
+
+/*Key drivers CDA */
+.category-cda .top-marquee-container{margin-top:-6px}
+.category-cda,.category-cda img{width:100%}
+.category-cda h1{font-family:'AgencyFB',arial,helvetica,sans-serif;font-style:italic;font-size:3em;text-align:center;color:#fff;background-color:#0078c9;padding:10px 0px;margin-bottom:0px}
+.category-cda .video-wrapper{margin:-2px 0px 0px 0px}
+.category-cda .flex-control-nav{display:none}
+.cda-mobile{display:none}
+/* End */
+
+/* Key drivers Category description */
+.category-description{width:100%;background-size:100%}
+.category-description .category-intro-text-field{width: 70%;padding: 30px 30px;}
+.category-description .category-intro-text-field h2{font-family:'AgencyFB',arial,helvetica,sans-serif;font-style:italic;font-size:2.5em;margin-bottom:20px;margin-top:0px;line-height:1em}
+.category-description .category-intro-text-field p{font-size:16px;line-height:25px}
+
+/* End */
+
+/* Key drivers videos */
+.segment-videos{/*width:65%;*/margin:0 auto;background-color:#ebebeb}
+.segment-videos .player-container{width:100%;margin:0 auto}
+.segment-videos .video-wrapper{margin:0px;padding-bottom:56.20%}
+.segment-video-container .segment-video-header{background: url('../img/stripes.png') no-repeat center;text-align:center;background-size:contain;font-family:'AgencyFB',arial,helvetica,sans-serif;font-style:italic;font-size:3em;margin-top:0px}
+.segment-video-container{padding:40px 0px}
+.segment-videos .bx-controls-direction{display:block}
+.segment-videos .bx-controls-direction a{top:31% !important}
+.segment-videos .bx-wrapper .bx-viewport{min-height:auto !important}
+.segment-videos .bx-wrapper .bx-next:hover{background: url('../img/keydrivers/slider-nav.png') no-repeat 0px 0px}
+.segment-videos .bx-wrapper .bx-prev:hover{background: url('../img/keydrivers/slider-nav.png') no-repeat 0px -89px}
+.segment-videos .bx-wrapper .bx-next{background: url('../img/keydrivers/slider-nav.png') no-repeat 0px -166px;width:70px;height:74px;right:-90px}
+.segment-videos .bx-wrapper .bx-prev{background: url('../img/keydrivers/slider-nav.png') no-repeat 0px -244px;width:70px;height:74px;left:-90px}
+.segment-videos .thumb-overlay{
+	width:100%;height:77%;position:absolute;left:0px;top:0px;
+	background-image: url(../img/video-thumb-icon.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 50px;
+}
+.segment-videos .thumb-info{bottom: 0px !important;background:none;position:relative !important;padding:0px 10px 7px !important;min-height:50px !important;border:none;max-width: 210px;border-left:0px !important;border-right:0px !important;margin-top:3px}
+.segment-videos .thumb-info .title{
+    /* background-image: url(../img/videos-icon.png); */
+    /* background-position: right 5px; */
+    padding-right: 30px;
+    /* background-repeat: no-repeat; */
+    line-height: 19px;
+    padding-bottom: 5px;
+    font-size: 12px;
+    color: #465660;
+    padding-top:5px;
+    min-height:40px;
+    }
+.segment-videos .cat-video-slider{margin:5px 0px}
+.segment-videos .cat-video-slider li{cursor:pointer;min-width:226.5px}
+.segment-videos .cat-video-slider li .thumb-overlay span{display:none}
+.segment-videos .cat-video-slider li.oo-thumbnail-active .thumb-overlay{text-align: center;background-color: rgba(0,0,0,0.5);background-image:none}
+.segment-videos .cat-video-slider li.oo-thumbnail-active .thumb-overlay span{line-height: 190px;color: #fff;font-weight: bold;display:block}
+.segment-videos .cat-video-slider li:hover .thumb-info .title{/* background-image: url(../img/videos-icon.png); *//* background-position: right -50px; *//* padding-right: 40px; *//* background-repeat:no-repeat; *//* line-height:18px; */color:rgb(255, 124, 0);}
+/* End */
+
+/* Key drivers play benefits */
+.play-benefits{margin-top:-6px;margin-bottom:-6px}
+.play-benefits.right .play-benefits-intro{position:relative;float:right;padding:0% 2%;height:56.5%;width:36%;z-index:2;font-size:12px}
+.play-benefits.left .play-benefits-intro{position:relative;float:left;padding:0% 2%;height:100%;width:36%;z-index:2;font-size:12px}
+.play-benefits.right,.play-benefits.left{position:relative;display:inline-block;background-color:rgba(255,255,255,0.80);background-repeat:no-repeat}
+.play-benefits.right{background-position:right}
+.play-benefits.left{background-position:left}
+.play-benefits.right .flexslider{width:60%;float:left}
+.play-benefits.left .flexslider{width:60%;float:right}
+.play-benefits.right .flexslider .flex-direction-nav,.play-benefits.left .flexslider .flex-direction-nav{width:90% !important}
+.play-benefits-intro h2{font-family: 'AgencyFB',arial,helvetica,sans-serifsans-serif;font-size: 23px;line-height: 36px;font-style:italic}
+.play-benefits.left .play-benefits-intro h3,.play-benefits.right .play-benefits-intro h3{font-family:'AgencyFB',arial,helvetica,sans-serif;font-style:italic;font-size:3.5em;color:#000;margin-bottom:20px;margin-top:0px}
+.play-benefits.left .play-benefits-intro ul,.play-benefits.right .play-benefits-intro ul{margin-left:20px}
+.play-benefits.left .play-benefits-intro ul li,.play-benefits.right .play-benefits-intro ul li{list-style-type: square;font-size: 1.42em;line-height: 1.7em;font-family: 'AkzidenzGroteskBE-Regular',arial,helvetica,sans-serif;}
+.play-benefits.left .play-benefits-intro p,.play-benefits.right .play-benefits-intro p{font-size:1.42em;color:#fff}
+.play-benefits.left .play-benefits-intro p a,.play-benefits.right .play-benefits-intro p a{color:#fff;text-decoration:underline;font-weight:bold}
+.play-benefits.left .play-benefits-intro ul li .bold-text,.play-benefits.right .play-benefits-intro ul li .bold-text{font-family:"AkzidenzGroteskBE-Bold",arial,helvetica,sans-serif}
+/* End */
+
+/* Key drivers games video */
+.segment-gamesvideos{padding:40px 0px}
+.segment-gamesvideos h2{background: url('../img/keydrivers/stripes_blue.png') no-repeat center;text-align:center;background-size:contain;font-family:'AgencyFB',arial,helvetica,sans-serif;font-style:italic;font-size:3em;margin-top:0px;color:#0078c9}
+.segment-gamesvideos .product-tile .product-tile__info{text-align:center}
+.segment-gamesvideos .product-tile .product-tile__info .games-video-title{font-family:'AkzidenzGroteskBE-Bold',arial,helvetica,sans-serif;font-size:18px;margin:0px;line-height:24px;color:#0078c9}
+.segment-gamesvideos .product-tile .product-tile__info .games-video-subtitle{font-family:'AkzidenzGroteskBE-Bold',arial,helvetica,sans-serif;font-size:24px;margin:0px;line-height:28px;color:#000}
+.segment-gamesvideos .product-tiles .product-tile.Games .icon{background:url('../img/keydrivers/games-video-sprite.png') 0px 0px;width:65px;height:55px;position:absolute;top:10px;right:10px}
+.segment-gamesvideos .product-tiles .product-tile.Videos .icon{background:url('../img/keydrivers/games-video-sprite.png') 0px -67px;width: 65px;height: 55px;position: absolute;top: 10px;right: 10px}
+.segment-gamesvideos .bx-wrapper .bx-next:hover{background: url('../img/keydrivers/games-slider.png') no-repeat 0px 0px !important}
+.segment-gamesvideos .bx-wrapper .bx-prev:hover{background: url('../img/keydrivers/games-slider.png') no-repeat 0px -89px !important}
+.segment-gamesvideos .bx-wrapper .bx-next{background: url('../img/keydrivers/games-slider.png') no-repeat 0px -178px !important;width:70px !important;height: 75px !important;top:37% !important}
+.segment-gamesvideos .bx-wrapper .bx-prev{background: url('../img/keydrivers/games-slider.png') no-repeat 0px -264px !important;width:70px !important;height:75px !important;top:37% !important}
+.segment-gamesvideos .carousel-wrap{overflow:visible !important}
+.segment-gamesvideos .arrow--disabled{display:none !important}
+.segment-gamesvideos .bx-wrapper .bx-viewport{min-height:auto !important}
+.segment-gamesvideos .product-tiles .thumb{height:172px;width:230px}
+.segment-gamesvideos .product-tiles .thumb-info{bottom: 0px;background: none;position: relative;padding: 0px 10px 7px;min-height: 50px;border: none;max-width: 210px;border-left: 0px !important;border-right: 0px !important;margin-top: 10px;}
+.segment-gamesvideos .product-tile.games{margin-top:0px}
+.segment-gamesvideos .product-tiles li.games .thumb-info .title{background-image: url(../img/games-icon.png);background-position: right 0px;padding-right:40px;background-repeat: no-repeat;line-height: 18px;padding-bottom: 5px;font-size: 12px;color: #465660;min-height:40px}
+.segment-gamesvideos .product-tiles li.games:hover .thumb-info .title{background-image: url(../img/games-icon.png);background-position: right -52px;padding-right: 40px;background-repeat:no-repeat;line-height:18px;color:rgb(255, 124, 0)}
+.segment-gamesvideos .product-tiles li.video .thumb-info .title{background-image: url(../img/videos-icon.png);background-position: right 0px;padding-right: 30px;background-repeat: no-repeat;line-height: 19px;padding-bottom: 5px;font-size: 12px;color: #465660;min-height:40px}
+.segment-gamesvideos .product-tiles li.video:hover .thumb-info .title{background-image: url(../img/videos-icon.png);background-position: right -55px;padding-right: 40px;background-repeat:no-repeat;line-height:18px;color:rgb(255, 124, 0)}
+.segment-gamesvideos .video a:last-child:after,.segment-gamesvideos .videos .video a:last-child:after{top:37%}
+/* End */
+
+/* Keydrivers products */
+.segment-product-container h1{background: url('../img/keydrivers/stripes_white.png') no-repeat center;background-size:contain;text-align:center;padding:40px 0px;font-family:'AgencyFB',arial,helvetica,sans-serif;font-style:italic;font-size:3em;color:#fff}
+.segment-product-container h1 span{color:#fff}
+.segment-product-container{background-color:#e56a23 !important;padding:40px 0px;background-image:none !important}
+/*.segment-product-container#page-catalog .product-tile{min-height:288px}*/
+.segment-product-container .carousel-wrap{overflow:visible !important}
+.segment-product-container#page-catalog a:hover .carousel__next,.segment-product-container#page-catalog .carousel__next:hover{background: url('../img/keydrivers/products-slider-nav.png') no-repeat 0px 0px !important}
+.segment-product-container#page-catalog a:hover .carousel__prev,.segment-product-container#page-catalog .carousel__prev:hover{background: url('../img/keydrivers/products-slider-nav.png') no-repeat 0px -89px !important}
+.segment-product-container#page-catalog a .carousel__next,.segment-product-container#page-catalog .carousel__next{background: url('../img/keydrivers/products-slider-nav.png') no-repeat 0px -182px !important;width:70px !important;height: 75px !important;right:-19px !important}
+.segment-product-container#page-catalog a .carousel__prev,.segment-product-container#page-catalog .carousel__prev{background: url('../img/keydrivers/products-slider-nav.png') no-repeat 0px -264px !important;width:70px !important;height:75px !important;left:-19px !important}
+/* End */
+
+/* games section */
+.cda-promo-right .games-featured .thumb-unit .thumb{width:312px}
+
+@media screen and (max-width:900px){
+.shop-landing-container{max-width:100%;margin:0 auto;border-bottom:60px solid #e56a23}
+}
+@media screen and (max-width:768px){
+.segment-gamesvideos{padding:40px 0px}
+.play-benefits.right .play-benefits-intro,.play-benefits.left .play-benefits-intro{position:relative;width:96%;display:inline-block}
+.segment-videos{width:100%;margin:0 auto}
+.category-cda h1,.segment-product-container h1 span,.segment-gamesvideos h2,.segment-video-container .segment-video-header{font-size:23px !important}
+.segment-product-container h1 span{line-height:65px}
+.segment-videos .bx-wrapper .bx-next,.segment-videos .bx-wrapper .bx-next:hover{background: url('../img/keydrivers/slider-nav.png') no-repeat 0px 0px;background-size:100% !important;width: 50px !important;height: 50px !important}
+.segment-videos .bx-wrapper .bx-prev,.segment-videos .bx-wrapper .bx-prev:hover{background: url('../img/keydrivers/slider-nav.png') no-repeat 0px -63px;background-size:100% !important;width: 50px !important;height: 50px !important}
+.segment-gamesvideos .carousel__next,.segment-gamesvideos .carousel__next:hover{background: url('../img/keydrivers/games-slider.png') no-repeat 0px 0px !important;background-size:100% !important;width: 35px !important;height: 35px !important}
+.segment-gamesvideos .carousel__prev,.segment-gamesvideos .carousel__prev:hover{background: url('../img/keydrivers/games-slider.png') no-repeat 0px -44px !important;background-size:100% !important;width: 35px !important;height: 35px !important}
+.segment-gamesvideos .carousel__next,.segment-videos .bx-wrapper .bx-next{right:10px !important}
+.segment-gamesvideos .carousel__prev,.segment-videos .bx-wrapper .bx-prev{left:10px !important}
+.cda-desktop{display:none}
+.cda-mobile{display:block}
+.segment-videos .bx-controls-direction a{top:37% !important}
+.segment-product-container{padding:0px 0px 40px 0px}
+.play-benefits.right .play-benefits-intro,.play-benefits.left .play-benefits-intro{padding-top:40px}
+}
+@media screen and (max-width:1024px){	
+	.category-description{height:auto !important}
+	.category-cda .top-marquee-container,.play-benefits{margin-top:0px}
+	.category-description .category-intro-text-field{width:90%;padding:15px 0px 30px 0px}
+	.category-description .category-intro-text-field h2{font-size:1.5em;margin-bottom:10px}
+	.category-description .category-intro-text-field p{font-size:12px;line-height:16px}
+	.segment-gamesvideos .video a:last-child:after, .segment-gamesvideos .videos .video a:last-child:after{top:-7%}
+	.segment-product-container#page-catalog .product-carousel .bx-wrapper{min-width:auto !important}
+	.segment-product-container#page-catalog a .carousel__next, .segment-product-container#page-catalog .carousel__next{right:10px !important}
+	.segment-product-container#page-catalog a .carousel__prev, .segment-product-container#page-catalog .carousel__prev{left:10px !important}
+	.play-benefits.right .flexslider, .play-benefits.left .flexslider{width:100%}
+	.play-benefits.right .play-benefits-intro,.play-benefits.left .play-benefits-intro{width:92%;padding-top:20px}
+	.play-benefits.right,.play-benefits.left{background-position:left;background-size:cover}
+}
+@media screen and (min-width:1281px) and (max-width:1400px){	
+	.play-benefits.left .play-benefits-intro ul li, .play-benefits.right .play-benefits-intro ul li{font-size: 1.3em;line-height: 1.4em}
+	.play-benefits.left .play-benefits-intro h3, .play-benefits.right .play-benefits-intro h3{font-size:2.5em}
+	.play-benefits.left .play-benefits-intro p, .play-benefits.right .play-benefits-intro p{font-size:1.3em}
+	.play-benefits-intro h2{font-size: 22px;line-height: 30px}
+	/*.play-benefits.right .play-benefits-intro,.play-benefits.left .play-benefits-intro{padding:6% 4%}*/
+}
+@media screen and (min-width:1024px) and (max-width:1280px){	
+	.play-benefits.right .flexslider, .play-benefits.left .flexslider{width:100%}
+	.play-benefits.right .play-benefits-intro,.play-benefits.left .play-benefits-intro{width:92%}
+	.play-benefits.right,.play-benefits.left{background-position:left;background-size:cover}
+}
+@media screen and (min-width:769px) and (max-width:1024px){	
+	.play-benefits.right .play-benefits-intro,.play-benefits.left .play-benefits-intro{position:relative;width:96%;display:inline-block}
+}
+
+/*refresh styles starts here*/
+.shop-landing-container .bx-controls-direction a{
+	z-index: 1;
+}
+#page-catalog.segment-product-container h1,
+	.segment-video-container .segment-video-header,
+	section.games .mod-heading.light.container{
+		font-size:38px;
+		margin-bottom:0.7em;
+}
+.games-featured .thumbs-grid .thumb-unit a .title{
+	margin-top: 7px;
+    display: inline-block;
+}
+#page-catalog .product-tile .goto_wishlist {
+    display: none;
+}
+#page-catalog .product-tile:hover .product-tile__image-link .product-tile__image-wrap {
+    outline: 2px solid #0067ac;
+}
+div#page-catalog .product-tile.product-tile--added {
+    background-color: #fff !important;
+}
+.segment-product-container#page-catalog .product-tile{
+	min-height: 100%;
+	font-size: 0.8em;
+}
+#page-catalog .product-tile .product-tile__info {
+    height: 70px;
+}
+.segment-videos #carousel{
+	width: 86%;
+    margin: 0 auto;
+}
+/*refresh styles ends here*/
+.row{margin-left:auto !important;margin-right:auto !important}

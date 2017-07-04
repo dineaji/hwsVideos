@@ -1,0 +1,15 @@
+/* ==========================================================================
+   Scrolls the page to a named element
+   ========================================================================== */
+
+function scrollPageTo(elem) {
+  if (navigator.userAgent.match(/(iPod|iPhone|iPad|Android)/)) {
+    $('body').animate({
+        scrollTop: $(elem).offset().top
+    }, 500);
+  } else {
+    $('html, body').animate({
+        scrollTop: $(elem).offset().top
+    }, 500);
+  };
+};

@@ -1,0 +1,1360 @@
+@charset "UTF-8";
+/* line 1, ../scss/theme-barbie.scss */
+#page-catalog {
+  position: relative;
+  /*
+  ! not importing "_neat-grid" due to limitation in neat that
+    requires grid override imports in a specific order.
+  
+    see:
+  
+      - scss/_init.scss
+  
+   */
+  /* settings
+      i.   bourbon settings
+      ii.  colors
+      iii. typography
+      iv.  responsive breakpoints
+  */
+  /* colors dict
+      notes:
+          - use the get() function to access values (helpers/_functions.scss)
+  
+      see:
+          - http://chir.ag/projects/name-that-color/#6195ED
+          - for color names
+  */
+  /* neat-grid
+      i.  grid settings
+      ii. breakpoints
+  */
+  /*!
+  TYPEPLATE
+  URL ........... http://typeplate.com
+  VERSION ....... 1.1.4
+  Github ........ https://github.com/typeplate/bower
+  AUTHORS ....... Dennis Gaebel (@gryghostvisuals) & Zachary Kain (@zakkain)
+  LICENSE ....... Creative Commmons Attribution 3.0 (http://creativecommons.org/licenses/by/3.0)
+  LICENSE URL ... https://github.com/typeplate/bower/blob/master/license.txt
+  */
+  @font-face {
+    font-family: "Ampersand";
+    src: local("Georgia"), local("Garamond"), local("Palatino"), local("Book Antiqua");
+    unicode-range: U+0026;
+}
+
+  @font-face {
+    font-family: "Ampersand";
+    src: local("Georgia");
+    unicode-range: U+270C;
+}
+
+  /**
+   * Dropcap Sass @include
+   * Use the following Sass @include with any selector you feel necessary.
+   *
+  	@include dropcap($dropcap-float-position, $dropcap-font-size, $dropcap-font-family, $dropcap-txt-indent, $dropcap-margin, $dropcap-padding, $dropcap-color, $dropcap-line-height, $dropcap-bg);
+   *
+   * Extend this object into your custom stylesheet. Let the variables do the work.
+   *
+   */
+  /**
+   * Lining Definition Style Markup
+   *
+  	<dl class="lining">
+  		<dt><b></b></dt>
+  		<dd></dd>
+  	</dl>
+   *
+   * Extend this object into your markup.
+   *
+   */
+  /**
+   * Dictionary Definition Style Markup
+   *
+  	<dl class="dictionary-style">
+  		<dt><b></b></dt>
+  			<dd></dd>
+  	</dl>
+   *
+   * Extend this object into your markup.
+   *
+   */
+  /**
+   * Blockquote Markup
+   *
+  		<figure>
+  			<blockquote cite="">
+  				<p></p>
+  			</blockquote>
+  			<figcaption>
+  				<cite>
+  					<small><a href=""></a></small>
+  				</cite>
+  			</figcaption>
+  		</figure>
+   *
+   * Extend this object into your markup.
+   *
+   */
+  /**
+   * Pull Quotes Markup
+   *
+  	<aside class="pull-quote">
+  		<blockquote>
+  			<p></p>
+  		</blockquote>
+  	</aside>
+   *
+   * Extend this object into your custom stylesheet.
+   *
+   */
+  /**
+   * Figures Markup
+   *
+  	<figure>
+  		<figcaption>
+  			<strong>Fig. 4.2 | </strong>Type Anatomy, an excerpt from Mark Boulton's book<cite title="http://designingfortheweb.co.uk/book/part3/part3_chapter11.php">"Designing for the Web"</cite>
+  		</figcaption>
+  	</figure>
+   *
+   * Extend this object into your markup.
+   *
+   */
+  /**
+   * Footnote Markup : Replace 'X' with your unique number for each footnote
+   *
+  	<article>
+  		<p><sup><a href="#fn-itemX" id="fn-returnX"></a></sup></p>
+  		<footer>
+  			<ol class="foot-notes">
+  				<li id="fn-itemX"><a href="#fn-returnX">↩</a></li>
+  			</ol>
+  		</footer>
+  	</article>
+   *
+   * Extend this object into your markup.
+   *
+   */
+  /*
+   * CSS Styles that are needed by jScrollPane for it to operate correctly.
+   *
+   * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
+   * may not operate correctly without them.
+   */
+  /* Yuk! CSS Hack for IE6 3 pixel bug :( */
+  /* functions:
+      i.   utils
+      ii.  units
+      iii. photoshop helpers
+  */
+  /* mixins
+      i.   display
+      ii.  responsive
+      iii. misc
+  
+  */
+  /*
+      show-*: class shows element only for * device
+      hide-*: class hides element only for * device
+  */
+  /* Mobile bracket */
+  /* tablet bracket */
+  /* mobile start point */
+  /* tablet start point */
+  /* desktop start point */
+}
+/* line 2, ../scss/vendor/neat/grid/_grid.scss */
+#page-catalog * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #000;
+}
+/* line 718, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog p + .drop-cap {
+  text-indent: 0;
+  margin-top: 0;
+}
+/* line 428, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .drop-cap:first-letter {
+  float: left;
+  margin: inherit;
+  padding: inherit;
+  font-size: 4em;
+  font-family: inherit;
+  line-height: 1;
+  text-indent: 0;
+  background: transparent;
+  color: inherit;
+}
+/* line 467, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .lining dt,
+#page-catalog .lining dd {
+  display: inline;
+  margin: 0;
+}
+/* line 474, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .lining dt + dt:before,
+#page-catalog .lining dd + dt:before {
+  content: "\A";
+  white-space: pre;
+}
+/* line 482, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .lining dd + dd:before {
+  content: ", ";
+}
+/* line 486, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .lining dd:before {
+  content: ": ";
+  margin-left: -0.2rem;
+}
+/* line 494, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .dictionary-style dt {
+  display: inline;
+  counter-reset: definitions;
+}
+/* line 498, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .dictionary-style dt + dt:before {
+  content: ", ";
+  margin-left: -0.2rem;
+}
+/* line 504, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .dictionary-style dd {
+  display: block;
+  counter-increment: definitions;
+}
+/* line 507, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .dictionary-style dd:before {
+  content: counter(definitions,decimal) ". ";
+}
+/* line 802, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .pull-quote {
+  position: relative;
+  padding: 1em;
+}
+/* line 369, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .pull-quote:before, #page-catalog .pull-quote:after {
+  height: 1em;
+  opacity: 0.5;
+  position: absolute;
+  font-size: 4em;
+  color: #dc976e;
+}
+/* line 376, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .pull-quote:before {
+  content: '“';
+  top: 0;
+  left: 0;
+}
+/* line 381, ../scss/vendor/typeplate/_typeplate.scss */
+#page-catalog .pull-quote:after {
+  content: '”';
+  bottom: 0;
+  right: 0;
+}
+/* line 9, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspContainer {
+  overflow: hidden;
+  position: relative;
+}
+/* line 15, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspPane {
+  position: absolute;
+}
+/* line 20, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspVerticalBar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 100%;
+  background: red;
+}
+/* line 30, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspHorizontalBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: red;
+}
+/* line 40, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspCap {
+  display: none;
+}
+/* line 45, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspHorizontalBar .jspCap {
+  float: left;
+}
+/* line 50, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspTrack {
+  background: #FFBAD7;
+  position: relative;
+}
+/* line 56, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspDrag {
+  background: #ff3995;
+  position: relative;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+}
+/* line 67, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspHorizontalBar .jspTrack,
+#page-catalog .jspHorizontalBar .jspDrag {
+  float: left;
+  height: 100%;
+}
+/* line 73, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspArrow {
+  background: #50506d;
+  text-indent: -20000px;
+  display: block;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+/* line 83, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspArrow.jspDisabled {
+  cursor: default;
+  background: #80808d;
+}
+/* line 89, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspVerticalBar .jspArrow {
+  height: 16px;
+}
+/* line 94, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspHorizontalBar .jspArrow {
+  width: 16px;
+  float: left;
+  height: 100%;
+}
+/* line 101, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspVerticalBar .jspArrow:focus {
+  outline: none;
+}
+/* line 106, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog .jspCorner {
+  background: #eeeef4;
+  float: left;
+  height: 100%;
+}
+/* line 114, ../scss/vendor/scrollpane/_jquery.jscrollpane.scss */
+#page-catalog * html .jspCorner {
+  margin: 0 -3px 0 0;
+}
+@media screen and (min-width: 0em) and (max-width: 47.9375em) {
+  /* line 11, ../scss/helpers/_responsive.scss */
+  #page-catalog .show-mobile {
+    display: inherit;
+  }
+  /* line 15, ../scss/helpers/_responsive.scss */
+  #page-catalog .hide-mobile {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 48em) and (max-width: 61.1875em) {
+  /* line 26, ../scss/helpers/_responsive.scss */
+  #page-catalog .show-tablet {
+    display: inherit;
+  }
+  /* line 30, ../scss/helpers/_responsive.scss */
+  #page-catalog .hide-tablet {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 0em) {
+  /* line 39, ../scss/helpers/_responsive.scss */
+  #page-catalog .show-tablet {
+    display: none !important;
+  }
+  /* line 43, ../scss/helpers/_responsive.scss */
+  #page-catalog .show-desktop {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 48em) {
+  /* line 52, ../scss/helpers/_responsive.scss */
+  #page-catalog .show-mobile {
+    display: none !important;
+  }
+  /* line 56, ../scss/helpers/_responsive.scss */
+  #page-catalog .hide-mobile {
+    display: inherit;
+  }
+  /* line 60, ../scss/helpers/_responsive.scss */
+  #page-catalog .show-tablet {
+    display: inherit;
+  }
+}
+@media screen and (min-width: 61.25em) {
+  /* line 69, ../scss/helpers/_responsive.scss */
+  #page-catalog .show-tablet {
+    display: none !important;
+  }
+  /* line 73, ../scss/helpers/_responsive.scss */
+  #page-catalog .show-desktop {
+    display: inherit;
+  }
+  /* line 77, ../scss/helpers/_responsive.scss */
+  #page-catalog .hide-desktop {
+    display: none !important;
+  }
+}
+/* line 258, barbie/sprites/*.png */
+#page-catalog .sprites-sprite, #page-catalog .sprite-arrow-left-mobile, #page-catalog .sprite-arrow-left, #page-catalog .sprite-arrow-right-mobile, #page-catalog .sprite-arrow-right, #page-catalog .sprite-bullet, #page-catalog .sprite-close-button, #page-catalog .sprite-modal-close, #page-catalog .sprite-plus-button, #page-catalog .sprite-search, #page-catalog .sprite-social-email, #page-catalog .sprite-social-facebook, #page-catalog .sprite-social-pinterest, #page-catalog .sprite-social-share, #page-catalog .sprite-social-twitter, #page-catalog .sprite-stars-empty, #page-catalog .sprite-stars-full, #page-catalog .sprite-wishlist-added, #page-catalog .sprite-wishlist-big, #page-catalog .sprite-wishlist-email-icon, #page-catalog .sprite-wishlist-mms-icon, #page-catalog .sprite-wishlist-printer-icon, #page-catalog .sprite-wishlist-share-icon, #page-catalog .sprite-wishlist, #page-catalog .marquee .marquee__prev, #page-catalog .marquee .marquee__next, #page-catalog .product-tile.product-tile--added .wishlist-action {
+  background: url('../img/barbie/sprites-sae39333d5b.png') no-repeat;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-arrow-left-mobile {
+  background-position: 0 -577px;
+  height: 28px;
+  width: 27px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-arrow-left {
+  background-position: 0 -991px;
+  height: 80px;
+  width: 35px;
+}
+/* line 43, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-arrow-left:hover, #page-catalog .sprite-arrow-left.arrow-left_hover, #page-catalog .sprite-arrow-left.arrow-left-hover {
+  background-position: 0 -751px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-arrow-right-mobile {
+  background-position: 0 -549px;
+  height: 28px;
+  width: 27px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-arrow-right {
+  background-position: 0 -911px;
+  height: 80px;
+  width: 35px;
+}
+/* line 43, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-arrow-right:hover, #page-catalog .sprite-arrow-right.arrow-right_hover, #page-catalog .sprite-arrow-right.arrow-right-hover {
+  background-position: 0 -831px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-bullet {
+  background-position: 0 -390px;
+  height: 22px;
+  width: 22px;
+}
+/* line 43, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-bullet:hover, #page-catalog .sprite-bullet.bullet_hover, #page-catalog .sprite-bullet.bullet-hover {
+  background-position: 0 -281px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-close-button {
+  background-position: 0 -111px;
+  height: 47px;
+  width: 42px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-modal-close {
+  background-position: 0 -65px;
+  height: 46px;
+  width: 43px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-plus-button {
+  background-position: 0 -718px;
+  height: 33px;
+  width: 33px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-search {
+  background-position: 0 -605px;
+  height: 22px;
+  width: 21px;
+}
+/* line 43, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-search:hover, #page-catalog .sprite-search.search_hover, #page-catalog .sprite-search.search-hover {
+  background-position: 0 -473px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-social-email {
+  background-position: 0 -627px;
+  height: 27px;
+  width: 27px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-social-facebook {
+  background-position: 0 -654px;
+  height: 27px;
+  width: 28px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-social-pinterest {
+  background-position: 0 -446px;
+  height: 27px;
+  width: 27px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-social-share {
+  background-position: 0 -522px;
+  height: 27px;
+  width: 27px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-social-twitter {
+  background-position: 0 -495px;
+  height: 27px;
+  width: 28px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-stars-empty {
+  background-position: 0 -261px;
+  height: 20px;
+  width: 97px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-stars-full {
+  background-position: 0 -340px;
+  height: 20px;
+  width: 97px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-wishlist-added {
+  background-position: 0 -158px;
+  height: 34px;
+  width: 35px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-wishlist-big {
+  background-position: 0 0;
+  height: 65px;
+  width: 70px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-wishlist-email-icon {
+  background-position: 0 -360px;
+  height: 30px;
+  width: 49px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-wishlist-mms-icon {
+  background-position: 0 -303px;
+  height: 37px;
+  width: 53px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-wishlist-printer-icon {
+  background-position: 0 -681px;
+  height: 37px;
+  width: 43px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-wishlist-share-icon {
+  background-position: 0 -412px;
+  height: 34px;
+  width: 39px;
+}
+/* line 60, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-wishlist {
+  background-position: 0 -226px;
+  height: 35px;
+  width: 37px;
+}
+/* line 43, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+#page-catalog .sprite-wishlist:hover, #page-catalog .sprite-wishlist.wishlist_hover, #page-catalog .sprite-wishlist.wishlist-hover {
+  background-position: 0 -192px;
+}
+/* line 1, ../scss/theme-barbie/base/_buttons.scss */
+#page-catalog .button {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 1px 9px 0 #f08bb9;
+  -moz-box-shadow: inset 1px 9px 0 #f08bb9;
+  box-shadow: inset 1px 9px 0 #f08bb9;
+  background-color: #d3317a;
+  border: 4px solid #d3317a;
+  font-weight: bold;
+  padding: 0.5em 1.25em;
+  font-size: 1.0625em;
+}
+/* line 10, ../scss/theme-barbie/base/_buttons.scss */
+#page-catalog .button:hover, #page-catalog .button.wishlist-action--added {
+  -webkit-box-shadow: inset 1px 9px 0 #feffb6;
+  -moz-box-shadow: inset 1px 9px 0 #feffb6;
+  box-shadow: inset 1px 9px 0 #feffb6;
+  color: #d3317a;
+  background-color: #fce454;
+  border-color: #fce454;
+  background: -webkit-linear-gradient(top, #fceb39, #fde454);
+  background: linear-gradient(to bottom, #fceb39, #fde454);
+}
+/* line 2, ../scss/theme-barbie/base/_breadcrumbs.scss */
+#page-catalog .breadcrumb .breadcrumb__link {
+  text-transform: uppercase;
+  margin: 0 3px;
+}
+/* line 6, ../scss/theme-barbie/base/_breadcrumbs.scss */
+#page-catalog .breadcrumb .breadcrumb__link:first-child {
+  margin-left: 0;
+}
+/* line 2, ../scss/theme-barbie/blocks/general/_mobile.scss */
+#page-catalog .section-header .section-header-text {
+  background: #ff1a93;
+  text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 0;
+  -webkit-box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+/* line 10, ../scss/theme-barbie/blocks/general/_mobile.scss */
+#page-catalog .header-title {
+  padding: 0 20px 20px 20px;
+  background: white\0/IE9;
+}
+/* line 14, ../scss/theme-barbie/blocks/general/_mobile.scss */
+#page-catalog .header-title .header-title__text {
+  display: inline-block;
+  width: 100%;
+  color: #48b3c6;
+  padding: 0 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+  border: 4px solid #ededed;
+  text-transform: uppercase;
+  background: white;
+  /* IE9 */
+  background: -moz-linear-gradient(top, white 0%, white 37%, #f0e8f0 37%, #e5e6e1);
+  background: -webkit-gradient(linear, left top, left bottom, from(white), color-stop(0.37, white), color-stop(0.37, #f0e8f0), to(#e5e6e1));
+  text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 1px 1px 3px black;
+  -moz-box-shadow: 1px 1px 3px black;
+  box-shadow: 1px 1px 3px black;
+  -webkit-border-radius: 11px;
+  -moz-border-radius: 11px;
+  -ms-border-radius: 11px;
+  -o-border-radius: 11px;
+  border-radius: 11px;
+}
+/* line 43, ../scss/theme-barbie/blocks/general/_mobile.scss */
+#page-catalog .select-style {
+  background-color: #fff;
+  background-image: url("../img/barbie/wishlist/select-arrow.gif");
+  background-repeat: no-repeat;
+  background-position: 196px 50%;
+  border-color: #ff3995;
+  font-weight: bold;
+  font-size: 0.8125em;
+}
+/* line 53, ../scss/theme-barbie/blocks/general/_mobile.scss */
+#page-catalog .select-style select {
+  padding: 2px 9px;
+  width: 105%;
+}
+/* line 2, ../scss/theme-barbie/blocks/marquee/_mobile.scss */
+#page-catalog .marquee .marquee__slides {
+  height: 303px;
+}
+/* line 5, ../scss/theme-barbie/blocks/marquee/_mobile.scss */
+#page-catalog .marquee .marquee__slides .marquee__slide {
+  height: 303px;
+}
+/* line 9, ../scss/theme-barbie/blocks/marquee/_mobile.scss */
+#page-catalog .marquee .marquee__captions {
+  background: white;
+}
+/* line 12, ../scss/theme-barbie/blocks/marquee/_mobile.scss */
+#page-catalog .marquee .marquee__captions .marquee__caption {
+  line-height: 1.2;
+}
+/* line 15, ../scss/theme-barbie/blocks/marquee/_mobile.scss */
+#page-catalog .marquee .marquee__captions .marquee__caption .marquee__caption__text {
+  margin: 8px 0;
+}
+/* line 21, ../scss/theme-barbie/blocks/marquee/_mobile.scss */
+#page-catalog .marquee .marquee__prev, #page-catalog .marquee .marquee__next {
+  width: 27px;
+  height: 28px;
+  top: 136px;
+}
+/* line 27, ../scss/theme-barbie/blocks/marquee/_mobile.scss */
+#page-catalog .marquee .marquee__prev {
+  background-position: 0 -577px;
+}
+/* line 31, ../scss/theme-barbie/blocks/marquee/_mobile.scss */
+#page-catalog .marquee .marquee__next {
+  background-position: 0 -549px;
+}
+/* line 38, ../scss/theme-barbie/blocks/marquee/_mobile.scss */
+#page-catalog .marquee__border {
+  height: 6px;
+  background: -webkit-linear-gradient(top, #fbdbea, #c89db2);
+  background: linear-gradient(to bottom, #fbdbea, #c89db2);
+}
+/* line 1, ../scss/theme-barbie/blocks/product-tile/_mobile.scss */
+#page-catalog .product-tile {
+  background: #fde8ec;
+}
+/* line 5, ../scss/theme-barbie/blocks/product-tile/_mobile.scss */
+#page-catalog .product-tile:hover .product-tile__text, #page-catalog .product-tile.product-tile--added .product-tile__text {
+  color: #48b3c6;
+}
+/* line 9, ../scss/theme-barbie/blocks/product-tile/_mobile.scss */
+#page-catalog .product-tile.product-tile--added {
+  background-color: #ffbad7;
+}
+/* line 11, ../scss/theme-barbie/blocks/product-tile/_mobile.scss */
+#page-catalog .product-tile.product-tile--added .wishlist-action {
+  background-position: 0 -192px;
+}
+/* line 16, ../scss/theme-barbie/blocks/product-tile/_mobile.scss */
+#page-catalog .product-tile .product-tile__text .text--highlight {
+  color: #48b3c6;
+}
+/* line 21, ../scss/theme-barbie/blocks/product-tile/_mobile.scss */
+#page-catalog .product-tile:hover .product-tile__image-wrap {
+  outline: 2px solid #48b3c6;
+}
+/* line 3, ../scss/theme-barbie/blocks/product-carousel/_mobile.scss */
+#page-catalog .bx-wrapper .bx-viewport {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  left: auto !important;
+}
+/* line 2, ../scss/theme-barbie/blocks/wishlist-preview/_mobile.scss */
+#page-catalog .wishlist-preview .wishlist__title {
+  color: #ff3995;
+  text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 0;
+}
+/* line 7, ../scss/theme-barbie/blocks/wishlist-preview/_mobile.scss */
+#page-catalog .wishlist-preview .wishlist__header {
+  background-image: url(../img/barbie/wishlist-preview/wishlist-preview-header-bg-mobile.jpg);
+}
+/* line 11, ../scss/theme-barbie/blocks/wishlist-preview/_mobile.scss */
+#page-catalog .wishlist-preview .wishlist__main {
+  background-image: url(../img/barbie/wishlist-preview/wishlist-preview-pattern-bg.png);
+}
+/* line 1, ../scss/theme-barbie/blocks/shop-nav/_mobile.scss */
+#page-catalog .shop-nav {
+  background: rgba(255, 255, 255, 0.7);
+  height: 50px;
+  position: relative;
+  z-index: 10;
+}
+/* line 7, ../scss/theme-barbie/blocks/shop-nav/_mobile.scss */
+#page-catalog .shop-nav .shop-nav__title {
+  line-height: 50px;
+  margin-left: 15px;
+  font-weight: bold;
+  text-transform: none;
+  color: #656565;
+}
+/* line 14, ../scss/theme-barbie/blocks/shop-nav/_mobile.scss */
+#page-catalog .shop-nav .shop-nav__title a, #page-catalog .shop-nav .shop-nav__title .title-arrow {
+  color: #656565;
+  border-top-color: #656565;
+}
+/* line 20, ../scss/theme-barbie/blocks/shop-nav/_mobile.scss */
+#page-catalog .shop-nav.shop-nav--active .shop-nav__title .title-arrow {
+  border-bottom-color: #656565;
+}
+/* line 24, ../scss/theme-barbie/blocks/shop-nav/_mobile.scss */
+#page-catalog .shop-nav .shop-nav__side {
+  margin-top: 7px;
+  margin-right: 15px;
+}
+/* line 30, ../scss/theme-barbie/blocks/shop-nav/_mobile.scss */
+#page-catalog .shop-nav__menu > .shop-nav__item {
+  background: none;
+}
+/* line 34, ../scss/theme-barbie/blocks/shop-nav/_mobile.scss */
+#page-catalog .shop-navigation {
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+/* line 1, ../scss/theme-barbie/blocks/footer/_mobile.scss */
+#page-catalog .shop-footer {
+  background: url(../img/barbie/footer/footer-bg.png) repeat-x;
+  padding-bottom: 30px;
+}
+/* line 5, ../scss/theme-barbie/blocks/footer/_mobile.scss */
+#page-catalog .shop-footer .shop-footer__title {
+  color: #999999;
+}
+/* line 1, ../scss/theme-barbie/blocks/wishlist-share/_mobile.scss */
+#page-catalog .wishlist-share {
+  background-color: #ff3995;
+}
+/* line 1, ../scss/theme-barbie/blocks/wishlist-header/_mobile.scss */
+#page-catalog .wishlist-header {
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), white);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+  color: #656565;
+}
+/* line 5, ../scss/theme-barbie/blocks/wishlist-header/_mobile.scss */
+.wishlist__recipient-view #page-catalog .wishlist-header {
+  background: white;
+}
+/* line 9, ../scss/theme-barbie/blocks/wishlist-header/_mobile.scss */
+#page-catalog .wishlist-header .wishlist__title {
+  color: #ff3995;
+  text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 0;
+  font-size: 1.875em;
+}
+/* line 17, ../scss/theme-barbie/blocks/wishlist-header/_mobile.scss */
+#page-catalog .wishlist__user-view .legend {
+  font-size: 0.75em;
+  line-height: 1.3;
+  text-align: left;
+}
+/* line 1, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist {
+  border-top: 1px solid #ff3995;
+  color: #656565;
+}
+/* line 5, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist .wishlist__title a, #page-catalog .wishlist .wishlist__number {
+  color: #ff3995;
+}
+/* line 9, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist .wishlist__retailers-title {
+  background-color: #ff3995;
+}
+/* line 13, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist .wishlist__retailers-box {
+  color: #ff3995;
+  background: white;
+}
+/* line 18, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist .wishlist__retailers-box .wishlist__retailers-box__status a {
+  color: #ff3995;
+}
+/* line 22, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist .wishlist__retailers-box .wishlist__retailers-box__item:hover {
+  background: #ffee73;
+}
+/* line 27, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist .wishlist__item {
+  border-bottom-color: #ff3995;
+  background: white;
+  /* IE9 */
+  background: -webkit-linear-gradient(top, white, #fde8ec);
+  background: linear-gradient(to bottom, white, #fde8ec);
+}
+/* line 33, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist .wishlist__item:nth-child(2n) {
+  background: -webkit-linear-gradient(top, white, #cafdff);
+  background: linear-gradient(to bottom, white, #cafdff);
+}
+/* line 39, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist .wishlist__order .wishlist__down-arrow {
+  border-top-color: #ff3995;
+}
+/* line 43, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist .wishlist__order .wishlist__up-arrow {
+  border-bottom-color: #ff3995;
+}
+/* line 49, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist-wrap.wishlist__user-view .wishlist {
+  border-color: #ff3995;
+}
+/* line 53, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist-wrap.wishlist__recipient-view {
+  border-color: #ff3995;
+}
+/* line 56, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist-wrap.wishlist__recipient-view .wishlist {
+  margin-bottom: 0;
+}
+/* line 60, ../scss/theme-barbie/blocks/wishlist/_mobile.scss */
+#page-catalog .wishlist-wrap.wishlist__recipient-view .button {
+  padding: 0 1.25em;
+}
+/* line 1, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal {
+  border-radius: 10px;
+  background: white;
+  color: #6a6767;
+  z-index: 1600;
+}
+/* line 6, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal .modal__header {
+  background: #e31977;
+  color: white;
+  font-weight: bold;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+  -webkit-box-shadow: inset 1px 9px 0 #f08bb9;
+  -moz-box-shadow: inset 1px 9px 0 #f08bb9;
+  box-shadow: inset 1px 9px 0 #f08bb9;
+  background-color: #d3317a;
+  border: 4px solid #d3317a;
+  text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 0;
+}
+/* line 18, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal .modal__description {
+  padding: 0 20px;
+}
+/* line 22, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal .modal__description__title {
+  font-weight: bold;
+  color: #6a6767;
+}
+/* line 27, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal .section-header {
+  width: 100%;
+}
+/* line 32, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal.empty {
+  text-align: center;
+  top:7%;
+}
+/* line 35, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal.empty .modal__description, #page-catalog .modal.empty .section-header {
+  text-align: left;
+}
+/* line 39, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal.empty .modal__description {
+  padding: 20px;
+}
+/* line 43, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal.empty .section-header {
+  margin: 0 auto;
+}
+/* line 47, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal.empty .add-to-wishlist {
+  font-size: 11px;
+}
+/* line 15, ../scss/vendor/bourbon/addons/_clearfix.scss */
+#page-catalog .modal.empty .carousel-clear:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 55, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal.empty .modal__description__copy {
+  margin-bottom: 0;
+}
+/* line 60, ../scss/theme-barbie/blocks/modal/_mobile.scss */
+#page-catalog .modal .select-style {
+  width: 220px;
+}
+/* line 1, ../scss/theme-barbie/blocks/product-images/_mobile.scss */
+#page-catalog .product-images {
+  margin-bottom: 20px;
+}
+/* line 4, ../scss/theme-barbie/blocks/product-images/_mobile.scss */
+#page-catalog .product-images .product-images__thumbs-wrap .product-images__thumb {
+  /*border-color: get($colors, white);*/
+  float:left;
+ }
+/* line 7, ../scss/theme-barbie/blocks/product-images/_mobile.scss */
+#page-catalog .product-images .product-images__thumbs-wrap .product-images__thumb.product-images__thumb--active {
+  border: 2px solid #e31977;
+}
+/* line 11, ../scss/theme-barbie/blocks/product-images/_mobile.scss */
+#page-catalog .product-images .bx-wrapper {
+  border: 2px solid #fde8ec;
+}
+/* line 13, ../scss/theme-barbie/blocks/product-images/_mobile.scss */
+#page-catalog .product-images .bx-wrapper .product-images__slides {
+  border: 0;
+}
+/* line 20, ../scss/theme-barbie/blocks/product-images/_mobile.scss */
+#page-catalog .product-images__slides {
+  background-color: #fceff6;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFCEFF6', endColorstr='#FFFFFFFF');
+  background-image: -webkit-linear-gradient(top, #fceff6 0%, white 0%, white 2%, #fae5f1 39%, #fae3f0 53%, white 100%);
+  background-image: linear-gradient(to bottom, #fceff6 0%, white 0%, white 2%, #fae5f1 39%, #fae3f0 53%, white 100%);
+  margin-bottom: 1px;
+  border: 2px solid #fde8ec;
+}
+/* line 31, ../scss/theme-barbie/blocks/product-images/_mobile.scss */
+#page-catalog .product-images__toggle-more {
+  line-height: 40px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  padding-left: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #b90063;
+}
+#page-catalog .product-detail {
+  background-image: url(../img/splitter.png);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  padding-bottom: 4em;
+}
+/* line 2, ../scss/theme-barbie/blocks/product-detail/_mobile.scss */
+#page-catalog .product-detail .product-detail__main, #page-catalog .product-detail .product-detail__detail {
+  padding: 0 10px;
+}
+/* line 6, ../scss/theme-barbie/blocks/product-detail/_mobile.scss */
+#page-catalog .product-detail .product-detail__title, #page-catalog .product-detail .rating-count, #page-catalog .product-detail .product-detail__more-info {
+  color: #b90063;
+}
+/* line 12, ../scss/theme-barbie/blocks/product-detail/_mobile.scss */
+#page-catalog .product-detail .product-detail__where-to-buy .where-to-buy__heading {
+  background-color: #e31977;
+  font-weight: bold;
+}
+/* line 17, ../scss/theme-barbie/blocks/product-detail/_mobile.scss */
+#page-catalog .product-detail .product-detail__where-to-buy .button.button-small {
+  border: 1px solid #999;
+  color: #e31977;
+  padding: 2px 10px;
+  font-size: 11px;
+  background-color: #ccc;
+  -webkit-box-shadow: inset 0 7px 0 #eeeeee;
+  -moz-box-shadow: inset 0 7px 0 #eeeeee;
+  box-shadow: inset 0 7px 0 #eeeeee;
+}
+/* line 27, ../scss/theme-barbie/blocks/product-detail/_mobile.scss */
+#page-catalog .product-detail .button-with-icon {
+  font-size: 13px;
+  padding: 0;
+  text-align: left;
+  position: relative;
+  min-height: 39px;
+}
+/* line 15, ../scss/vendor/bourbon/addons/_clearfix.scss */
+#page-catalog .product-detail .button-with-icon:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 34, ../scss/theme-barbie/blocks/product-detail/_mobile.scss */
+#page-catalog .product-detail .button-with-icon span {
+  width: 36px;
+  position: absolute;
+  margin: auto 0;
+  vertical-align: middle;
+  top: 0;
+  bottom: 0;
+}
+/* line 43, ../scss/theme-barbie/blocks/product-detail/_mobile.scss */
+#page-catalog .product-detail .button-with-icon .text {
+  width: 97%;
+  position: relative;
+  display: inline-block;
+  line-height: 19px;
+  padding-bottom: 5px;
+  padding-top: 6px;
+  margin-top: -1px;
+  padding-left: 40px;
+  background:none;
+}
+/* line 56, ../scss/theme-barbie/blocks/product-detail/_mobile.scss */
+#page-catalog .product-detail .product-detail__detail .product-detail__detail__title {
+  text-transform: uppercase;
+  color: #e31977;
+  font-weight: bold;
+  margin-bottom: 0;
+  line-height: 1.2;
+  text-align: left;
+}
+/* line 64, ../scss/theme-barbie/blocks/product-detail/_mobile.scss */
+#page-catalog .product-detail .product-detail__detail .product-detail__more-link {
+  color: #e31977;
+  text-decoration: underline;
+}
+/* line 71, ../scss/theme-barbie/blocks/product-detail/_mobile.scss */
+#page-catalog .product-detail .breadcrumb p {
+  line-height: 60px;
+}
+@media screen and (min-width: 48em) {
+  /* line 1, ../scss/theme-barbie/blocks/general/_tablet.scss */
+  #page-catalog .header-title {
+    padding: 0 0 20px 0;
+  }
+  /* line 5, ../scss/theme-barbie/blocks/general/_tablet.scss */
+  #page-catalog .modal .select-style {
+    width: 220px;
+  }
+  /* line 2, ../scss/theme-barbie/blocks/marquee/_tablet.scss */
+  #page-catalog .marquee .marquee__slides, #page-catalog .marquee .marquee__slides .marquee__slide {
+    height: 360px;
+  }
+  /* line 6, ../scss/theme-barbie/blocks/marquee/_tablet.scss */
+  #page-catalog .marquee .marquee__captions {
+    background: none;
+    width: 300px;
+    top: 84px;
+    right: 136px;
+  }
+  /* line 13, ../scss/theme-barbie/blocks/marquee/_tablet.scss */
+  #page-catalog .marquee .marquee__prev, #page-catalog .marquee .marquee__next {
+    width: 35px;
+    height: 80px;
+    top: 50%;
+    margin-top: -40px;
+  }
+  /* line 20, ../scss/theme-barbie/blocks/marquee/_tablet.scss */
+  #page-catalog .marquee .marquee__prev {
+    background-position: 0 -991px;
+  }
+  /* line 43, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+  #page-catalog .marquee .marquee__prev:hover, #page-catalog .marquee .marquee__prev.arrow-left_hover, #page-catalog .marquee .marquee__prev.arrow-left-hover {
+    background-position: 0 -751px;
+  }
+  /* line 24, ../scss/theme-barbie/blocks/marquee/_tablet.scss */
+  #page-catalog .marquee .marquee__next {
+    background-position: 0 -911px;
+  }
+  /* line 43, ../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+  #page-catalog .marquee .marquee__next:hover, #page-catalog .marquee .marquee__next.arrow-right_hover, #page-catalog .marquee .marquee__next.arrow-right-hover {
+    background-position: 0 -831px;
+  }
+  /* line 28, ../scss/theme-barbie/blocks/marquee/_tablet.scss */
+  #page-catalog .marquee .marquee__bullets {
+    width: 266px;
+    bottom: 100px;
+    right: 170px;
+  }
+  /* line 33, ../scss/theme-barbie/blocks/marquee/_tablet.scss */
+  #page-catalog .marquee .marquee__bullets .marquee__bullet--active {
+    background-position: 0 -281px;
+  }
+  /* line 3, ../scss/theme-barbie/blocks/wishlist-preview/_tablet.scss */
+  #page-catalog .wishlist-preview .wishlist__header {
+    background-image: url(../img/barbie/wishlist-preview/wishlist-preview-header-bg.jpg);
+  }
+  /* line 1, ../scss/theme-barbie/blocks/shop-nav/_tablet.scss */
+  #page-catalog .shop-nav__menu {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    background: none;
+  }
+  /* line 7, ../scss/theme-barbie/blocks/shop-nav/_tablet.scss */
+  #page-catalog .shop-nav__menu > .shop-nav__item {
+    padding: 0 20px;
+    display: inline-block;
+  }
+  /* line 11, ../scss/theme-barbie/blocks/shop-nav/_tablet.scss */
+  #page-catalog .shop-nav__menu > .shop-nav__item > .action {
+    line-height: 50px;
+  }
+  /* line 15, ../scss/theme-barbie/blocks/shop-nav/_tablet.scss */
+  #page-catalog .shop-nav__menu > .shop-nav__item:hover, #page-catalog .shop-nav__menu > .shop-nav__item:hover .action {
+    background: white;
+  }
+  /* line 19, ../scss/theme-barbie/blocks/shop-nav/_tablet.scss */
+  #page-catalog .shop-nav__menu > .shop-nav__item .action {
+    padding: 0;
+    color: #656565;
+  }
+  /* line 25, ../scss/theme-barbie/blocks/shop-nav/_tablet.scss */
+  #page-catalog .shop-nav__menu .shop-nav__dropdown {
+    padding-left: 50px;
+    background: white;
+  }
+  /* line 29, ../scss/theme-barbie/blocks/shop-nav/_tablet.scss */
+  #page-catalog .shop-nav__menu .shop-nav__dropdown .shop-nav__item {
+    line-height: 25px;
+  }
+  /* line 35, ../scss/theme-barbie/blocks/shop-nav/_tablet.scss */
+  #page-catalog .shop-nav {
+    padding-left: 10px;
+  }
+  /* line 37, ../scss/theme-barbie/blocks/shop-nav/_tablet.scss */
+  #page-catalog .shop-nav .shop-nav__title {
+    font-weight: normal;
+    margin-right: 20px;
+    float: left;
+  }
+  /* line 44, ../scss/theme-barbie/blocks/shop-nav/_tablet.scss */
+  #page-catalog .shop-navigation {
+    padding-top: 2px;
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+  }
+  /* line 1, ../scss/theme-barbie/blocks/wishlist-header/_tablet.scss */
+  #page-catalog .wishlist__user-view .wishlist-header {
+    background-image: url("../img/barbie/wishlist-header/wishlist-header.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+    height: 289px;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 10px;
+  }
+  /* line 10, ../scss/theme-barbie/blocks/wishlist-header/_tablet.scss */
+  #page-catalog .wishlist__user-view .wishlist-header .wishlist-header__right {
+    padding-top: 110px;
+  }
+  /* line 14, ../scss/theme-barbie/blocks/wishlist-header/_tablet.scss */
+  #page-catalog .wishlist__user-view .wishlist-header .legend {
+    width: 480px;
+    font-weight: bold;
+  }
+  /* line 19, ../scss/theme-barbie/blocks/wishlist-header/_tablet.scss */
+  #page-catalog .wishlist__user-view .wishlist-header .wishlist__title {
+    text-align: left;
+    padding-left: 40px;
+    font-size: 2.1875em;
+  }
+  /* line 26, ../scss/theme-barbie/blocks/wishlist-header/_tablet.scss */
+  #page-catalog .wishlist__recipient-view .wishlist-header {
+    background: white;
+  }
+  /* line 29, ../scss/theme-barbie/blocks/wishlist-header/_tablet.scss */
+  #page-catalog .wishlist__recipient-view .wishlist-header .wishlist-header__left {
+    max-width: 400px;
+    text-align: left;
+  }
+  /* line 34, ../scss/theme-barbie/blocks/wishlist-header/_tablet.scss */
+  #page-catalog .wishlist__recipient-view .wishlist-header .wishlist-header__right {
+    max-width: 315px;
+  }
+  /* line 2, ../scss/theme-barbie/blocks/modal/_tablet.scss */
+  #page-catalog .modal.empty .add-to-wishlist {
+    font-size: 14px;
+  }
+  /* line 4, ../scss/theme-barbie/blocks/modal/_tablet.scss */
+  #page-catalog .modal.empty .add-to-wishlist img {
+    vertical-align: middle;
+  }
+  /* line 9, ../scss/theme-barbie/blocks/modal/_tablet.scss */
+  #page-catalog .modal.empty .section-header {
+    padding-left: 20px;
+    z-index: 1;
+  }
+  /* line 14, ../scss/theme-barbie/blocks/modal/_tablet.scss */
+  #page-catalog .modal.empty .modal__description {
+    background: url("../img/barbie/modals/bg-wishlist.png") center -10px no-repeat;
+    height: 193px;
+    padding-right: 300px;
+    padding-top: 60px;
+    margin-bottom: -28px;
+    position: relative;
+    z-index: 2;
+  }
+  /* line 24, ../scss/theme-barbie/blocks/modal/_tablet.scss */
+  #page-catalog .modal.empty .modal__footer {
+    padding-left: 0;
+  }
+  /* line 31, ../scss/theme-barbie/blocks/modal/_tablet.scss */
+  #page-catalog .modal .modal__description {
+    padding-left: 200px;
+  }
+  /* line 35, ../scss/theme-barbie/blocks/modal/_tablet.scss */
+  #page-catalog .modal .modal__character {
+    width: 268px;
+    height: 326px;
+    left: -50px;
+    background-image: url("../img/barbie/modals/barbie.png");
+  }
+  /* line 42, ../scss/theme-barbie/blocks/modal/_tablet.scss */
+  #page-catalog .modal .select-style {
+    background-position: 195px 50%;
+  }
+  /* line 46, ../scss/theme-barbie/blocks/modal/_tablet.scss */
+  #page-catalog .modal .modal__footer {
+    padding-left: 200px;
+  }
+  /* line 49, ../scss/theme-barbie/blocks/modal/_tablet.scss */
+  #page-catalog .modal .modal__footer .button {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .ru-ru #page-catalog .modal .modal__footer .button,.es-es #page-catalog .modal .modal__footer .button{padding-left:15px;padding-right:15px}
+  /* line 1, ../scss/theme-barbie/blocks/product-detail/_tablet.scss */
+  #page-catalog .breadcrumb {
+    padding-left: 40px;
+  }
+  /* line 2, ../scss/theme-barbie/blocks/category-grid/_tablet.scss */
+  #page-catalog .category-grid .product-tiles {
+    background: url("../img/barbie/category-grid/bg-hotwheels.png") left top no-repeat;
+    text-align: left;
+  }
+}
+@media screen and (min-width: 61.25em) {
+  /* line 1, ../scss/theme-barbie/blocks/general/_desktop.scss */
+  #page-catalog .tooltip-message {
+    background: whitesmoke;
+    background: -moz-linear-gradient(top, whitesmoke 0%, #d4d4d4 51%, whitesmoke 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, whitesmoke), color-stop(51%, #d4d4d4), color-stop(100%, whitesmoke));
+    background: -webkit-linear-gradient(top, whitesmoke 0%, #d4d4d4 51%, whitesmoke 100%);
+    background: -o-linear-gradient(top, whitesmoke 0%, #d4d4d4 51%, whitesmoke 100%);
+    background: -ms-linear-gradient(top, whitesmoke 0%, #d4d4d4 51%, whitesmoke 100%);
+    background: linear, to bottom, whitesmoke 0%, #d4d4d4 51%, whitesmoke 100%;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#f5f5f5', GradientType=0 );
+    -webkit-box-shadow: 2px 1px 7px rgba(50, 50, 50, 0.84);
+    -moz-box-shadow: 2px 1px 7px rgba(50, 50, 50, 0.84);
+    box-shadow: 2px 1px 7px rgba(50, 50, 50, 0.84);
+  }
+  /* line 13, ../scss/theme-barbie/blocks/general/_desktop.scss */
+  #page-catalog .tooltip-message p {
+    color: #e41582;
+    font-weight: bold;
+  }
+  /* line 1, ../scss/theme-barbie/blocks/wishlist-header/_desktop.scss */
+  #page-catalog .wishlist__recipient-view .wishlist-header {
+    padding: 20px 40px;
+  }
+  /* line 5, ../scss/theme-barbie/blocks/wishlist-header/_desktop.scss */
+  #page-catalog .wishlist__user-view .wishlist-header .legend {
+    width: 540px;
+  }
+  /* line 1, ../scss/theme-barbie/blocks/product-detail/_desktop.scss */
+  #page-catalog .breadcrumb {
+    padding-left: 60px;
+    line-height: 60px;
+  }
+}
+@media print {
+  /* line 7, ../scss/theme-barbie.scss */
+  #page-catalog {
+    overflow: hidden;
+    background: none !important;
+  }
+}
+
+#page-catalog .modal .modal__email_message {
+    width: 201px;
+    height: 162px;
+	text-align:center;
+	vertical-align:middle;
+	display:table-cell;
+    background-image: url("../img/barbie/modals/Emailbutton.jpg");
+}
+#page-catalog .modal .modal__email_message_innerDiv{
+height: 162px;
+font-size: 12px;
+width: 201px;
+display: table-cell;
+vertical-align: middle;
+text-align: center;
+padding: 0px 30px;
+line-height: 18px;
+}
+#page-catalog .actual_offer{
+color:#b90063;font-weight:bold
+}
+
+#page-catalog .no_items_to_display{
+	display:none;
+	width:auto;
+	max-width: 870px;
+	text-align: center;
+	margin:0 auto;
+	padding:10px;
+	color: #000;
+}
+#page-catalog .wishlist-empty .no_items_to_display {
+	display: block;
+}
+#page-catalog .wishlist-empty .wishlist-share {
+	display: none;
+}
+#page-catalog .wishlist-wrap.wishlist__user-view.wishlist-empty .wishlist {
+	display: none;
+}
+
+
